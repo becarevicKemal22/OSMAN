@@ -1,0 +1,3 @@
+C:/.Cloud Documents/Osman/Osman Asembler/cmake-build-debug/CMakeFiles/Osman_Asembler.dir
+C:/.Cloud Documents/Osman/Osman Asembler/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/.Cloud Documents/Osman/Osman Asembler/cmake-build-debug/CMakeFiles/rebuild_cache.dir

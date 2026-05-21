@@ -1,0 +1,128 @@
+# -------------------------------------------------------------------------- #
+#
+# Copyright (C) 2018  Intel Corporation. All rights reserved.
+# Your use of Intel Corporation's design tools, logic functions 
+# and other software and tools, and its AMPP partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Intel Program License 
+# Subscription Agreement, the Intel Quartus Prime License Agreement,
+# the Intel FPGA IP License Agreement, or other applicable license
+# agreement, including, without limitation, that your use is for
+# the sole purpose of programming logic devices manufactured by
+# Intel and sold by Intel or its authorized distributors.  Please
+# refer to the applicable agreement for further details.
+#
+# -------------------------------------------------------------------------- #
+#
+# Quartus Prime
+# Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+# Date created = 03:04:01  May 21, 2026
+#
+# -------------------------------------------------------------------------- #
+#
+# Notes:
+#
+# 1) The default values for assignments are stored in the file:
+#		logisimTopLevelShell_assignment_defaults.qdf
+#    If this file doesn't exist, see file:
+#		assignment_defaults.qdf
+#
+# 2) Altera recommends that you do not modify this file. This
+#    file is updated automatically by the Quartus Prime software
+#    and any changes you make may be lost or overwritten.
+#
+# -------------------------------------------------------------------------- #
+
+
+set_global_assignment -name FAMILY "Cyclone V"
+set_global_assignment -name DEVICE 5CSEMA5F31C6
+set_global_assignment -name TOP_LEVEL_ENTITY logisimTopLevelShell
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION 18.1.0
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "03:04:01  MAY 21, 2026"
+set_global_assignment -name LAST_QUARTUS_VERSION "18.1.0 Lite Edition"
+set_global_assignment -name VHDL_FILE XOR_GATE_ONEHOT_entity.vhd
+set_global_assignment -name VHDL_FILE XOR_GATE_ONEHOT_behavior.vhd
+set_global_assignment -name VHDL_FILE synthesizedClockGenerator_entity.vhd
+set_global_assignment -name VHDL_FILE synthesizedClockGenerator_behavior.vhd
+set_global_assignment -name VHDL_FILE StatusniRegistar_entity.vhd
+set_global_assignment -name VHDL_FILE StatusniRegistar_behavior.vhd
+set_global_assignment -name VHDL_FILE Sabirac_entity.vhd
+set_global_assignment -name VHDL_FILE Sabirac_behavior.vhd
+set_global_assignment -name VHDL_FILE RegistarskaDatoteka_entity.vhd
+set_global_assignment -name VHDL_FILE RegistarskaDatoteka_behavior.vhd
+set_global_assignment -name VHDL_FILE Registar8Bit_entity.vhd
+set_global_assignment -name VHDL_FILE Registar8Bit_behavior.vhd
+set_global_assignment -name VHDL_FILE RAMCONTENTS_MemorijaPodataka_entity.vhd
+set_global_assignment -name VHDL_FILE RAMCONTENTS_MemorijaPodataka_behavior.vhd
+set_global_assignment -name VHDL_FILE ProgramskiBrojac_entity.vhd
+set_global_assignment -name VHDL_FILE ProgramskiBrojac_behavior.vhd
+set_global_assignment -name VHDL_FILE PredznacenoProsirenje_entity.vhd
+set_global_assignment -name VHDL_FILE PredznacenoProsirenje_behavior.vhd
+set_global_assignment -name VHDL_FILE OSMAN_entity.vhd
+set_global_assignment -name VHDL_FILE OSMAN_behavior.vhd
+set_global_assignment -name VHDL_FILE OR_GATE_entity.vhd
+set_global_assignment -name VHDL_FILE OR_GATE_behavior.vhd
+set_global_assignment -name VHDL_FILE NOR_GATE_8_INPUTS_entity.vhd
+set_global_assignment -name VHDL_FILE NOR_GATE_8_INPUTS_behavior.vhd
+set_global_assignment -name VHDL_FILE Multiplexer_bus_8_entity.vhd
+set_global_assignment -name VHDL_FILE Multiplexer_bus_8_behavior.vhd
+set_global_assignment -name VHDL_FILE Multiplexer_bus_4_entity.vhd
+set_global_assignment -name VHDL_FILE Multiplexer_bus_4_behavior.vhd
+set_global_assignment -name VHDL_FILE Multiplexer_bus_2_entity.vhd
+set_global_assignment -name VHDL_FILE Multiplexer_bus_2_behavior.vhd
+set_global_assignment -name VHDL_FILE Multiplexer_8_entity.vhd
+set_global_assignment -name VHDL_FILE Multiplexer_8_behavior.vhd
+set_global_assignment -name VHDL_FILE Multiplexer_2_entity.vhd
+set_global_assignment -name VHDL_FILE Multiplexer_2_behavior.vhd
+set_global_assignment -name VHDL_FILE logisimTopLevelShell_entity.vhd
+set_global_assignment -name VHDL_FILE logisimTopLevelShell_behavior.vhd
+set_global_assignment -name VHDL_FILE logisimTickGenerator_entity.vhd
+set_global_assignment -name VHDL_FILE logisimTickGenerator_behavior.vhd
+set_global_assignment -name VHDL_FILE LogisimClockComponent_entity.vhd
+set_global_assignment -name VHDL_FILE LogisimClockComponent_behavior.vhd
+set_global_assignment -name VHDL_FILE KontrolnaJedinica_entity.vhd
+set_global_assignment -name VHDL_FILE KontrolnaJedinica_behavior.vhd
+set_global_assignment -name VHDL_FILE KontrolnaJedinicaGrananja_entity.vhd
+set_global_assignment -name VHDL_FILE KontrolnaJedinicaGrananja_behavior.vhd
+set_global_assignment -name VHDL_FILE FullAdder_entity.vhd
+set_global_assignment -name VHDL_FILE FullAdder_behavior.vhd
+set_global_assignment -name VHDL_FILE D_FLIPFLOP_entity.vhd
+set_global_assignment -name VHDL_FILE D_FLIPFLOP_behavior.vhd
+set_global_assignment -name VHDL_FILE Decoder_8_entity.vhd
+set_global_assignment -name VHDL_FILE Decoder_8_behavior.vhd
+set_global_assignment -name VHDL_FILE Comparator_entity.vhd
+set_global_assignment -name VHDL_FILE Comparator_behavior.vhd
+set_global_assignment -name VHDL_FILE AND_GATE_entity.vhd
+set_global_assignment -name VHDL_FILE AND_GATE_behavior.vhd
+set_global_assignment -name VHDL_FILE AND_GATE_3_INPUTS_entity.vhd
+set_global_assignment -name VHDL_FILE AND_GATE_3_INPUTS_behavior.vhd
+set_global_assignment -name VHDL_FILE ALU8Bit_entity.vhd
+set_global_assignment -name VHDL_FILE ALU8Bit_behavior.vhd
+set_global_assignment -name VHDL_FILE ALU1Bit_entity.vhd
+set_global_assignment -name VHDL_FILE ALU1Bit_behavior.vhd
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_global_assignment -name BOARD "DE1-SoC Board"
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to fpgaGlobalClock
+set_location_assignment PIN_V16 -to LED1_0
+set_location_assignment PIN_AF14 -to fpgaGlobalClock
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED1_0
+set_location_assignment PIN_W16 -to LED2_0
+set_location_assignment PIN_V17 -to LED3_0
+set_location_assignment PIN_V18 -to LED4_0
+set_location_assignment PIN_W17 -to LED5_0
+set_location_assignment PIN_W19 -to LED6_0
+set_location_assignment PIN_Y19 -to LED7_0
+set_location_assignment PIN_W20 -to LED8_0
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED2_0
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED3_0
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED4_0
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED5_0
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED6_0
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED7_0
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED8_0

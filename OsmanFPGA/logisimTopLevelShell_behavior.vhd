@@ -1,0 +1,97 @@
+--==============================================================================
+--== Logisim-evolution goes FPGA automatic generated VHDL code                ==
+--== https://github.com/logisim-evolution/                                    ==
+--==                                                                          ==
+--==                                                                          ==
+--== Project   : OSMAN                                                        ==
+--== Component : logisimTopLevelShell                                         ==
+--==                                                                          ==
+--==============================================================================
+
+ARCHITECTURE platformIndependent OF logisimTopLevelShell IS 
+
+   -----------------------------------------------------------------------------
+   -- Here all used components are defined                                    --
+   -----------------------------------------------------------------------------
+      COMPONENT synthesizedClockGenerator
+         PORT ( FPGAClock        : IN  std_logic;
+                SynthesizedClock : OUT std_logic );
+      END COMPONENT;
+
+      COMPONENT logisimTickGenerator
+         GENERIC ( nrOfBits    : INTEGER;
+                   reloadValue : INTEGER );
+         PORT ( FPGAClock : IN  std_logic;
+                FPGATick  : OUT std_logic );
+      END COMPONENT;
+
+      COMPONENT LogisimClockComponent
+         GENERIC ( highTicks : INTEGER;
+                   lowTicks  : INTEGER;
+                   nrOfBits  : INTEGER;
+                   phase     : INTEGER );
+         PORT ( clockTick   : IN  std_logic;
+                globalClock : IN  std_logic;
+                clockBus    : OUT std_logic_vector( 4 DOWNTO 0 ) );
+      END COMPONENT;
+
+      COMPONENT OSMAN
+         PORT ( logisimClockTree0    : IN  std_logic_vector( 4 DOWNTO 0 );
+                logisimInputBubbles  : IN  std_logic_vector( 0 DOWNTO 0 );
+                logisimOutputBubbles : OUT std_logic_vector( 7 DOWNTO 0 ) );
+      END COMPONENT;
+
+--------------------------------------------------------------------------------
+-- All used signals are defined here                                          --
+--------------------------------------------------------------------------------
+   SIGNAL s_fpgaTick             : std_logic;
+   SIGNAL s_logisimClockTree0    : std_logic_vector( 4 DOWNTO 0 );
+   SIGNAL s_logisimInputBubbles  : std_logic_vector( 0 DOWNTO 0 );
+   SIGNAL s_logisimOutputBubbles : std_logic_vector( 7 DOWNTO 0 );
+   SIGNAL s_synthesizedClock     : std_logic;
+
+BEGIN
+
+   --------------------------------------------------------------------------------
+   -- All signal adaptations are performed here                                  --
+   --------------------------------------------------------------------------------
+   LED1_0                   <= s_logisimOutputBubbles(1);
+   LED2_0                   <= s_logisimOutputBubbles(6);
+   LED3_0                   <= s_logisimOutputBubbles(7);
+   LED4_0                   <= s_logisimOutputBubbles(2);
+   LED5_0                   <= s_logisimOutputBubbles(3);
+   LED6_0                   <= s_logisimOutputBubbles(4);
+   LED7_0                   <= s_logisimOutputBubbles(0);
+   LED8_0                   <= s_logisimOutputBubbles(5);
+   s_logisimInputBubbles(0) <=  NOT n_RST_0;
+
+   --------------------------------------------------------------------------------
+   -- The clock tree components are defined here                                 --
+   --------------------------------------------------------------------------------
+   BASE_0 : synthesizedClockGenerator
+      PORT MAP ( FPGAClock        => fpgaGlobalClock,
+                 SynthesizedClock => s_synthesizedClock );
+
+   BASE_1 : logisimTickGenerator
+      GENERIC MAP ( nrOfBits    => 26,
+                    reloadValue => 5000000 )
+      PORT MAP ( FPGAClock => s_synthesizedClock,
+                 FPGATick  => s_fpgaTick );
+
+   CLK : LogisimClockComponent
+      GENERIC MAP ( highTicks => 1,
+                    lowTicks  => 1,
+                    nrOfBits  => 1,
+                    phase     => 1 )
+      PORT MAP ( clockBus    => s_logisimClockTree0,
+                 clockTick   => s_fpgaTick,
+                 globalClock => s_synthesizedClock );
+
+   --------------------------------------------------------------------------------
+   -- The toplevel component is connected here                                   --
+   --------------------------------------------------------------------------------
+   CIRCUIT_0 : OSMAN
+      PORT MAP ( logisimClockTree0    => s_logisimClockTree0,
+                 logisimInputBubbles  => s_logisimInputBubbles,
+                 logisimOutputBubbles => s_logisimOutputBubbles );
+END platformIndependent;
