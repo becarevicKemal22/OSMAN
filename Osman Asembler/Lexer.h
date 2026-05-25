@@ -11,18 +11,28 @@
 #include "Token.h"
 
 class Lexer {
-private:
     std::string source;
     unsigned int line = 1;
-    char currentChar = 0;
+    unsigned int currentChar = 0;
 
     void addToken(TokenType type, char character);
     void addToken(TokenType type, const std::string& value);
     void advance(){ currentChar++; }
-    char peek(){ return source[currentChar + 1]; }
+    char peek() const {
+        if (currentChar + 1 >= source.length()) return '\0';
+        return source[currentChar + 1];
+    }
+    bool isHexChar(char c);
+    std::string convertHexStrToNumStr(std::string number);
+    void handleNewLine();
+    void handleComment();
 public:
     Lexer(const std::string&  source) : source(source){}
-    ~Lexer(){}
+    ~Lexer() {
+        for (auto token : tokens) {
+            delete token;
+        }
+    }
 
     std::vector<Token*> tokens{};
     void tokenize();

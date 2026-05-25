@@ -4,32 +4,36 @@
 
 #include "Lexer.h"
 
+#include <algorithm>
+#include <stdexcept>
+
+#include "Instructions.h"
+
 void Lexer::tokenize() {
     unsigned int length = source.length();
     while (currentChar < length) {
-        wchar_t c = source[currentChar];
-        if(c == '['){
+        char c = source[currentChar];
+        if (c == ':') {
+            addToken(TokenType::Colon, c);
+            advance();
+        } else if (c == '-') {
+            addToken(TokenType::Minus, c);
+            advance();
+        } else if(c == '['){
             addToken(TokenType::OpenBracket, c);
             advance();
         } else if(c == ']') {
             addToken(TokenType::ClosedBracket, c);
             advance();
         } else if(c == ';') {
-            addToken(TokenType::Semicolon, c);
-            advance();
+            handleComment();
         } else if(c == ',') {
             addToken(TokenType::Comma, c);
             advance();
-        } else if(c == ' '){
-            advance();
-        } else if(c == '\t'){
+        } else if(c == ' ' || c == '\t') {
             advance();
         } else if(c == '\n' || c == '\r'){
-            line++;
-            if(source[currentChar] == '\r' && source[currentChar + 1] == '\n'){
-                currentChar++;
-            }
-            currentChar++;
+            handleNewLine();
         }
         else if(isalnum(c)){
             if(isalpha(c)){
@@ -39,31 +43,46 @@ void Lexer::tokenize() {
                     advance();
                     identifier += source[currentChar];
                 }
+
                 TokenType type = TokenType::Identifier;
+                std::transform(identifier.begin(), identifier.end(), identifier.begin(), ::toupper);
+
                 auto it = INSTRUCTIONS.find(identifier);
                 if(it != INSTRUCTIONS.end()){
                     type = TokenType::Instruction;
                 }
 
-                if(type == TokenType::Identifier){
-                    addToken(type, identifier);
-                }
+                addToken(type, identifier);
                 advance();
             }else{
                 std::string number;
-                number += c;
-                while((iswdigit(peek()) || (peek() == '.' && iswdigit(source[currentChar + 2]))) && peek() != '\0'){
+                bool hex = false;
+                if (peek() == 'X' || peek() == 'x') {
+                    if (c != '0') {
+                        throw std::runtime_error("Ocekivano '0' prije 'x'");
+                    }
+                    hex = true;
+                    advance();
+                } else {
+                    number += c;
+                }
+                while((isdigit(peek()) || isHexChar(peek())) && peek() != '\0'){
                     advance();
                     number += source[currentChar];
+                }
+                if (number.empty()) throw std::runtime_error("Nepravilan format broja na liniji: " + std::to_string(line));
+                if (hex) {
+                    number = convertHexStrToNumStr(number);
                 }
                 addToken(TokenType::Number, number);
                 advance();
             }
         } else{
-            throw UnexpectedCharacter(line, charIndexOnLine, c);
+            throw std::runtime_error("Greska u citanju broja na liniji: " + std::to_string(line));
         }
     }
-    addToken(TokenType::Eof, L"");
+    if (source[currentChar - 1] != '\n') addToken(TokenType::LineEnd, '\n');
+    addToken(TokenType::Eof, "");
 }
 
 void Lexer::addToken(TokenType type, char character) {
@@ -72,4 +91,30 @@ void Lexer::addToken(TokenType type, char character) {
 
 void Lexer::addToken(TokenType type, const std::string& value) {
     tokens.push_back(new Token(type, value, line));
+}
+
+bool Lexer::isHexChar(char c) {
+    c = tolower(c);
+    return c >= 'a' && c <= 'f';
+}
+
+std::string Lexer::convertHexStrToNumStr(std::string number) {
+    int decimalValue = std::stoi(number, nullptr, 16);
+    return std::to_string(decimalValue);
+}
+
+void Lexer::handleNewLine() {
+    line++;
+    if(source[currentChar] == '\r' && currentChar + 1 < source.length() && source[currentChar + 1] == '\n'){
+        currentChar++;
+    }
+    currentChar++;
+    addToken(TokenType::LineEnd, '\n');
+}
+
+void Lexer::handleComment() {
+    while(source[currentChar] != '\n' && source[currentChar] != '\0'){
+        advance();
+    }
+    if (source[currentChar] == '\n') handleNewLine();
 }

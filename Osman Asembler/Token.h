@@ -6,27 +6,32 @@
 #define OSMAN_ASEMBLER_TOKEN_H
 
 #include <string>
-#include <unordered_map>
+
 enum class TokenType {
+    LineEnd,
+    Skip, // za preskakanje labela pri drugom prolasku
+    Minus,
     Comma,
     Semicolon,
+    Colon,
     OpenBracket,
     ClosedBracket,
     Identifier,
     Number,
-    Instruction
+    Instruction,
+    Eof
 };
 
-const std::unordered_map<std::string, std::string> INSTRUCTIONS = {
-        {"NOP", ""},
-        {"ADD", ""}
-};
+std::string TokenTypeToStr(TokenType type);
+
 class Token {
 public:
     Token(TokenType type, const std::string& value, unsigned int line) : type(type), value(value), line(line)  {}
     TokenType type;
     std::string value;
     unsigned int line;
+
+    void parseNoOp();
 };
 
 #endif //OSMAN_ASEMBLER_TOKEN_H

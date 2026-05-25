@@ -1,0 +1,27 @@
+# ninja log v6
+5	1251	8011177557118429	CMakeFiles/Osman_Asembler.dir/main.cpp.obj	7d316fdd9bb8e071
+10	1033	8011173421438542	CMakeFiles/Osman_Asembler.dir/Lexer.cpp.obj	88bcf683bd7ec2f7
+5	1178	8011187946858385	CMakeFiles/Osman_Asembler.dir/Parser.cpp.obj	473040b2a29065a2
+6	553	8011187677872348	CMakeFiles/Osman_Asembler.dir/Token.cpp.obj	c9c90cf202363f74
+1179	1457	8011187958596832	Osman_Asembler.exe	512517e81952ab57
+17	693	8014244999756846	CMakeFiles/Osman_Asembler.dir/Token.cpp.obj	c9c90cf202363f74
+12	1439	8014244999706835	CMakeFiles/Osman_Asembler.dir/Lexer.cpp.obj	88bcf683bd7ec2f7
+7	1664	8014244999666849	CMakeFiles/Osman_Asembler.dir/main.cpp.obj	7d316fdd9bb8e071
+21	1842	8014244999806844	CMakeFiles/Osman_Asembler.dir/Parser.cpp.obj	473040b2a29065a2
+1842	2135	8014245018017606	Osman_Asembler.exe	512517e81952ab57
+15	1097	8014269142770092	CMakeFiles/Osman_Asembler.dir/Lexer.cpp.obj	88bcf683bd7ec2f7
+10	1310	8014269142720104	CMakeFiles/Osman_Asembler.dir/main.cpp.obj	7d316fdd9bb8e071
+20	1444	8014269142820120	CMakeFiles/Osman_Asembler.dir/Parser.cpp.obj	473040b2a29065a2
+1444	1746	8014269157058584	Osman_Asembler.exe	512517e81952ab57
+10	1181	8014529724381557	CMakeFiles/Osman_Asembler.dir/Parser.cpp.obj	473040b2a29065a2
+1181	1590	8014529736091822	Osman_Asembler.exe	512517e81952ab57
+7	1109	8014530380583489	CMakeFiles/Osman_Asembler.dir/Parser.cpp.obj	473040b2a29065a2
+1110	1373	8014530391613273	Osman_Asembler.exe	512517e81952ab57
+19	459	8014539321183294	CMakeFiles/Osman_Asembler.dir/Token.cpp.obj	c9c90cf202363f74
+15	1027	8014539321138133	CMakeFiles/Osman_Asembler.dir/Lexer.cpp.obj	88bcf683bd7ec2f7
+9	1154	8014539321082982	CMakeFiles/Osman_Asembler.dir/main.cpp.obj	7d316fdd9bb8e071
+23	1313	8014539321225485	CMakeFiles/Osman_Asembler.dir/Parser.cpp.obj	473040b2a29065a2
+1314	1630	8014539334125390	Osman_Asembler.exe	512517e81952ab57
+9	910	8014553117025215	CMakeFiles/Osman_Asembler.dir/Lexer.cpp.obj	88bcf683bd7ec2f7
+13	1173	8014553117075225	CMakeFiles/Osman_Asembler.dir/Parser.cpp.obj	473040b2a29065a2
+1173	1474	8014553128669495	Osman_Asembler.exe	512517e81952ab57
