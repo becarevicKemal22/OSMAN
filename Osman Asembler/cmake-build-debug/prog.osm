@@ -1,10 +1,1 @@
-LOC E, 0xF0
-STI E, 0xFF
-LOC A, 2
-LOC B, 3
-CMP A, B
-BEQ kraj
-LOC E, 0x0F
-STI E, 0xFF
-kraj:
-STI E, 0xFF ; ovo je komentar na kraju linije
+LOC A, 0xF
