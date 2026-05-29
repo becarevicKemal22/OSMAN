@@ -63,7 +63,7 @@ BEGIN
    s_logisimNet15 <= WE;
    s_logisimNet4  <= Reset;
    s_logisimNet5  <= Clock;
-   s_logisimNet7  <= ZFi;
+   s_logisimNet8  <= ZFi;
    s_logisimNet9  <= VFi;
 
    --------------------------------------------------------------------------------
@@ -71,7 +71,7 @@ BEGIN
    --------------------------------------------------------------------------------
    CF <= s_logisimNet10;
    NF <= s_logisimNet6;
-   VF <= s_logisimNet1;
+   VF <= s_logisimNet2;
    ZF <= s_logisimNet0;
 
    --------------------------------------------------------------------------------
@@ -79,7 +79,7 @@ BEGIN
    --------------------------------------------------------------------------------
 
    -- NOT Gate
-   s_logisimNet8 <=  NOT s_logisimNet15;
+   s_logisimNet7 <=  NOT s_logisimNet15;
 
    --------------------------------------------------------------------------------
    -- Here all normal components are defined                                     --
@@ -87,46 +87,40 @@ BEGIN
    PLEXERS_1 : Multiplexer_2
       PORT MAP ( enable  => '1',
                  muxIn_0 => s_logisimNet9,
-                 muxIn_1 => s_logisimNet1,
-                 muxOut  => s_logisimNet2,
-                 sel     => s_logisimNet8 );
+                 muxIn_1 => s_logisimNet2,
+                 muxOut  => s_logisimNet1,
+                 sel     => s_logisimNet7 );
 
-   MEMORY_2 : D_FLIPFLOP
-      GENERIC MAP ( invertClockEnable => 1 )
-      PORT MAP ( clock  => logisimClockTree0(4),
-                 d      => s_logisimNet11,
-                 preset => '0',
-                 q      => s_logisimNet6,
-                 qBar   => OPEN,
-                 reset  => s_logisimNet4,
-                 tick   => logisimClockTree0(3) );
-
-   MEMORY_3 : D_FLIPFLOP
-      GENERIC MAP ( invertClockEnable => 1 )
-      PORT MAP ( clock  => logisimClockTree0(4),
-                 d      => s_logisimNet2,
-                 preset => '0',
-                 q      => s_logisimNet1,
-                 qBar   => OPEN,
-                 reset  => s_logisimNet4,
-                 tick   => logisimClockTree0(3) );
-
-   MEMORY_4 : D_FLIPFLOP
-      GENERIC MAP ( invertClockEnable => 1 )
-      PORT MAP ( clock  => logisimClockTree0(4),
-                 d      => s_logisimNet3,
-                 preset => '0',
-                 q      => s_logisimNet0,
-                 qBar   => OPEN,
-                 reset  => s_logisimNet4,
-                 tick   => logisimClockTree0(3) );
-
-   PLEXERS_5 : Multiplexer_2
+   PLEXERS_2 : Multiplexer_2
       PORT MAP ( enable  => '1',
                  muxIn_0 => s_logisimNet14,
                  muxIn_1 => s_logisimNet10,
                  muxOut  => s_logisimNet12,
-                 sel     => s_logisimNet8 );
+                 sel     => s_logisimNet7 );
+
+   PLEXERS_3 : Multiplexer_2
+      PORT MAP ( enable  => '1',
+                 muxIn_0 => s_logisimNet8,
+                 muxIn_1 => s_logisimNet0,
+                 muxOut  => s_logisimNet3,
+                 sel     => s_logisimNet7 );
+
+   PLEXERS_4 : Multiplexer_2
+      PORT MAP ( enable  => '1',
+                 muxIn_0 => s_logisimNet13,
+                 muxIn_1 => s_logisimNet6,
+                 muxOut  => s_logisimNet11,
+                 sel     => s_logisimNet7 );
+
+   MEMORY_5 : D_FLIPFLOP
+      GENERIC MAP ( invertClockEnable => 1 )
+      PORT MAP ( clock  => logisimClockTree0(4),
+                 d      => s_logisimNet1,
+                 preset => '0',
+                 q      => s_logisimNet2,
+                 qBar   => OPEN,
+                 reset  => s_logisimNet4,
+                 tick   => logisimClockTree0(3) );
 
    MEMORY_6 : D_FLIPFLOP
       GENERIC MAP ( invertClockEnable => 1 )
@@ -138,19 +132,25 @@ BEGIN
                  reset  => s_logisimNet4,
                  tick   => logisimClockTree0(3) );
 
-   PLEXERS_7 : Multiplexer_2
-      PORT MAP ( enable  => '1',
-                 muxIn_0 => s_logisimNet13,
-                 muxIn_1 => s_logisimNet6,
-                 muxOut  => s_logisimNet11,
-                 sel     => s_logisimNet8 );
+   MEMORY_7 : D_FLIPFLOP
+      GENERIC MAP ( invertClockEnable => 1 )
+      PORT MAP ( clock  => logisimClockTree0(4),
+                 d      => s_logisimNet3,
+                 preset => '0',
+                 q      => s_logisimNet0,
+                 qBar   => OPEN,
+                 reset  => s_logisimNet4,
+                 tick   => logisimClockTree0(3) );
 
-   PLEXERS_8 : Multiplexer_2
-      PORT MAP ( enable  => '1',
-                 muxIn_0 => s_logisimNet7,
-                 muxIn_1 => s_logisimNet0,
-                 muxOut  => s_logisimNet3,
-                 sel     => s_logisimNet8 );
+   MEMORY_8 : D_FLIPFLOP
+      GENERIC MAP ( invertClockEnable => 1 )
+      PORT MAP ( clock  => logisimClockTree0(4),
+                 d      => s_logisimNet11,
+                 preset => '0',
+                 q      => s_logisimNet6,
+                 qBar   => OPEN,
+                 reset  => s_logisimNet4,
+                 tick   => logisimClockTree0(3) );
 
 
 END platformIndependent;

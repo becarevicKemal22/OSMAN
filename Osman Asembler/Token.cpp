@@ -6,29 +6,33 @@
 std::string TokenTypeToStr(TokenType type){
     switch (type) {
         case TokenType::Comma:
-            return "zarez";
+            return ",";
+        case TokenType::Dot:
+            return ".";
         case TokenType::Semicolon:
-            return "tacka zarez";
+            return ";";
         case TokenType::OpenBracket:
-            return "";
+            return "[";
         case TokenType::ClosedBracket:
-            return "closed bracket";
+            return "]";
         case TokenType::Identifier:
-            return "identifier";
+            return "identifikator";
         case TokenType::Number:
-            return "number";
+            return "broj";
         case TokenType::Instruction:
-            return "instruction";
+            return "instrukcija";
+        case TokenType::Directive:
+            return "direktiva";
         case TokenType::Minus:
-            return "minus";
+            return "-";
         case TokenType::Colon:
-            return "colon";
+            return ":";
         case TokenType::LineEnd:
-            return "line end";
+            return "kraj linije";
         case TokenType::Eof:
-            return "eof";
+            return "kraj datoteke";
         case TokenType::Skip:
             return "skip";
     }
-    return "Greska";
+    return "Nepoznat tip tokena";
 }

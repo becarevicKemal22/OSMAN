@@ -13,15 +13,26 @@
 #include "Instructions.h"
 
 void Parser::parse() {
-    //first pass
-    unsigned int instructionCount = 0;
+    firstPass();
+    secondPass();
+}
+
+void Parser::firstPass() {
     while(!atType(TokenType::Eof)){
-        if(!atType(TokenType::Identifier)){
-           while(!atType(TokenType::LineEnd) && !atType(TokenType::Eof)){
-               instructionCount += atType(TokenType::Instruction);
-               advance();
-           }
-           if(atType(TokenType::LineEnd)) advance();
+        if(!atType(TokenType::Identifier) && !atType(TokenType::Dot)){
+            while(!atType(TokenType::LineEnd) && !atType(TokenType::Eof)){
+                instructionPointer += atType(TokenType::Instruction);
+                advance();
+            }
+            if(atType(TokenType::LineEnd)) advance();
+            continue;
+        }
+        if (atType(TokenType::Dot)) {
+            skip();
+            if (!atType(TokenType::Directive)) {
+                Greska("Ocekivan naziv direktive nakon '.'", at()->line);
+            }
+            parseDirective("");
             continue;
         }
         std::string labela = at()->value;
@@ -30,18 +41,113 @@ void Parser::parse() {
         if(it != symbolTable.end()){
             Greska("Labela '" + labela + "' je vec deklarisana.", line);
         }
-        symbolTable.insert({labela, instructionCount});
-        at()->type = TokenType::Skip;
-        advance();
+        skip();
         if(!atType(TokenType::Colon)){
             Greska("Ocekivano ':', dobijeno '" + at()->value + "'.", at()->line);
         }
-        at()->type = TokenType::Skip;
-        advance();
+        skip();
+        if (atType(TokenType::Dot)) {
+            skip();
+            parseDirective(labela);
+        }else {
+            symbolTable.insert({labela, {currentSection, instructionPointer}});
+        }
+
     }
     backToStart();
+}
 
-    // second pass OSLANJA SE NA TO DA SU LABELE UKLONJENE SA LIJEVE STRANE
+void Parser::parseDirective(const std::string& label) {
+    DirectiveType type = DIRECTIVES.find(at()->value)->second;
+    switch (type) {
+        case DirectiveType::EQU:
+            parseEquDirective();
+            break;
+        case DirectiveType::DATA:
+            parseDataDirective();
+            break;
+        case DirectiveType::CODE:
+            parseCodeDirective();
+            break;
+        case DirectiveType::BYTE:
+            parseByteDirective(label);
+        case DirectiveType::SPACE:
+            parseSpaceDirective(label);
+    }
+}
+
+void Parser::parseEquDirective() {
+    skip();
+    if (!atType(TokenType::Identifier)) {
+        Greska("Ocekivan identifikator nakon equ direktive.", at()->line);
+    }
+    std::string label = at()->value;
+    skip();
+    if (!atType(TokenType::Number)) {
+        Greska("Ocekivan broj umjesto '" + TokenTypeToStr(at()->type) + "'.", at()->line);
+    }
+    int num = parseNumber(true);
+    symbolTable.insert({label, {Section::EQU, num}});
+}
+
+void Parser::parseDataDirective() {
+    skip();
+    currentSection = Section::DATA;
+}
+
+void Parser::parseCodeDirective() {
+    skip();
+    currentSection = Section::CODE;
+}
+
+void Parser::parseByteDirective(const std::string& label) {
+    skip();
+    std::vector<int> nums{};
+    while (true) {
+        int num = parseNumber(true);
+        nums.push_back(num);
+        if (atType(TokenType::LineEnd) || atType(TokenType::Eof)) {
+            if (atType(TokenType::LineEnd)) skip();
+            break;
+        }
+        if (!atType(TokenType::Comma)) {
+            Greska("Ocekivan kraj linije ili zarez umjesto '" + at()->value + "'.", at()->line);
+        }
+        skip();
+    }
+
+    for (int i = nums.size() - 1; i >= 0; i--){
+        setMemory(dataPointer--, nums[i]);
+    }
+
+    symbolTable.insert({label, {currentSection, dataPointer + 1}});
+}
+
+void Parser::parseSpaceDirective(const std::string& label) {
+}
+
+int Parser::parseNumber(bool skipInsteadOfAdvance) {
+    bool negative = false;
+    if (atType(TokenType::Minus)) {
+        negative = true;
+        skipInsteadOfAdvance ? skip() : advance();
+    }
+    if (!atType(TokenType::Number)) {
+        throw std::runtime_error("Ocekivan kao drugi operand na liniji: " + std::to_string(at()->line));
+    }
+
+    int num = std::stoi(at()->value);
+    num = (negative) ? -num : num;
+    checkImmInBounds(num, at()->line);
+    skipInsteadOfAdvance ? skip() : advance();
+    return num;
+}
+
+void Parser::setMemory(uint8_t address, uint8_t value) {
+    memoryContents[address] = value;
+}
+
+void Parser::secondPass() {
     while (!atType(TokenType::Eof)){
         if(atType(TokenType::LineEnd) || atType(TokenType::Skip)){
             advance();
@@ -78,7 +184,7 @@ void Parser::parse() {
                 break;
         }
     }
-    writeOutputs("binary.txt", "hex.txt");
+    writeOutputs("binary.txt", "hex.txt", "dataBin.txt", "dataHex.txt");
 }
 
 void Parser::expectAndAdvance(TokenType tokenType) {
@@ -88,6 +194,13 @@ void Parser::expectAndAdvance(TokenType tokenType) {
     advance();
 }
 
+void Parser::expectAndSkip(TokenType tokenType) {
+    if (!atType(tokenType)) {
+        throw std::runtime_error("Ocekivano: '" + TokenTypeToStr(tokenType) + "', dobijeno: " + TokenTypeToStr(at()->type) + " na liniji " + std::to_string(at()->line));
+    }
+    skip();
+}
+
 void Parser::emit(uint16_t instruction) {
     binaryOutput << std::bitset<16>(instruction).to_string() << "\n";
 
@@ -95,22 +208,32 @@ void Parser::emit(uint16_t instruction) {
               << std::setfill('0') << std::uppercase << instruction << "\n";
 }
 
-void Parser::writeOutputs(const std::string& binPath, const std::string& hexPath) {
-    std::ofstream bin(binPath);
-    if (bin.is_open()) {
-        bin << binaryOutput.str();
-        bin.close();
+void Parser::emitMemoryContents() {
+    for (const auto value : memoryContents) {
+        dataBinaryOutput<< std::bitset<8>(value).to_string() << "\n";
+
+        dataHexOutput << std::hex << std::setw(2)
+                  << std::setfill('0') << std::uppercase << static_cast<int>(value) << "\n";
+    }
+}
+
+void dumpStringStreamIntoFile(const std::string& path, const std::stringstream& stream) {
+    std::ofstream f(path);
+    if (f.is_open()) {
+        f << stream.str();
+        f.close();
     } else {
         std::cout << "Greška pri otvaranju fajla 1" << std::endl;
     }
+}
 
-    std::ofstream hex(hexPath);
-    if (hex.is_open()) {
-        hex << hexOutput.str();
-        hex.close();
-    } else {
-        std::cout << "Greška pri otvaranju hex fajla!" << std::endl;
-    }
+void Parser::writeOutputs(const std::string& binPath, const std::string& hexPath, const std::string& dataBinPath, const std::string& dataHexPath) {
+    dumpStringStreamIntoFile(binPath, binaryOutput);
+    dumpStringStreamIntoFile(hexPath, hexOutput);
+
+    emitMemoryContents();
+    dumpStringStreamIntoFile(dataBinPath, dataBinaryOutput);
+    dumpStringStreamIntoFile(dataHexPath, dataHexOutput);
 }
 
 uint8_t Parser::resolveRegister(std::string name) {
@@ -211,23 +334,28 @@ void Parser::parseRegImm(InstructionSpec spec) {
     advance();
     expectAndAdvance(TokenType::Comma);
 
-    bool negative = false;
-    if (atType(TokenType::Minus)) {
-        negative = true;
-        advance();
+    int num;
+    if (atType(TokenType::Identifier)) {
+        num = parseLabel(spec);
+    } else {
+        num = parseNumber();
     }
-    if (!atType(TokenType::Number)) {
-        throw std::runtime_error("Ocekivan kao drugi operand na liniji: " + std::to_string(at()->line));
-    }
-
-    int num = std::stoi(at()->value);
-    num = (negative) ? -num : num;
-    checkImmInBounds(num, instruction, at()->line);
     setImm(kod, static_cast<uint8_t>(num));
-    advance();
 
     expectAndAdvance(TokenType::LineEnd);
     emit(kod);
+}
+
+int Parser::parseLabel(InstructionSpec spec) {
+    auto it = symbolTable.find(at()->value);
+    if (it == symbolTable.end()) {
+        Greska("Nepoznat identifikator'" + at()->value + "'.", at()->line);
+    }
+    if (!spec.allowedLabelSections.contains(it->second.first)) {
+        Greska("Nedozvoljen tip labele za instrukciju.", at()->line);
+    }
+    advance();
+    return it->second.second;
 }
 
 void Parser::parseJump(InstructionSpec spec) {
@@ -244,13 +372,8 @@ void Parser::parseJump(InstructionSpec spec) {
         Greska(poruka, line);
     }
 
-    auto it = symbolTable.find(at()->value);
-    if(it == symbolTable.end()){
-        Greska("Nepoznata labela '" + at()->value + "'.", at()->line);
-    }
-    unsigned int jumpLoc = it->second;
+    unsigned int jumpLoc = parseLabel(spec);
     setImm(kod, static_cast<uint8_t>(jumpLoc));
-    advance();
     expectAndAdvance(TokenType::LineEnd);
     emit(kod);
 }
@@ -278,30 +401,18 @@ void Parser::parseRegBaseOffset(InstructionSpec spec) {
     advance();
     expectAndAdvance(TokenType::OpenBracket);
 
-    bool negative = false;
-    if(atType(TokenType::Minus)){
-        negative = true;
-        advance();
-    }
-
-    if(!atType(TokenType::Number)){
-        Greska("Ocekivan broj nakon '['", line);
-    }
-
-    int num = std::stoi(at()->value);
-    num = (negative) ? -num : num;
+    int num = parseNumber();
     if(num < -16 || num > 15){
         Greska("Offset izvan opsega [-16, 15]", line);
     }
     setOffset(kod, static_cast<uint8_t>(num));
-    advance();
     expectAndAdvance(TokenType::ClosedBracket);
 
     expectAndAdvance(TokenType::LineEnd);
     emit(kod);
 }
 
-void Parser::checkImmInBounds(int num, std::string instruction, unsigned int line) {
+void Parser::checkImmInBounds(int num, unsigned int line) {
     //auto it = INSTRUCTIONSWITHUNSIGNEDIMM.find(instruction);
     //bool isUnsigned = it != INSTRUCTIONSWITHUNSIGNEDIMM.end();
     //if(isUnsigned && !(num >= 0 && num <= 255)){

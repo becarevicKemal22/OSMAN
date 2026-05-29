@@ -13,7 +13,10 @@ void Lexer::tokenize() {
     unsigned int length = source.length();
     while (currentChar < length) {
         char c = source[currentChar];
-        if (c == ':') {
+        if (c == '.') {
+            addToken(TokenType::Dot, c);
+            advance();
+        } else if (c == ':') {
             addToken(TokenType::Colon, c);
             advance();
         } else if (c == '-') {
@@ -39,7 +42,7 @@ void Lexer::tokenize() {
             if(isalpha(c)){
                 std::string identifier;
                 identifier += c;
-                while(isalnum(peek()) && peek() != '\0'){
+                while((isalnum(peek()) || peek() == '_') && peek() != '\0'){
                     advance();
                     identifier += source[currentChar];
                 }
@@ -50,6 +53,11 @@ void Lexer::tokenize() {
                 auto it = INSTRUCTIONS.find(identifier);
                 if(it != INSTRUCTIONS.end()){
                     type = TokenType::Instruction;
+                }
+
+                auto it2 = DIRECTIVES.find(identifier);
+                if (it2 != DIRECTIVES.end()) {
+                    type = TokenType::Directive;
                 }
 
                 addToken(type, identifier);
@@ -78,7 +86,7 @@ void Lexer::tokenize() {
                 advance();
             }
         } else{
-            throw std::runtime_error("Greska u citanju broja na liniji: " + std::to_string(line));
+            throw std::runtime_error("Greska u citanju alfanumerickih znakova na liniji: " + std::to_string(line));
         }
     }
     if (source[currentChar - 1] != '\n') addToken(TokenType::LineEnd, '\n');

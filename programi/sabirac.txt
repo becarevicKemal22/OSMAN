@@ -1,0 +1,23 @@
+.equ LED 0xFF
+.equ DONJE_LED 0xFE
+.code
+prviUnos:
+LOC c, 0x01
+STI C, DONJE_LED
+
+LDI D, 0xF8
+LDI B, 0xF9
+CMPI B, 0x01
+BNE prviUnos
+
+drugiUnos:
+LOC C, 0x02
+STI C, DONJE_LED
+
+LDI E, 0xF8
+LDI B, 0xF9
+CMPI B, 0x01
+BNE drugiUnos
+ADD D, E
+STI D, LED
+JMP prviUnos

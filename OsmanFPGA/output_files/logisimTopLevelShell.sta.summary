@@ -3,51 +3,51 @@ Timing Analyzer Summary
 ------------------------------------------------------------
 
 Type  : Slow 1100mV 85C Model Setup 'fpgaGlobalClock'
-Slack : -5.065
-TNS   : -285.365
+Slack : -9.155
+TNS   : -971.662
 
 Type  : Slow 1100mV 85C Model Hold 'fpgaGlobalClock'
-Slack : 0.381
+Slack : 0.383
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Minimum Pulse Width 'fpgaGlobalClock'
 Slack : -2.636
-TNS   : -188.046
+TNS   : -228.203
 
 Type  : Slow 1100mV 0C Model Setup 'fpgaGlobalClock'
-Slack : -5.102
-TNS   : -282.600
+Slack : -9.174
+TNS   : -963.822
 
 Type  : Slow 1100mV 0C Model Hold 'fpgaGlobalClock'
-Slack : 0.316
+Slack : 0.354
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Minimum Pulse Width 'fpgaGlobalClock'
 Slack : -2.636
-TNS   : -181.809
+TNS   : -217.300
 
 Type  : Fast 1100mV 85C Model Setup 'fpgaGlobalClock'
-Slack : -2.635
-TNS   : -117.234
+Slack : -4.365
+TNS   : -459.992
 
 Type  : Fast 1100mV 85C Model Hold 'fpgaGlobalClock'
-Slack : 0.184
+Slack : 0.202
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Minimum Pulse Width 'fpgaGlobalClock'
 Slack : -2.636
-TNS   : -170.624
+TNS   : -198.283
 
 Type  : Fast 1100mV 0C Model Setup 'fpgaGlobalClock'
-Slack : -2.485
-TNS   : -102.186
+Slack : -3.932
+TNS   : -403.867
 
 Type  : Fast 1100mV 0C Model Hold 'fpgaGlobalClock'
-Slack : 0.152
+Slack : 0.160
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Minimum Pulse Width 'fpgaGlobalClock'
 Slack : -2.636
-TNS   : -180.659
+TNS   : -214.899
 
 ------------------------------------------------------------

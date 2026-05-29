@@ -14,6 +14,13 @@ ARCHITECTURE platformIndependent OF KontrolnaJedinicaGrananja IS
    -- Here all used components are defined                                    --
    -----------------------------------------------------------------------------
 
+      COMPONENT XOR_GATE_ONEHOT
+         GENERIC ( BubblesMask : std_logic_vector );
+         PORT ( input1 : IN  std_logic;
+                input2 : IN  std_logic;
+                result : OUT std_logic );
+      END COMPONENT;
+
       COMPONENT Multiplexer_8
          PORT ( enable  : IN  std_logic;
                 muxIn_0 : IN  std_logic;
@@ -26,13 +33,6 @@ ARCHITECTURE platformIndependent OF KontrolnaJedinicaGrananja IS
                 muxIn_7 : IN  std_logic;
                 sel     : IN  std_logic_vector( 2 DOWNTO 0 );
                 muxOut  : OUT std_logic );
-      END COMPONENT;
-
-      COMPONENT XOR_GATE_ONEHOT
-         GENERIC ( BubblesMask : std_logic_vector );
-         PORT ( input1 : IN  std_logic;
-                input2 : IN  std_logic;
-                result : OUT std_logic );
       END COMPONENT;
 
 --------------------------------------------------------------------------------
@@ -74,15 +74,6 @@ BEGIN
    -- Here all in-lined components are defined                                   --
    --------------------------------------------------------------------------------
 
-   -- NOT Gate
-   s_logisimNet0 <=  NOT s_logisimNet2;
-
-   -- NOT Gate
-   s_logisimNet1 <=  NOT s_logisimNet4;
-
-   -- NOT Gate
-   s_logisimNet10 <=  NOT s_logisimNet3;
-
    -- Constant
     s_logisimNet5  <=  '0';
 
@@ -91,10 +82,25 @@ BEGIN
     s_logisimNet6  <=  '1';
 
 
+   -- NOT Gate
+   s_logisimNet0 <=  NOT s_logisimNet2;
+
+   -- NOT Gate
+   s_logisimNet10 <=  NOT s_logisimNet3;
+
+   -- NOT Gate
+   s_logisimNet1 <=  NOT s_logisimNet4;
+
    --------------------------------------------------------------------------------
    -- Here all normal components are defined                                     --
    --------------------------------------------------------------------------------
-   PLEXERS_1 : Multiplexer_8
+   GATES_1 : XOR_GATE_ONEHOT
+      GENERIC MAP ( BubblesMask => "00" )
+      PORT MAP ( input1 => s_logisimNet11,
+                 input2 => s_logisimNet12,
+                 result => s_logisimNet4 );
+
+   PLEXERS_2 : Multiplexer_8
       PORT MAP ( enable  => '1',
                  muxIn_0 => s_logisimNet5,
                  muxIn_1 => s_logisimNet2,
@@ -106,12 +112,6 @@ BEGIN
                  muxIn_7 => s_logisimNet6,
                  muxOut  => s_logisimBus9(0),
                  sel     => s_logisimBus7(2 DOWNTO 0) );
-
-   GATES_2 : XOR_GATE_ONEHOT
-      GENERIC MAP ( BubblesMask => "00" )
-      PORT MAP ( input1 => s_logisimNet11,
-                 input2 => s_logisimNet12,
-                 result => s_logisimNet4 );
 
 
 END platformIndependent;

@@ -12,6 +12,7 @@ enum class TokenType {
     Skip, // za preskakanje labela pri drugom prolasku
     Minus,
     Comma,
+    Dot,
     Semicolon,
     Colon,
     OpenBracket,
@@ -19,6 +20,7 @@ enum class TokenType {
     Identifier,
     Number,
     Instruction,
+    Directive,
     Eof
 };
 
@@ -30,8 +32,6 @@ public:
     TokenType type;
     std::string value;
     unsigned int line;
-
-    void parseNoOp();
 };
 
 #endif //OSMAN_ASEMBLER_TOKEN_H

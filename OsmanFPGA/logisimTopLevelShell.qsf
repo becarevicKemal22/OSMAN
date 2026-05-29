@@ -42,6 +42,58 @@ set_global_assignment -name TOP_LEVEL_ENTITY logisimTopLevelShell
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 18.1.0
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "03:04:01  MAY 21, 2026"
 set_global_assignment -name LAST_QUARTUS_VERSION "18.1.0 Lite Edition"
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_global_assignment -name BOARD "DE1-SoC Board"
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to fpgaGlobalClock
+set_location_assignment PIN_Y21 -to LED1_0
+set_location_assignment PIN_AF14 -to fpgaGlobalClock
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED1_0
+set_location_assignment PIN_W21 -to LED2_0
+set_location_assignment PIN_W20 -to LED3_0
+set_location_assignment PIN_Y19 -to LED4_0
+set_location_assignment PIN_W19 -to LED5_0
+set_location_assignment PIN_W17 -to LED6_0
+set_location_assignment PIN_V18 -to LED7_0
+set_location_assignment PIN_V17 -to LED8_0
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED2_0
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED3_0
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED4_0
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED5_0
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED6_0
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED7_0
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED8_0
+set_location_assignment PIN_Y16 -to n_RST_0
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to n_RST_0
+set_global_assignment -name DEVICE_FILTER_PACKAGE FBGA
+set_global_assignment -name DEVICE_FILTER_PIN_COUNT 896
+set_global_assignment -name RESERVE_ALL_UNUSED_PINS "AS INPUT TRI-STATED"
+set_global_assignment -name FMAX_REQUIREMENT "50 MHz"
+set_global_assignment -name RESERVE_NCEO_AFTER_CONFIGURATION "USE AS REGULAR IO"
+set_global_assignment -name CYCLONEII_RESERVE_NCEO_AFTER_CONFIGURATION "USE AS REGULAR IO"
+set_location_assignment PIN_V16 -to LED10_0
+set_location_assignment PIN_AE12 -to DIP_Switch_sw_1
+set_location_assignment PIN_AD10 -to DIP_Switch_sw_2
+set_location_assignment PIN_AC9 -to DIP_Switch_sw_3
+set_location_assignment PIN_AE11 -to DIP_Switch_sw_4
+set_location_assignment PIN_AD12 -to DIP_Switch_sw_5
+set_location_assignment PIN_AD11 -to DIP_Switch_sw_6
+set_location_assignment PIN_AF10 -to DIP_Switch_sw_7
+set_location_assignment PIN_AF9 -to DIP_Switch_sw_8
+set_location_assignment PIN_W15 -to n_SW2_0
+set_location_assignment PIN_AA15 -to n_SW1_0
+set_location_assignment PIN_W16 -to LED9_0
+set_location_assignment PIN_AA14 -to n_SW0_0
+set_global_assignment -name VHDL_FILE UIKontroler_entity.vhd
+set_global_assignment -name VHDL_FILE UIKontroler_behavior.vhd
+set_global_assignment -name VHDL_FILE StabilizatorUlaza8Bit_entity.vhd
+set_global_assignment -name VHDL_FILE StabilizatorUlaza8Bit_behavior.vhd
+set_global_assignment -name VHDL_FILE DekoderAdresa_entity.vhd
+set_global_assignment -name VHDL_FILE DekoderAdresa_behavior.vhd
+set_global_assignment -name VHDL_FILE Decoder_4_entity.vhd
+set_global_assignment -name VHDL_FILE Decoder_4_behavior.vhd
 set_global_assignment -name VHDL_FILE XOR_GATE_ONEHOT_entity.vhd
 set_global_assignment -name VHDL_FILE XOR_GATE_ONEHOT_behavior.vhd
 set_global_assignment -name VHDL_FILE synthesizedClockGenerator_entity.vhd
@@ -102,29 +154,9 @@ set_global_assignment -name VHDL_FILE ALU8Bit_entity.vhd
 set_global_assignment -name VHDL_FILE ALU8Bit_behavior.vhd
 set_global_assignment -name VHDL_FILE ALU1Bit_entity.vhd
 set_global_assignment -name VHDL_FILE ALU1Bit_behavior.vhd
-set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
-set_global_assignment -name BOARD "DE1-SoC Board"
-set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
-set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
-set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to fpgaGlobalClock
-set_location_assignment PIN_V16 -to LED1_0
-set_location_assignment PIN_AF14 -to fpgaGlobalClock
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED1_0
-set_location_assignment PIN_W16 -to LED2_0
-set_location_assignment PIN_V17 -to LED3_0
-set_location_assignment PIN_V18 -to LED4_0
-set_location_assignment PIN_W17 -to LED5_0
-set_location_assignment PIN_W19 -to LED6_0
-set_location_assignment PIN_Y19 -to LED7_0
-set_location_assignment PIN_W20 -to LED8_0
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED2_0
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED3_0
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED4_0
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED5_0
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED6_0
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED7_0
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LED8_0
-set_location_assignment PIN_AA14 -to n_RST_0
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to n_RST_0
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "3.3-V LVTTL"
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
