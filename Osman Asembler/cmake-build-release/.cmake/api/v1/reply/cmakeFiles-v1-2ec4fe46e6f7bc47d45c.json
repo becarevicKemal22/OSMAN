@@ -16,7 +16,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "cmake-build-debug/CMakeFiles/4.1.2/CMakeSystem.cmake"
+			"path" : "cmake-build-release/CMakeFiles/4.1.2/CMakeSystem.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -300,7 +300,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "cmake-build-debug/CMakeFiles/4.1.2/CMakeCCompiler.cmake"
+			"path" : "cmake-build-release/CMakeFiles/4.1.2/CMakeCCompiler.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -564,7 +564,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "cmake-build-debug/CMakeFiles/4.1.2/CMakeCXXCompiler.cmake"
+			"path" : "cmake-build-release/CMakeFiles/4.1.2/CMakeCXXCompiler.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -638,7 +638,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "cmake-build-debug/CMakeFiles/4.1.2/CMakeRCCompiler.cmake"
+			"path" : "cmake-build-release/CMakeFiles/4.1.2/CMakeRCCompiler.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -722,7 +722,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "cmake-build-debug/CMakeFiles/4.1.2/CMakeCCompiler.cmake"
+			"path" : "cmake-build-release/CMakeFiles/4.1.2/CMakeCCompiler.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -876,7 +876,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "cmake-build-debug/CMakeFiles/4.1.2/CMakeCXXCompiler.cmake"
+			"path" : "cmake-build-release/CMakeFiles/4.1.2/CMakeCXXCompiler.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -927,7 +927,7 @@
 	"kind" : "cmakeFiles",
 	"paths" : 
 	{
-		"build" : "C:/.Cloud Documents/Osman/Osman Asembler/cmake-build-debug",
+		"build" : "C:/.Cloud Documents/Osman/Osman Asembler/cmake-build-release",
 		"source" : "C:/.Cloud Documents/Osman/Osman Asembler"
 	},
 	"version" : 

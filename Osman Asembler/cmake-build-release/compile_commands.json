@@ -1,0 +1,26 @@
+[
+{
+  "directory": "C:/.Cloud Documents/Osman/Osman Asembler/cmake-build-release",
+  "command": "C:\\PROGRA~1\\JETBRA~1\\CLION2~1.2\\bin\\mingw\\bin\\G__~1.EXE -O3 -DNDEBUG -std=gnu++20 -fdiagnostics-color=always -o CMakeFiles\\Osman_Asembler.dir\\main.cpp.obj -c \"C:\\.Cloud Documents\\Osman\\Osman Asembler\\main.cpp\"",
+  "file": "C:/.Cloud Documents/Osman/Osman Asembler/main.cpp",
+  "output": "C:/.Cloud Documents/Osman/Osman Asembler/cmake-build-release/CMakeFiles/Osman_Asembler.dir/main.cpp.obj"
+},
+{
+  "directory": "C:/.Cloud Documents/Osman/Osman Asembler/cmake-build-release",
+  "command": "C:\\PROGRA~1\\JETBRA~1\\CLION2~1.2\\bin\\mingw\\bin\\G__~1.EXE -O3 -DNDEBUG -std=gnu++20 -fdiagnostics-color=always -o CMakeFiles\\Osman_Asembler.dir\\Lexer.cpp.obj -c \"C:\\.Cloud Documents\\Osman\\Osman Asembler\\Lexer.cpp\"",
+  "file": "C:/.Cloud Documents/Osman/Osman Asembler/Lexer.cpp",
+  "output": "C:/.Cloud Documents/Osman/Osman Asembler/cmake-build-release/CMakeFiles/Osman_Asembler.dir/Lexer.cpp.obj"
+},
+{
+  "directory": "C:/.Cloud Documents/Osman/Osman Asembler/cmake-build-release",
+  "command": "C:\\PROGRA~1\\JETBRA~1\\CLION2~1.2\\bin\\mingw\\bin\\G__~1.EXE -O3 -DNDEBUG -std=gnu++20 -fdiagnostics-color=always -o CMakeFiles\\Osman_Asembler.dir\\Token.cpp.obj -c \"C:\\.Cloud Documents\\Osman\\Osman Asembler\\Token.cpp\"",
+  "file": "C:/.Cloud Documents/Osman/Osman Asembler/Token.cpp",
+  "output": "C:/.Cloud Documents/Osman/Osman Asembler/cmake-build-release/CMakeFiles/Osman_Asembler.dir/Token.cpp.obj"
+},
+{
+  "directory": "C:/.Cloud Documents/Osman/Osman Asembler/cmake-build-release",
+  "command": "C:\\PROGRA~1\\JETBRA~1\\CLION2~1.2\\bin\\mingw\\bin\\G__~1.EXE -O3 -DNDEBUG -std=gnu++20 -fdiagnostics-color=always -o CMakeFiles\\Osman_Asembler.dir\\Parser.cpp.obj -c \"C:\\.Cloud Documents\\Osman\\Osman Asembler\\Parser.cpp\"",
+  "file": "C:/.Cloud Documents/Osman/Osman Asembler/Parser.cpp",
+  "output": "C:/.Cloud Documents/Osman/Osman Asembler/cmake-build-release/CMakeFiles/Osman_Asembler.dir/Parser.cpp.obj"
+}
+]

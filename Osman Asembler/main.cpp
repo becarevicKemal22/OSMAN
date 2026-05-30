@@ -24,9 +24,10 @@ int main() {
         Lexer lexer(source);
         lexer.tokenize();
 
-        for (auto token : lexer.tokens) {
-            std::cout << "Type: " << TokenTypeToStr(token->type) << ", value: " << token->value << std::endl;
-        }
+        // Ispis svih tokena
+        //for (auto token : lexer.tokens) {
+        //    std::cout << "Type: " << TokenTypeToStr(token->type) << ", value: " << token->value << std::endl;
+        //}
 
         Parser parser(lexer.tokens);
         parser.parse();

@@ -1,7 +1,5 @@
-; Ovaj program na prvih 8 LED dioda reflektuje stanje DIP switcha, a na zadnje dvije implementira mali binarni brojac
-LOC B, 0
+; Ovaj program na 8 LED dioda reflektuje stanje DIP switcha
+LI B, 0
 petlja: LDI A, 0xF8
 STI A, 0xFF
-STI B, 0xFE
-ADDI B, 1
 JMP petlja

@@ -1,0 +1,6 @@
+# ninja log v6
+15	568	8018050521650945	CMakeFiles/Osman_Asembler.dir/Token.cpp.obj	5961a2961ea71f8a
+10	2183	8018050521599754	CMakeFiles/Osman_Asembler.dir/Lexer.cpp.obj	86c81554986e28f0
+4	2406	8018050521548618	CMakeFiles/Osman_Asembler.dir/main.cpp.obj	c954b98ef861cc77
+20	3595	8018050521702765	CMakeFiles/Osman_Asembler.dir/Parser.cpp.obj	29df9de4927dd382
+3595	3776	8018050557453348	Osman_Asembler.exe	6f8b9afc47d3a1e2

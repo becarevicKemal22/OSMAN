@@ -1,0 +1,16 @@
+.equ LED 0xFF
+.data
+niz: .byte 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+
+.code
+LA A, niz
+LI E, 10
+ADD E, A ; E sadrzi posljednju granicu koju A treba dostici
+petlja:
+LD B, A[0]
+STI B, LED
+ADDI A, 1
+CMP A, E
+BLT petlja
+LI B, 0xFF
+STI B, LED

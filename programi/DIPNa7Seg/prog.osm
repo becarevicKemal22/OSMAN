@@ -1,0 +1,66 @@
+; Na pocetku je na DIP potrebno unijeti zeljeni broj.
+; Program ne radi za negativne brojeve, dakle moguce je na DIP koristiti samo prvih 7 pinova
+; Nakon toga, klikom na taster 1 (prvi sa lijeve strane od 4 tastera) se aktivira ispis brojeva
+; Nakon ispisa program opet ceka pritisak tastera i ponovo ocitava DIP i ispisuje brojeve.
+
+.equ DISP1 0xFE
+.equ DISP2 0xFD
+.equ DISP3 0xFC
+.equ TASTERI 0xF9
+.equ MASKA_TAST1 0x01
+.equ LED 0xFF
+.equ DIP 0xF8
+
+.data
+brojevi: .byte 63, 6, 91, 79, 102, 109, 125, 7, 127, 111
+
+.code
+cekanjeTastera:
+LDI A, TASTERI
+ANDI A, MASKA_TAST1
+CMPI A, MASKA_TAST1
+BNE cekanjeTastera
+
+LDI A, DIP
+LI B, 0
+stoticePetlja:
+CMPI A, 100
+BLT krajStotice
+ADDI B, 1
+SUBI A, 100
+JMP stoticePetlja
+
+krajStotice:
+LA E, brojevi
+ADD E, B
+LD E, E[0]
+STI E, DISP3
+
+LI B, 0
+deseticePetlja:
+CMPI A, 10
+BLT krajDesetice
+ADDI B, 1
+SUBI A, 10
+JMP deseticePetlja
+
+krajDesetice:
+LA E, brojevi
+ADD E, B
+LD E, E[0]
+STI E, DISP2
+
+LI B, 0
+jedinicePetlja:
+CMPI A, 1
+BLT krajJedinice
+ADDI B, 1
+SUBI A, 1
+JMP jedinicePetlja
+
+krajJedinice:
+LA E, brojevi
+ADD E, B
+LD E, E[0]
+STI E, DISP1
+JMP cekanjeTastera

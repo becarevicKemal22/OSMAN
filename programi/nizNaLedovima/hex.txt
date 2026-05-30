@@ -1,14 +1,10 @@
-.equ LED 0xFF
-.data
-niz: .byte 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
-
-.code
-LA A, niz
-petlja:
-LD B, A[0]
-STI B, LED
-ADDI A, 1
-CMPI A, 10
-BLT petlja
-LI B, 0xFF
-STI B, LED
+91EE
+950A
+0D20
+D220
+8AFF
+4901
+E9A0
+B703
+92FF
+8AFF

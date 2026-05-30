@@ -1,14 +1,5 @@
-.equ LED 0xFF
-.data
-niz: .byte 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
-
-.code
-LA A, niz
-petlja:
-LD B, A[0]
-STI B, LED
-ADDI A, 1
-CMPI A, 10
-BLT petlja
-LI B, 0xFF
-STI B, LED
+; Ovaj program na 8 LED dioda reflektuje stanje DIP switcha
+LI B, 0
+petlja: LDI A, 0xF8
+STI A, 0xFF
+JMP petlja
