@@ -17,6 +17,7 @@ USE ieee.numeric_std.all;
 ENTITY KontrolnaJedinica IS
    PORT ( Opcode            : IN  std_logic_vector( 4 DOWNTO 0 );
           logisimClockTree0 : IN  std_logic_vector( 4 DOWNTO 0 );
+          logisimClockTree1 : IN  std_logic_vector( 4 DOWNTO 0 );
           ALUIzv1           : OUT std_logic;
           ALUIzv2           : OUT std_logic;
           ALUOp             : OUT std_logic_vector( 3 DOWNTO 0 );

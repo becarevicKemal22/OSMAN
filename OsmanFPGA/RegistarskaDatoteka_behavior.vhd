@@ -48,6 +48,7 @@ ARCHITECTURE platformIndependent OF RegistarskaDatoteka IS
                 Reset             : IN  std_logic;
                 WE                : IN  std_logic;
                 logisimClockTree0 : IN  std_logic_vector( 4 DOWNTO 0 );
+                logisimClockTree1 : IN  std_logic_vector( 4 DOWNTO 0 );
                 DataOut           : OUT std_logic_vector( 7 DOWNTO 0 ) );
       END COMPONENT;
 
@@ -151,7 +152,8 @@ BEGIN
                  DataOut           => s_logisimBus9(7 DOWNTO 0),
                  Reset             => s_logisimNet0,
                  WE                => s_logisimNet13,
-                 logisimClockTree0 => logisimClockTree0 );
+                 logisimClockTree0 => logisimClockTree0,
+                 logisimClockTree1 => logisimClockTree1 );
 
    Registar8Bit_2 : Registar8Bit
       PORT MAP ( Clock             => s_logisimNet15,
@@ -159,7 +161,8 @@ BEGIN
                  DataOut           => s_logisimBus1(7 DOWNTO 0),
                  Reset             => s_logisimNet0,
                  WE                => s_logisimNet17,
-                 logisimClockTree0 => logisimClockTree0 );
+                 logisimClockTree0 => logisimClockTree0,
+                 logisimClockTree1 => logisimClockTree1 );
 
    Registar8Bit_3 : Registar8Bit
       PORT MAP ( Clock             => s_logisimNet15,
@@ -167,7 +170,8 @@ BEGIN
                  DataOut           => s_logisimBus7(7 DOWNTO 0),
                  Reset             => s_logisimNet0,
                  WE                => s_logisimNet6,
-                 logisimClockTree0 => logisimClockTree0 );
+                 logisimClockTree0 => logisimClockTree0,
+                 logisimClockTree1 => logisimClockTree1 );
 
    Registar8Bit_4 : Registar8Bit
       PORT MAP ( Clock             => s_logisimNet15,
@@ -175,7 +179,8 @@ BEGIN
                  DataOut           => s_logisimBus8(7 DOWNTO 0),
                  Reset             => s_logisimNet0,
                  WE                => s_logisimNet19,
-                 logisimClockTree0 => logisimClockTree0 );
+                 logisimClockTree0 => logisimClockTree0,
+                 logisimClockTree1 => logisimClockTree1 );
 
    Registar8Bit_5 : Registar8Bit
       PORT MAP ( Clock             => s_logisimNet15,
@@ -183,7 +188,8 @@ BEGIN
                  DataOut           => s_logisimBus14(7 DOWNTO 0),
                  Reset             => s_logisimNet0,
                  WE                => s_logisimNet2,
-                 logisimClockTree0 => logisimClockTree0 );
+                 logisimClockTree0 => logisimClockTree0,
+                 logisimClockTree1 => logisimClockTree1 );
 
    Registar8Bit_6 : Registar8Bit
       PORT MAP ( Clock             => s_logisimNet15,
@@ -191,7 +197,8 @@ BEGIN
                  DataOut           => s_logisimBus3(7 DOWNTO 0),
                  Reset             => s_logisimNet0,
                  WE                => s_logisimNet18,
-                 logisimClockTree0 => logisimClockTree0 );
+                 logisimClockTree0 => logisimClockTree0,
+                 logisimClockTree1 => logisimClockTree1 );
 
    Registar8Bit_7 : Registar8Bit
       PORT MAP ( Clock             => s_logisimNet15,
@@ -199,7 +206,8 @@ BEGIN
                  DataOut           => s_logisimBus12(7 DOWNTO 0),
                  Reset             => s_logisimNet0,
                  WE                => s_logisimNet22,
-                 logisimClockTree0 => logisimClockTree0 );
+                 logisimClockTree0 => logisimClockTree0,
+                 logisimClockTree1 => logisimClockTree1 );
 
    Registar8Bit_8 : Registar8Bit
       PORT MAP ( Clock             => s_logisimNet15,
@@ -207,6 +215,7 @@ BEGIN
                  DataOut           => s_logisimBus11(7 DOWNTO 0),
                  Reset             => s_logisimNet0,
                  WE                => s_logisimNet20,
-                 logisimClockTree0 => logisimClockTree0 );
+                 logisimClockTree0 => logisimClockTree0,
+                 logisimClockTree1 => logisimClockTree1 );
 
 END platformIndependent;

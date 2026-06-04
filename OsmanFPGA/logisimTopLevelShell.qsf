@@ -74,18 +74,26 @@ set_global_assignment -name FMAX_REQUIREMENT "50 MHz"
 set_global_assignment -name RESERVE_NCEO_AFTER_CONFIGURATION "USE AS REGULAR IO"
 set_global_assignment -name CYCLONEII_RESERVE_NCEO_AFTER_CONFIGURATION "USE AS REGULAR IO"
 set_location_assignment PIN_V16 -to LED10_0
-set_location_assignment PIN_AE12 -to DIP_Switch_sw_1
-set_location_assignment PIN_AD10 -to DIP_Switch_sw_2
-set_location_assignment PIN_AC9 -to DIP_Switch_sw_3
-set_location_assignment PIN_AE11 -to DIP_Switch_sw_4
-set_location_assignment PIN_AD12 -to DIP_Switch_sw_5
-set_location_assignment PIN_AD11 -to DIP_Switch_sw_6
-set_location_assignment PIN_AF10 -to DIP_Switch_sw_7
-set_location_assignment PIN_AF9 -to DIP_Switch_sw_8
+set_location_assignment PIN_AF9 -to DIP_Switch_sw_1
+set_location_assignment PIN_AF10 -to DIP_Switch_sw_2
+set_location_assignment PIN_AD11 -to DIP_Switch_sw_3
+set_location_assignment PIN_AD12 -to DIP_Switch_sw_4
+set_location_assignment PIN_AE11 -to DIP_Switch_sw_5
+set_location_assignment PIN_AC9 -to DIP_Switch_sw_6
+set_location_assignment PIN_AD10 -to DIP_Switch_sw_7
+set_location_assignment PIN_AE12 -to DIP_Switch_sw_8
 set_location_assignment PIN_W15 -to n_SW2_0
 set_location_assignment PIN_AA15 -to n_SW1_0
 set_location_assignment PIN_W16 -to LED9_0
 set_location_assignment PIN_AA14 -to n_SW0_0
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "3.3-V LVTTL"
+set_global_assignment -name RESERVE_ALL_UNUSED_PINS_NO_OUTPUT_GND "AS INPUT TRI-STATED"
+set_global_assignment -name VHDL_FILE SevenSegAdapter_entity.vhd
+set_global_assignment -name VHDL_FILE SevenSegAdapter_behavior.vhd
 set_global_assignment -name VHDL_FILE UIKontroler_entity.vhd
 set_global_assignment -name VHDL_FILE UIKontroler_behavior.vhd
 set_global_assignment -name VHDL_FILE StabilizatorUlaza8Bit_entity.vhd
@@ -154,9 +162,26 @@ set_global_assignment -name VHDL_FILE ALU8Bit_entity.vhd
 set_global_assignment -name VHDL_FILE ALU8Bit_behavior.vhd
 set_global_assignment -name VHDL_FILE ALU1Bit_entity.vhd
 set_global_assignment -name VHDL_FILE ALU1Bit_behavior.vhd
-set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
-set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
-set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
-set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
-set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "3.3-V LVTTL"
+set_global_assignment -name MIF_FILE ram.mif
+set_location_assignment PIN_AB23 -to n_SedSeg3_SedamSegDisplej_Segment_A
+set_location_assignment PIN_AE29 -to n_SedSeg3_SedamSegDisplej_Segment_B
+set_location_assignment PIN_AD29 -to n_SedSeg3_SedamSegDisplej_Segment_C
+set_location_assignment PIN_AC28 -to n_SedSeg3_SedamSegDisplej_Segment_D
+set_location_assignment PIN_AD30 -to n_SedSeg3_SedamSegDisplej_Segment_E
+set_location_assignment PIN_AC29 -to n_SedSeg3_SedamSegDisplej_Segment_F
+set_location_assignment PIN_AC30 -to n_SedSeg3_SedamSegDisplej_Segment_G
+set_location_assignment PIN_AE26 -to n_SedSeg1_SedamSegDisplej_Segment_A
+set_location_assignment PIN_AE27 -to n_SedSeg1_SedamSegDisplej_Segment_B
+set_location_assignment PIN_AE28 -to n_SedSeg1_SedamSegDisplej_Segment_C
+set_location_assignment PIN_AG27 -to n_SedSeg1_SedamSegDisplej_Segment_D
+set_location_assignment PIN_AF28 -to n_SedSeg1_SedamSegDisplej_Segment_E
+set_location_assignment PIN_AG28 -to n_SedSeg1_SedamSegDisplej_Segment_F
+set_location_assignment PIN_AH28 -to n_SedSeg1_SedamSegDisplej_Segment_G
+set_location_assignment PIN_AJ29 -to n_SedSeg2_SedamSegDisplej_Segment_A
+set_location_assignment PIN_AH29 -to n_SedSeg2_SedamSegDisplej_Segment_B
+set_location_assignment PIN_AH30 -to n_SedSeg2_SedamSegDisplej_Segment_C
+set_location_assignment PIN_AG30 -to n_SedSeg2_SedamSegDisplej_Segment_D
+set_location_assignment PIN_AF29 -to n_SedSeg2_SedamSegDisplej_Segment_E
+set_location_assignment PIN_AF30 -to n_SedSeg2_SedamSegDisplej_Segment_F
+set_location_assignment PIN_AD27 -to n_SedSeg2_SedamSegDisplej_Segment_G
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

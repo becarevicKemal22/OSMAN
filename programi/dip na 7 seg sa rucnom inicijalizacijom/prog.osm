@@ -1,0 +1,87 @@
+.equ DISP 0xFE
+.data
+brojevi: .byte 63, 6, 91, 79, 102, 109, 125, 7, 127, 111
+
+.equ DISP1 0xFE
+.equ DISP2 0xFD
+.equ DISP3 0xFC
+.equ TASTERI 0xF9
+.equ MASKA_TAST1 0x01
+.equ LED 0xFF
+.equ DIP 0xF8
+
+.code
+start:
+LA A, brojevi
+LI B, 63
+ST B, A[0]
+LI B, 6
+ST B, A[1]
+LI B, 91
+ST B, A[2]
+LI B, 79
+ST B, A[3]
+LI B, 102
+ST B, A[4]
+LI B, 109
+ST B, A[5]
+LI B, 125
+ST B, A[6]
+LI B, 7
+ST B, A[7]
+LI B, 127
+ST B, A[8]
+LI B, 111
+ST B, A[9]
+; KRAJ INICIJALIZACIJE
+
+
+cekanjeTastera:
+LDI A, TASTERI
+ANDI A, MASKA_TAST1
+CMPI A, MASKA_TAST1
+BNE cekanjeTastera
+
+LDI A, DIP
+LI B, 0
+stoticePetlja:
+CMPI A, 100
+BLT krajStotice
+ADDI B, 1
+SUBI A, 100
+JMP stoticePetlja
+
+krajStotice:
+LA E, brojevi
+ADD E, B
+LD E, E[0]
+STI E, DISP3
+
+LI B, 0
+deseticePetlja:
+CMPI A, 10
+BLT krajDesetice
+ADDI B, 1
+SUBI A, 10
+JMP deseticePetlja
+
+krajDesetice:
+LA E, brojevi
+ADD E, B
+LD E, E[0]
+STI E, DISP2
+
+LI B, 0
+jedinicePetlja:
+CMPI A, 1
+BLT krajJedinice
+ADDI B, 1
+SUBI A, 1
+JMP jedinicePetlja
+
+krajJedinice:
+LA E, brojevi
+ADD E, B
+LD E, E[0]
+STI E, DISP1
+JMP cekanjeTastera

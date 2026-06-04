@@ -1,0 +1,37 @@
+.equ DISP 0xFE
+.data
+brojevi: .byte 63, 6, 91, 79, 102, 109, 125, 7, 127, 111
+
+.code
+start:
+LA A, brojevi
+LI B, 63
+ST B, A[0]
+LI B, 6
+ST B, A[1]
+LI B, 91
+ST B, A[2]
+LI B, 79
+ST B, A[3]
+LI B, 102
+ST B, A[4]
+LI B, 109
+ST B, A[5]
+LI B, 125
+ST B, A[6]
+LI B, 7
+ST B, A[7]
+LI B, 127
+ST B, A[8]
+LI B, 111
+ST B, A[9]
+LI E, 10
+ADD E, A ; E sadrzi posljednju granicu koju A treba dostici
+petlja:
+LD B, A[0]
+STI B, DISP
+ADDI A, 1
+CMP A, E
+BLT petlja
+LI B, 0xFF
+STI B, DISP

@@ -22,5 +22,6 @@ ENTITY KontrolnaJedinicaGrananja IS
           VF                : IN  std_logic;
           ZF                : IN  std_logic;
           logisimClockTree0 : IN  std_logic_vector( 4 DOWNTO 0 );
+          logisimClockTree1 : IN  std_logic_vector( 4 DOWNTO 0 );
           I                 : OUT std_logic_vector( 1 DOWNTO 0 ) );
 END ENTITY KontrolnaJedinicaGrananja;

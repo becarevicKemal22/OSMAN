@@ -19,6 +19,7 @@ ENTITY DekoderAdresa IS
           CMem              : IN  std_logic;
           PMem              : IN  std_logic;
           logisimClockTree0 : IN  std_logic_vector( 4 DOWNTO 0 );
+          logisimClockTree1 : IN  std_logic_vector( 4 DOWNTO 0 );
           OutputSrc         : OUT std_logic;
           OutputWe          : OUT std_logic;
           RAMOe             : OUT std_logic;

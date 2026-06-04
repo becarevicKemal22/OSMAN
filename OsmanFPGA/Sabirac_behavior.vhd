@@ -19,6 +19,7 @@ ARCHITECTURE platformIndependent OF Sabirac IS
                 B                 : IN  std_logic;
                 Cin               : IN  std_logic;
                 logisimClockTree0 : IN  std_logic_vector( 4 DOWNTO 0 );
+                logisimClockTree1 : IN  std_logic_vector( 4 DOWNTO 0 );
                 Cout              : OUT std_logic;
                 S                 : OUT std_logic );
       END COMPONENT;
@@ -93,7 +94,8 @@ BEGIN
                  Cin               => s_logisimNet34,
                  Cout              => s_logisimNet11,
                  S                 => s_logisimBus29(0),
-                 logisimClockTree0 => logisimClockTree0 );
+                 logisimClockTree0 => logisimClockTree0,
+                 logisimClockTree1 => logisimClockTree1 );
 
    FullAdder_1 : FullAdder
       PORT MAP ( A                 => s_logisimBus10(7),
@@ -101,7 +103,8 @@ BEGIN
                  Cin               => s_logisimNet8,
                  Cout              => OPEN,
                  S                 => s_logisimBus29(7),
-                 logisimClockTree0 => logisimClockTree0 );
+                 logisimClockTree0 => logisimClockTree0,
+                 logisimClockTree1 => logisimClockTree1 );
 
    FullAdder_2 : FullAdder
       PORT MAP ( A                 => s_logisimBus10(6),
@@ -109,7 +112,8 @@ BEGIN
                  Cin               => s_logisimNet12,
                  Cout              => s_logisimNet8,
                  S                 => s_logisimBus29(6),
-                 logisimClockTree0 => logisimClockTree0 );
+                 logisimClockTree0 => logisimClockTree0,
+                 logisimClockTree1 => logisimClockTree1 );
 
    FullAdder_3 : FullAdder
       PORT MAP ( A                 => s_logisimBus10(5),
@@ -117,7 +121,8 @@ BEGIN
                  Cin               => s_logisimNet4,
                  Cout              => s_logisimNet12,
                  S                 => s_logisimBus29(5),
-                 logisimClockTree0 => logisimClockTree0 );
+                 logisimClockTree0 => logisimClockTree0,
+                 logisimClockTree1 => logisimClockTree1 );
 
    FullAdder_4 : FullAdder
       PORT MAP ( A                 => s_logisimBus10(4),
@@ -125,7 +130,8 @@ BEGIN
                  Cin               => s_logisimNet7,
                  Cout              => s_logisimNet4,
                  S                 => s_logisimBus29(4),
-                 logisimClockTree0 => logisimClockTree0 );
+                 logisimClockTree0 => logisimClockTree0,
+                 logisimClockTree1 => logisimClockTree1 );
 
    FullAdder_5 : FullAdder
       PORT MAP ( A                 => s_logisimBus10(3),
@@ -133,7 +139,8 @@ BEGIN
                  Cin               => s_logisimNet14,
                  Cout              => s_logisimNet7,
                  S                 => s_logisimBus29(3),
-                 logisimClockTree0 => logisimClockTree0 );
+                 logisimClockTree0 => logisimClockTree0,
+                 logisimClockTree1 => logisimClockTree1 );
 
    FullAdder_6 : FullAdder
       PORT MAP ( A                 => s_logisimBus10(2),
@@ -141,7 +148,8 @@ BEGIN
                  Cin               => s_logisimNet5,
                  Cout              => s_logisimNet14,
                  S                 => s_logisimBus29(2),
-                 logisimClockTree0 => logisimClockTree0 );
+                 logisimClockTree0 => logisimClockTree0,
+                 logisimClockTree1 => logisimClockTree1 );
 
    FullAdder_7 : FullAdder
       PORT MAP ( A                 => s_logisimBus10(1),
@@ -149,6 +157,7 @@ BEGIN
                  Cin               => s_logisimNet11,
                  Cout              => s_logisimNet5,
                  S                 => s_logisimBus29(1),
-                 logisimClockTree0 => logisimClockTree0 );
+                 logisimClockTree0 => logisimClockTree0,
+                 logisimClockTree1 => logisimClockTree1 );
 
 END platformIndependent;

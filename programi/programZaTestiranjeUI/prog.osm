@@ -1,0 +1,22 @@
+; Provjerava rad ulaznih i izlaznih uredjaja.
+; Na 7seg displejima treba da se nalazi broj 888.
+; Donje 4 LED diode su za stanje tastera, a gornje za stanje gornja 4 DIP switcha
+
+.equ DISP1 0xFE
+.equ DISP2 0xFD
+.equ DISP3 0xFC
+.equ TASTERI 0xF9
+.equ LED 0xFF
+.equ DIP 0xF8
+
+LI A, 127
+STI A, DISP1
+STI A, DISP2
+STI A, DISP3
+petlja:
+LDI A, TASTERI
+LDI B, DIP
+ANDI B, 0xF0
+OR A, B
+STI A, 0xFF
+JMP petlja

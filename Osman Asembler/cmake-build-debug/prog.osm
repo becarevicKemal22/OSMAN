@@ -1,4 +1,3 @@
-; Ovaj program na 8 LED dioda reflektuje stanje DIP switcha
 LI B, 0
 petlja: LDI A, 0xF8
 STI A, 0xFF

@@ -19,6 +19,7 @@ ENTITY FullAdder IS
           B                 : IN  std_logic;
           Cin               : IN  std_logic;
           logisimClockTree0 : IN  std_logic_vector( 4 DOWNTO 0 );
+          logisimClockTree1 : IN  std_logic_vector( 4 DOWNTO 0 );
           Cout              : OUT std_logic;
           S                 : OUT std_logic );
 END ENTITY FullAdder;

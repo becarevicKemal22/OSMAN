@@ -18,5 +18,6 @@ ENTITY Sabirac IS
    PORT ( A                 : IN  std_logic_vector( 7 DOWNTO 0 );
           B                 : IN  std_logic_vector( 7 DOWNTO 0 );
           logisimClockTree0 : IN  std_logic_vector( 4 DOWNTO 0 );
+          logisimClockTree1 : IN  std_logic_vector( 4 DOWNTO 0 );
           Izlaz             : OUT std_logic_vector( 7 DOWNTO 0 ) );
 END ENTITY Sabirac;

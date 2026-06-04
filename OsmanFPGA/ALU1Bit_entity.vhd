@@ -21,6 +21,7 @@ ENTITY ALU1Bit IS
           F                 : IN  std_logic_vector( 2 DOWNTO 0 );
           InvB              : IN  std_logic;
           logisimClockTree0 : IN  std_logic_vector( 4 DOWNTO 0 );
+          logisimClockTree1 : IN  std_logic_vector( 4 DOWNTO 0 );
           Cout              : OUT std_logic;
           O                 : OUT std_logic );
 END ENTITY ALU1Bit;

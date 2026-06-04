@@ -30,9 +30,6 @@ ARCHITECTURE platformIndependent OF RAMCONTENTS_MemorijaPodataka IS
    SIGNAL s_we              : std_logic;
    SIGNAL s_weReg           : std_logic;
    SIGNAL s_writeAddressReg : std_logic_vector( 7 DOWNTO 0 );
-	
-	attribute ram_init_file : string;
-	attribute ram_init_file of s_memContents : signal is "ram.mif";
 
 BEGIN
 

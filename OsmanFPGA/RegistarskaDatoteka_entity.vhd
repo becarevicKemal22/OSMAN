@@ -22,6 +22,7 @@ ENTITY RegistarskaDatoteka IS
           Reset             : IN  std_logic;
           UpReg             : IN  std_logic;
           logisimClockTree0 : IN  std_logic_vector( 4 DOWNTO 0 );
+          logisimClockTree1 : IN  std_logic_vector( 4 DOWNTO 0 );
           PodaciReg1        : OUT std_logic_vector( 7 DOWNTO 0 );
           PodaciReg2        : OUT std_logic_vector( 7 DOWNTO 0 ) );
 END ENTITY RegistarskaDatoteka;

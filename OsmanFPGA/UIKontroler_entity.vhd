@@ -25,6 +25,7 @@ ENTITY UIKontroler IS
           Ulaz4             : IN  std_logic_vector( 7 DOWNTO 0 );
           WE                : IN  std_logic;
           logisimClockTree0 : IN  std_logic_vector( 4 DOWNTO 0 );
+          logisimClockTree1 : IN  std_logic_vector( 4 DOWNTO 0 );
           Izlaz1            : OUT std_logic_vector( 7 DOWNTO 0 );
           Izlaz2            : OUT std_logic_vector( 7 DOWNTO 0 );
           Izlaz3            : OUT std_logic_vector( 7 DOWNTO 0 );

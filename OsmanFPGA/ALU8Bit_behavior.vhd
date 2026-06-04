@@ -60,6 +60,7 @@ ARCHITECTURE platformIndependent OF ALU8Bit IS
                 F                 : IN  std_logic_vector( 2 DOWNTO 0 );
                 InvB              : IN  std_logic;
                 logisimClockTree0 : IN  std_logic_vector( 4 DOWNTO 0 );
+                logisimClockTree1 : IN  std_logic_vector( 4 DOWNTO 0 );
                 Cout              : OUT std_logic;
                 O                 : OUT std_logic );
       END COMPONENT;
@@ -247,7 +248,8 @@ BEGIN
                  F                 => s_logisimBus37(2 DOWNTO 0),
                  InvB              => s_logisimNet11,
                  O                 => s_logisimBus0(7),
-                 logisimClockTree0 => logisimClockTree0 );
+                 logisimClockTree0 => logisimClockTree0,
+                 logisimClockTree1 => logisimClockTree1 );
 
    ALU1Bit_2 : ALU1Bit
       PORT MAP ( A                 => s_logisimBus29(6),
@@ -257,7 +259,8 @@ BEGIN
                  F                 => s_logisimBus37(2 DOWNTO 0),
                  InvB              => s_logisimNet11,
                  O                 => s_logisimBus0(6),
-                 logisimClockTree0 => logisimClockTree0 );
+                 logisimClockTree0 => logisimClockTree0,
+                 logisimClockTree1 => logisimClockTree1 );
 
    ALU1Bit_3 : ALU1Bit
       PORT MAP ( A                 => s_logisimBus29(5),
@@ -267,7 +270,8 @@ BEGIN
                  F                 => s_logisimBus37(2 DOWNTO 0),
                  InvB              => s_logisimNet11,
                  O                 => s_logisimBus0(5),
-                 logisimClockTree0 => logisimClockTree0 );
+                 logisimClockTree0 => logisimClockTree0,
+                 logisimClockTree1 => logisimClockTree1 );
 
    ALU1Bit_4 : ALU1Bit
       PORT MAP ( A                 => s_logisimBus29(4),
@@ -277,7 +281,8 @@ BEGIN
                  F                 => s_logisimBus37(2 DOWNTO 0),
                  InvB              => s_logisimNet11,
                  O                 => s_logisimBus0(4),
-                 logisimClockTree0 => logisimClockTree0 );
+                 logisimClockTree0 => logisimClockTree0,
+                 logisimClockTree1 => logisimClockTree1 );
 
    ALU1Bit_5 : ALU1Bit
       PORT MAP ( A                 => s_logisimBus29(3),
@@ -287,7 +292,8 @@ BEGIN
                  F                 => s_logisimBus37(2 DOWNTO 0),
                  InvB              => s_logisimNet11,
                  O                 => s_logisimBus0(3),
-                 logisimClockTree0 => logisimClockTree0 );
+                 logisimClockTree0 => logisimClockTree0,
+                 logisimClockTree1 => logisimClockTree1 );
 
    ALU1Bit_6 : ALU1Bit
       PORT MAP ( A                 => s_logisimBus29(2),
@@ -297,7 +303,8 @@ BEGIN
                  F                 => s_logisimBus37(2 DOWNTO 0),
                  InvB              => s_logisimNet11,
                  O                 => s_logisimBus0(2),
-                 logisimClockTree0 => logisimClockTree0 );
+                 logisimClockTree0 => logisimClockTree0,
+                 logisimClockTree1 => logisimClockTree1 );
 
    ALU1Bit_7 : ALU1Bit
       PORT MAP ( A                 => s_logisimBus29(1),
@@ -307,7 +314,8 @@ BEGIN
                  F                 => s_logisimBus37(2 DOWNTO 0),
                  InvB              => s_logisimNet11,
                  O                 => s_logisimBus0(1),
-                 logisimClockTree0 => logisimClockTree0 );
+                 logisimClockTree0 => logisimClockTree0,
+                 logisimClockTree1 => logisimClockTree1 );
 
    ALU1Bit_8 : ALU1Bit
       PORT MAP ( A                 => s_logisimBus29(0),
@@ -317,6 +325,7 @@ BEGIN
                  F                 => s_logisimBus37(2 DOWNTO 0),
                  InvB              => s_logisimNet11,
                  O                 => s_logisimBus0(0),
-                 logisimClockTree0 => logisimClockTree0 );
+                 logisimClockTree0 => logisimClockTree0,
+                 logisimClockTree1 => logisimClockTree1 );
 
 END platformIndependent;

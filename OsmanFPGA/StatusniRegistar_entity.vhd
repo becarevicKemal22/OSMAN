@@ -23,6 +23,7 @@ ENTITY StatusniRegistar IS
           WE                : IN  std_logic;
           ZFi               : IN  std_logic;
           logisimClockTree0 : IN  std_logic_vector( 4 DOWNTO 0 );
+          logisimClockTree1 : IN  std_logic_vector( 4 DOWNTO 0 );
           CF                : OUT std_logic;
           NF                : OUT std_logic;
           VF                : OUT std_logic;

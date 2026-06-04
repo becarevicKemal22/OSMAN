@@ -40,6 +40,7 @@ ARCHITECTURE platformIndependent OF UIKontroler IS
                 Reset             : IN  std_logic;
                 WE                : IN  std_logic;
                 logisimClockTree0 : IN  std_logic_vector( 4 DOWNTO 0 );
+                logisimClockTree1 : IN  std_logic_vector( 4 DOWNTO 0 );
                 DataOut           : OUT std_logic_vector( 7 DOWNTO 0 ) );
       END COMPONENT;
 
@@ -48,6 +49,7 @@ ARCHITECTURE platformIndependent OF UIKontroler IS
                 DataIn            : IN  std_logic_vector( 7 DOWNTO 0 );
                 RST               : IN  std_logic;
                 logisimClockTree0 : IN  std_logic_vector( 4 DOWNTO 0 );
+                logisimClockTree1 : IN  std_logic_vector( 4 DOWNTO 0 );
                 DataOut           : OUT std_logic_vector( 7 DOWNTO 0 ) );
       END COMPONENT;
 
@@ -133,7 +135,8 @@ BEGIN
                  DataOut           => s_logisimBus14(7 DOWNTO 0),
                  Reset             => s_logisimNet2,
                  WE                => s_logisimNet16,
-                 logisimClockTree0 => logisimClockTree0 );
+                 logisimClockTree0 => logisimClockTree0,
+                 logisimClockTree1 => logisimClockTree1 );
 
    UIIzlazniReg2 : Registar8Bit
       PORT MAP ( Clock             => s_logisimNet3,
@@ -141,7 +144,8 @@ BEGIN
                  DataOut           => s_logisimBus19(7 DOWNTO 0),
                  Reset             => s_logisimNet2,
                  WE                => s_logisimNet18,
-                 logisimClockTree0 => logisimClockTree0 );
+                 logisimClockTree0 => logisimClockTree0,
+                 logisimClockTree1 => logisimClockTree1 );
 
    UIIzlazniReg3 : Registar8Bit
       PORT MAP ( Clock             => s_logisimNet3,
@@ -149,7 +153,8 @@ BEGIN
                  DataOut           => s_logisimBus15(7 DOWNTO 0),
                  Reset             => s_logisimNet2,
                  WE                => s_logisimNet11,
-                 logisimClockTree0 => logisimClockTree0 );
+                 logisimClockTree0 => logisimClockTree0,
+                 logisimClockTree1 => logisimClockTree1 );
 
    UIIzlazniReg4 : Registar8Bit
       PORT MAP ( Clock             => s_logisimNet3,
@@ -157,34 +162,39 @@ BEGIN
                  DataOut           => s_logisimBus20(7 DOWNTO 0),
                  Reset             => s_logisimNet2,
                  WE                => s_logisimNet17,
-                 logisimClockTree0 => logisimClockTree0 );
+                 logisimClockTree0 => logisimClockTree0,
+                 logisimClockTree1 => logisimClockTree1 );
 
    UIUlazniStabilizator1 : StabilizatorUlaza8Bit
       PORT MAP ( CLK               => s_logisimNet3,
                  DataIn            => s_logisimBus6(7 DOWNTO 0),
                  DataOut           => s_logisimBus21(7 DOWNTO 0),
                  RST               => s_logisimNet2,
-                 logisimClockTree0 => logisimClockTree0 );
+                 logisimClockTree0 => logisimClockTree0,
+                 logisimClockTree1 => logisimClockTree1 );
 
    UIUlazniStabilizator2 : StabilizatorUlaza8Bit
       PORT MAP ( CLK               => s_logisimNet3,
                  DataIn            => s_logisimBus7(7 DOWNTO 0),
                  DataOut           => s_logisimBus1(7 DOWNTO 0),
                  RST               => s_logisimNet2,
-                 logisimClockTree0 => logisimClockTree0 );
+                 logisimClockTree0 => logisimClockTree0,
+                 logisimClockTree1 => logisimClockTree1 );
 
    UIUlazniStabilizator3 : StabilizatorUlaza8Bit
       PORT MAP ( CLK               => s_logisimNet3,
                  DataIn            => s_logisimBus8(7 DOWNTO 0),
                  DataOut           => s_logisimBus4(7 DOWNTO 0),
                  RST               => s_logisimNet2,
-                 logisimClockTree0 => logisimClockTree0 );
+                 logisimClockTree0 => logisimClockTree0,
+                 logisimClockTree1 => logisimClockTree1 );
 
    UIUlazniStabilizator4 : StabilizatorUlaza8Bit
       PORT MAP ( CLK               => s_logisimNet3,
                  DataIn            => s_logisimBus5(7 DOWNTO 0),
                  DataOut           => s_logisimBus9(7 DOWNTO 0),
                  RST               => s_logisimNet2,
-                 logisimClockTree0 => logisimClockTree0 );
+                 logisimClockTree0 => logisimClockTree0,
+                 logisimClockTree1 => logisimClockTree1 );
 
 END platformIndependent;

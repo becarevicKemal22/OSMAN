@@ -20,5 +20,6 @@ ENTITY ProgramskiBrojac IS
           Reset             : IN  std_logic;
           WE                : IN  std_logic;
           logisimClockTree0 : IN  std_logic_vector( 4 DOWNTO 0 );
+          logisimClockTree1 : IN  std_logic_vector( 4 DOWNTO 0 );
           DataOut           : OUT std_logic_vector( 7 DOWNTO 0 ) );
 END ENTITY ProgramskiBrojac;

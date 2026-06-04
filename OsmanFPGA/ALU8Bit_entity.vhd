@@ -19,6 +19,7 @@ ENTITY ALU8Bit IS
           ALUOp             : IN  std_logic_vector( 3 DOWNTO 0 );
           B                 : IN  std_logic_vector( 7 DOWNTO 0 );
           logisimClockTree0 : IN  std_logic_vector( 4 DOWNTO 0 );
+          logisimClockTree1 : IN  std_logic_vector( 4 DOWNTO 0 );
           CF                : OUT std_logic;
           I                 : OUT std_logic_vector( 7 DOWNTO 0 );
           NF                : OUT std_logic;
