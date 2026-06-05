@@ -1,13 +1,13 @@
-Analysis & Synthesis Status : Successful - Thu Jun 04 13:43:25 2026
+Analysis & Synthesis Status : Successful - Sat Jun 06 00:25:46 2026
 Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 Revision Name : logisimTopLevelShell
 Top-level Entity Name : logisimTopLevelShell
 Family : Cyclone V
 Logic utilization (in ALMs) : N/A
-Total registers : 173
+Total registers : 307
 Total pins : 42
 Total virtual pins : 0
-Total block memory bits : 2,048
+Total block memory bits : 6,144
 Total DSP Blocks : 0
 Total HSSI RX PCSs : 0
 Total HSSI PMA RX Deserializers : 0

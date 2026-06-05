@@ -14,6 +14,14 @@ ARCHITECTURE platformIndependent OF OSMAN IS
    -- Here all used components are defined                                    --
    -----------------------------------------------------------------------------
 
+		COMPONENT InstrukcijskaMemorija
+			PORT (
+				address  : IN STD_LOGIC_VECTOR (7 DOWNTO 0);
+				clock    : IN STD_LOGIC := '1';
+				q        : OUT STD_LOGIC_VECTOR (15 DOWNTO 0)
+			);
+		END COMPONENT;
+		
       COMPONENT Multiplexer_bus_2
          GENERIC ( nrOfBits : INTEGER );
          PORT ( enable  : IN  std_logic;
@@ -298,67 +306,74 @@ BEGIN
    -- Constant
     s_logisimBus32(7 DOWNTO 0)  <=  X"01";
 
+-- STARO
+--   -- ROM: InstrukcijskaMemorija
+--   WITH (s_logisimBus29) SELECT s_logisimBus9 <=
+--      X"9200" WHEN X"00",
+--      X"81F8" WHEN X"01",
+--      X"89FF" WHEN X"02",
+--      X"9F01" WHEN X"03",
+--      X"DA21" WHEN X"04",
+--      X"925B" WHEN X"05",
+--      X"DA22" WHEN X"06",
+--      X"924F" WHEN X"07",
+--      X"DA23" WHEN X"08",
+--      X"9266" WHEN X"09",
+--      X"DA24" WHEN X"0A",
+--      X"926D" WHEN X"0B",
+--      X"DA25" WHEN X"0C",
+--      X"927D" WHEN X"0D",
+--      X"DA26" WHEN X"0E",
+--      X"9207" WHEN X"0F",
+--      X"DA27" WHEN X"10",
+--      X"927F" WHEN X"11",
+--      X"DA28" WHEN X"12",
+--      X"926F" WHEN X"13",
+--      X"DA29" WHEN X"14",
+--      X"81F9" WHEN X"15",
+--      X"5901" WHEN X"16",
+--      X"F101" WHEN X"17",
+--      X"AF15" WHEN X"18",
+--      X"81F8" WHEN X"19",
+--      X"9200" WHEN X"1A",
+--      X"F164" WHEN X"1B",
+--      X"B720" WHEN X"1C",
+--      X"4A01" WHEN X"1D",
+--      X"5164" WHEN X"1E",
+--      X"9F1B" WHEN X"1F",
+--      X"95EE" WHEN X"20",
+--      X"0D40" WHEN X"21",
+--      X"D5A0" WHEN X"22",
+--      X"8DFC" WHEN X"23",
+--      X"9200" WHEN X"24",
+--      X"F10A" WHEN X"25",
+--      X"B72A" WHEN X"26",
+--      X"4A01" WHEN X"27",
+--      X"510A" WHEN X"28",
+--      X"9F25" WHEN X"29",
+--      X"95EE" WHEN X"2A",
+--      X"0D40" WHEN X"2B",
+--      X"D5A0" WHEN X"2C",
+--      X"8DFD" WHEN X"2D",
+--      X"9200" WHEN X"2E",
+--      X"F101" WHEN X"2F",
+--      X"B734" WHEN X"30",
+--      X"4A01" WHEN X"31",
+--      X"5101" WHEN X"32",
+--      X"9F2F" WHEN X"33",
+--      X"95EE" WHEN X"34",
+--      X"0D40" WHEN X"35",
+--      X"D5A0" WHEN X"36",
+--      X"8DFE" WHEN X"37",
+--      X"9F15" WHEN X"38",
+--      X"0000" WHEN OTHERS;
 
-   -- ROM: InstrukcijskaMemorija
-   WITH (s_logisimBus29) SELECT s_logisimBus9 <=
-      X"91EE" WHEN X"00",
-      X"923F" WHEN X"01",
-      X"DA20" WHEN X"02",
-      X"9206" WHEN X"03",
-      X"DA21" WHEN X"04",
-      X"925B" WHEN X"05",
-      X"DA22" WHEN X"06",
-      X"924F" WHEN X"07",
-      X"DA23" WHEN X"08",
-      X"9266" WHEN X"09",
-      X"DA24" WHEN X"0A",
-      X"926D" WHEN X"0B",
-      X"DA25" WHEN X"0C",
-      X"927D" WHEN X"0D",
-      X"DA26" WHEN X"0E",
-      X"9207" WHEN X"0F",
-      X"DA27" WHEN X"10",
-      X"927F" WHEN X"11",
-      X"DA28" WHEN X"12",
-      X"926F" WHEN X"13",
-      X"DA29" WHEN X"14",
-      X"81F9" WHEN X"15",
-      X"5901" WHEN X"16",
-      X"F101" WHEN X"17",
-      X"AF15" WHEN X"18",
-      X"81F8" WHEN X"19",
-      X"9200" WHEN X"1A",
-      X"F164" WHEN X"1B",
-      X"B720" WHEN X"1C",
-      X"4A01" WHEN X"1D",
-      X"5164" WHEN X"1E",
-      X"9F1B" WHEN X"1F",
-      X"95EE" WHEN X"20",
-      X"0D40" WHEN X"21",
-      X"D5A0" WHEN X"22",
-      X"8DFC" WHEN X"23",
-      X"9200" WHEN X"24",
-      X"F10A" WHEN X"25",
-      X"B72A" WHEN X"26",
-      X"4A01" WHEN X"27",
-      X"510A" WHEN X"28",
-      X"9F25" WHEN X"29",
-      X"95EE" WHEN X"2A",
-      X"0D40" WHEN X"2B",
-      X"D5A0" WHEN X"2C",
-      X"8DFD" WHEN X"2D",
-      X"9200" WHEN X"2E",
-      X"F101" WHEN X"2F",
-      X"B734" WHEN X"30",
-      X"4A01" WHEN X"31",
-      X"5101" WHEN X"32",
-      X"9F2F" WHEN X"33",
-      X"95EE" WHEN X"34",
-      X"0D40" WHEN X"35",
-      X"D5A0" WHEN X"36",
-      X"8DFE" WHEN X"37",
-      X"9F15" WHEN X"38",
-      X"0000" WHEN OTHERS;
+	InstrukcijskaMemorijaKomp : InstrukcijskaMemorija
+		PORT MAP (
+			address => s_logisimBus29,
+			clock   => s_logisimNet75,
+			q       => s_logisimBus9
+		);
 
    -- Button: RST
    s_logisimNet19 <= logisimInputBubbles(0);

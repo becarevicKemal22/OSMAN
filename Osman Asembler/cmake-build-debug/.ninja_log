@@ -4,3 +4,8 @@
 22	2541	8017923367673833	CMakeFiles/Osman_Asembler.dir/Parser.cpp.obj	473040b2a29065a2
 17	1023	8017923367628730	CMakeFiles/Osman_Asembler.dir/Token.cpp.obj	c9c90cf202363f74
 1289	1774	8018050357944377	Osman_Asembler.exe	512517e81952ab57
+16	1187	8023999174348351	CMakeFiles/Osman_Asembler.dir/Token.cpp.obj	c9c90cf202363f74
+11	2494	8023999174303049	CMakeFiles/Osman_Asembler.dir/Lexer.cpp.obj	88bcf683bd7ec2f7
+6	2671	8023999174253030	CMakeFiles/Osman_Asembler.dir/main.cpp.obj	7d316fdd9bb8e071
+21	2962	8023999174388356	CMakeFiles/Osman_Asembler.dir/Parser.cpp.obj	473040b2a29065a2
+2962	3501	8023999203811247	Osman_Asembler.exe	512517e81952ab57
