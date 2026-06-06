@@ -25,19 +25,27 @@ std::string CodeGenerator::novaPrivremena() {
     return ime;
 }
 
-void CodeGenerator::dodajVarijablu(const std::string& ime) {
+void CodeGenerator::dodajVarijablu(const std::string& ime, VarKind kind, int velicina) {
     if (varijable.count(ime)) {
         throw std::runtime_error("Varijabla '" + ime + "' je vec deklarisana.");
     }
 
-    varijable.insert(ime);
+    varijable[ime] = {kind, velicina};
     varijableRedom.push_back(ime);
 }
 
-void CodeGenerator::provjeriVarijablu(const std::string& ime) const {
-    if (!varijable.count(ime)) {
+VarInfo CodeGenerator::infoVarijable(const std::string& ime) const {
+    auto it = varijable.find(ime);
+
+    if (it == varijable.end()) {
         throw std::runtime_error("Varijabla '" + ime + "' nije deklarisana.");
     }
+
+    return it->second;
+}
+
+void CodeGenerator::provjeriVarijablu(const std::string& ime) const {
+    infoVarijable(ime);
 }
 
 FunctionDecl* CodeGenerator::nadjiMain() {
@@ -53,7 +61,7 @@ FunctionDecl* CodeGenerator::nadjiMain() {
 void CodeGenerator::prikupiVarijable(const BlockStmt& blok) {
     for (const auto& naredba : blok.naredbe) {
         if (auto deklaracija = dynamic_cast<VarDeclStmt*>(naredba.get())) {
-            dodajVarijablu(deklaracija->ime);
+            dodajVarijablu(deklaracija->ime, deklaracija->kind, deklaracija->velicina);
         } else if (auto ifNaredba = dynamic_cast<IfStmt*>(naredba.get())) {
             prikupiVarijable(*ifNaredba->thenBlok);
             if (ifNaredba->elseBlok) {
@@ -81,9 +89,7 @@ void CodeGenerator::generisiNaredbu(const Stmt* naredba) {
     }
 
     if (auto dodjela = dynamic_cast<const AssignStmt*>(naredba)) {
-        provjeriVarijablu(dodjela->ime);
-        generisiIzraz(dodjela->izraz.get(), "A");
-        emituj("STI A, " + labelaVarijable(dodjela->ime));
+        generisiDodjelu(dodjela->cilj.get(), dodjela->izraz.get());
         return;
     }
 
@@ -95,22 +101,14 @@ void CodeGenerator::generisiNaredbu(const Stmt* naredba) {
 
     if (auto ret = dynamic_cast<const ReturnStmt*>(naredba)) {
         generisiIzraz(ret->izraz.get(), "A");
-        std::string tmp = novaPrivremena();
-        emituj("STI A, " + tmp);
-        emituj("LDI PV, " + tmp);
+        emituj("STI A, TMP_RETURN");
+        emituj("LDI PV, TMP_RETURN");
         emituj("JMP END");
         return;
     }
 
     if (auto ink = dynamic_cast<const IncrementStmt*>(naredba)) {
-        provjeriVarijablu(ink->ime);
-        emituj("LDI A, " + labelaVarijable(ink->ime));
-        if (ink->povecaj) {
-            emituj("ADDI A, 1");
-        } else {
-            emituj("SUBI A, 1");
-        }
-        emituj("STI A, " + labelaVarijable(ink->ime));
+        generisiInkrement(ink->cilj.get(), ink->povecaj);
         return;
     }
 
@@ -132,6 +130,97 @@ void CodeGenerator::generisiNaredbu(const Stmt* naredba) {
     throw std::runtime_error("Nepoznata naredba u code generatoru.");
 }
 
+void CodeGenerator::generisiAdresu(const Expr* izraz, const std::string& registar) {
+    if (auto var = dynamic_cast<const VariableExpr*>(izraz)) {
+        provjeriVarijablu(var->ime);
+        emituj("LA " + registar + ", " + labelaVarijable(var->ime));
+        return;
+    }
+
+    if (auto niz = dynamic_cast<const ArrayAccessExpr*>(izraz)) {
+        VarInfo info = infoVarijable(niz->ime);
+
+        if (info.kind != VarKind::Array) {
+            throw std::runtime_error("Varijabla '" + niz->ime + "' nije niz.");
+        }
+
+        generisiIzraz(niz->indeks.get(), "A");
+
+        std::string tmp = novaPrivremena();
+        emituj("STI A, " + tmp);
+
+        emituj("LA " + registar + ", " + labelaVarijable(niz->ime));
+        emituj("LDI B, " + tmp);
+        emituj("ADD " + registar + ", B");
+        return;
+    }
+
+    if (auto deref = dynamic_cast<const DereferenceExpr*>(izraz)) {
+        generisiIzraz(deref->pokazivac.get(), registar);
+        return;
+    }
+
+    throw std::runtime_error("Ne moze se izracunati adresa zadatog izraza.");
+}
+
+void CodeGenerator::generisiDodjelu(const Expr* cilj, const Expr* izraz) {
+    if (auto var = dynamic_cast<const VariableExpr*>(cilj)) {
+        provjeriVarijablu(var->ime);
+        generisiIzraz(izraz, "A");
+        emituj("STI A, " + labelaVarijable(var->ime));
+        return;
+    }
+
+    if (dynamic_cast<const ArrayAccessExpr*>(cilj) || dynamic_cast<const DereferenceExpr*>(cilj)) {
+        generisiIzraz(izraz, "A");
+
+        std::string tmpVrijednost = novaPrivremena();
+        emituj("STI A, " + tmpVrijednost);
+
+        generisiAdresu(cilj, "C");
+
+        emituj("LDI A, " + tmpVrijednost);
+        emituj("ST A, C[0]");
+        return;
+    }
+
+    throw std::runtime_error("Neispravan cilj dodjele.");
+}
+
+void CodeGenerator::generisiInkrement(const Expr* cilj, bool povecaj) {
+    if (auto var = dynamic_cast<const VariableExpr*>(cilj)) {
+        provjeriVarijablu(var->ime);
+
+        emituj("LDI A, " + labelaVarijable(var->ime));
+
+        if (povecaj) {
+            emituj("ADDI A, 1");
+        } else {
+            emituj("SUBI A, 1");
+        }
+
+        emituj("STI A, " + labelaVarijable(var->ime));
+        return;
+    }
+
+    if (dynamic_cast<const ArrayAccessExpr*>(cilj) || dynamic_cast<const DereferenceExpr*>(cilj)) {
+        generisiAdresu(cilj, "C");
+
+        emituj("LD A, C[0]");
+
+        if (povecaj) {
+            emituj("ADDI A, 1");
+        } else {
+            emituj("SUBI A, 1");
+        }
+
+        emituj("ST A, C[0]");
+        return;
+    }
+
+    throw std::runtime_error("Neispravan cilj inkrementa.");
+}
+
 void CodeGenerator::generisiIzraz(const Expr* izraz, const std::string& registar) {
     if (auto broj = dynamic_cast<const NumberExpr*>(izraz)) {
         emituj("LI " + registar + ", " + std::to_string(broj->vrijednost));
@@ -139,8 +228,45 @@ void CodeGenerator::generisiIzraz(const Expr* izraz, const std::string& registar
     }
 
     if (auto var = dynamic_cast<const VariableExpr*>(izraz)) {
-        provjeriVarijablu(var->ime);
-        emituj("LDI " + registar + ", " + labelaVarijable(var->ime));
+        VarInfo info = infoVarijable(var->ime);
+
+        if (info.kind == VarKind::Array) {
+            emituj("LA " + registar + ", " + labelaVarijable(var->ime));
+        } else {
+            emituj("LDI " + registar + ", " + labelaVarijable(var->ime));
+        }
+
+        return;
+    }
+
+    if (auto niz = dynamic_cast<const ArrayAccessExpr*>(izraz)) {
+        generisiAdresu(niz, "C");
+        emituj("LD A, C[0]");
+
+        if (registar != "A") {
+            std::string tmp = novaPrivremena();
+            emituj("STI A, " + tmp);
+            emituj("LDI " + registar + ", " + tmp);
+        }
+
+        return;
+    }
+
+    if (auto adresa = dynamic_cast<const AddressOfExpr*>(izraz)) {
+        generisiAdresu(adresa->cilj.get(), registar);
+        return;
+    }
+
+    if (auto deref = dynamic_cast<const DereferenceExpr*>(izraz)) {
+        generisiIzraz(deref->pokazivac.get(), "C");
+        emituj("LD A, C[0]");
+
+        if (registar != "A") {
+            std::string tmp = novaPrivremena();
+            emituj("STI A, " + tmp);
+            emituj("LDI " + registar + ", " + tmp);
+        }
+
         return;
     }
 
@@ -191,6 +317,16 @@ void CodeGenerator::generisiIzraz(const Expr* izraz, const std::string& registar
             binarni->op == "<" || binarni->op == "<=" ||
             binarni->op == ">" || binarni->op == ">=") {
             generisiPoredjenje(binarni, registar);
+            return;
+        }
+
+        if (binarni->op == "*") {
+            generisiMnozenje(binarni, registar);
+            return;
+        }
+
+        if (binarni->op == "/") {
+            generisiDijeljenje(binarni, registar);
             return;
         }
 
@@ -283,6 +419,102 @@ void CodeGenerator::generisiPoredjenje(const BinaryExpr* izraz, const std::strin
     }
 }
 
+void CodeGenerator::generisiMnozenje(const BinaryExpr* izraz, const std::string& registar) {
+    std::string lijevo = novaPrivremena();
+    std::string desno = novaPrivremena();
+    std::string rezultat = novaPrivremena();
+
+    std::string pocetak = novaLabela("MUL_START");
+    std::string kraj = novaLabela("MUL_END");
+
+    generisiIzraz(izraz->lijevo.get(), "A");
+    emituj("STI A, " + lijevo);
+
+    generisiIzraz(izraz->desno.get(), "A");
+    emituj("STI A, " + desno);
+
+    emituj("LI A, 0");
+    emituj("STI A, " + rezultat);
+
+    emituj(pocetak + ":");
+    emituj("LDI A, " + desno);
+    emituj("CMPI A, 0");
+    emituj("BEQ " + kraj);
+
+    emituj("LDI A, " + rezultat);
+    emituj("LDI B, " + lijevo);
+    emituj("ADD A, B");
+    emituj("STI A, " + rezultat);
+
+    emituj("LDI A, " + desno);
+    emituj("SUBI A, 1");
+    emituj("STI A, " + desno);
+
+    emituj("JMP " + pocetak);
+
+    emituj(kraj + ":");
+    emituj("LDI A, " + rezultat);
+
+    if (registar != "A") {
+        std::string tmp = novaPrivremena();
+        emituj("STI A, " + tmp);
+        emituj("LDI " + registar + ", " + tmp);
+    }
+}
+
+void CodeGenerator::generisiDijeljenje(const BinaryExpr* izraz, const std::string& registar) {
+    std::string djeljenik = novaPrivremena();
+    std::string djelilac = novaPrivremena();
+    std::string kolicnik = novaPrivremena();
+
+    std::string pocetak = novaLabela("DIV_START");
+    std::string kraj = novaLabela("DIV_END");
+    std::string nula = novaLabela("DIV_ZERO");
+
+    generisiIzraz(izraz->lijevo.get(), "A");
+    emituj("STI A, " + djeljenik);
+
+    generisiIzraz(izraz->desno.get(), "A");
+    emituj("STI A, " + djelilac);
+
+    emituj("LI A, 0");
+    emituj("STI A, " + kolicnik);
+
+    emituj("LDI A, " + djelilac);
+    emituj("CMPI A, 0");
+    emituj("BEQ " + nula);
+
+    emituj(pocetak + ":");
+    emituj("LDI A, " + djeljenik);
+    emituj("LDI B, " + djelilac);
+    emituj("CMP A, B");
+    emituj("BLT " + kraj);
+
+    emituj("LDI A, " + djeljenik);
+    emituj("LDI B, " + djelilac);
+    emituj("SUB A, B");
+    emituj("STI A, " + djeljenik);
+
+    emituj("LDI A, " + kolicnik);
+    emituj("ADDI A, 1");
+    emituj("STI A, " + kolicnik);
+
+    emituj("JMP " + pocetak);
+
+    emituj(nula + ":");
+    emituj("LI A, 0");
+    emituj("STI A, " + kolicnik);
+
+    emituj(kraj + ":");
+    emituj("LDI A, " + kolicnik);
+
+    if (registar != "A") {
+        std::string tmp = novaPrivremena();
+        emituj("STI A, " + tmp);
+        emituj("LDI " + registar + ", " + tmp);
+    }
+}
+
 void CodeGenerator::generisiIf(const IfStmt* naredba) {
     std::string elseLabela = novaLabela("IF_ELSE");
     std::string krajLabela = novaLabela("IF_END");
@@ -292,14 +524,20 @@ void CodeGenerator::generisiIf(const IfStmt* naredba) {
 
     if (naredba->elseBlok) {
         emituj("BEQ " + elseLabela);
+
         generisiBlok(*naredba->thenBlok);
+
         emituj("JMP " + krajLabela);
+
         emituj(elseLabela + ":");
         generisiBlok(*naredba->elseBlok);
+
         emituj(krajLabela + ":");
     } else {
         emituj("BEQ " + krajLabela);
+
         generisiBlok(*naredba->thenBlok);
+
         emituj(krajLabela + ":");
     }
 }
@@ -309,6 +547,7 @@ void CodeGenerator::generisiWhile(const WhileStmt* naredba) {
     std::string kraj = novaLabela("WHILE_END");
 
     emituj(pocetak + ":");
+
     generisiIzraz(naredba->uslov.get(), "A");
     emituj("CMPI A, 0");
     emituj("BEQ " + kraj);
@@ -316,6 +555,7 @@ void CodeGenerator::generisiWhile(const WhileStmt* naredba) {
     generisiBlok(*naredba->tijelo);
 
     emituj("JMP " + pocetak);
+
     emituj(kraj + ":");
 }
 
@@ -342,6 +582,7 @@ void CodeGenerator::generisiFor(const ForStmt* naredba) {
     }
 
     emituj("JMP " + pocetak);
+
     emituj(kraj + ":");
 }
 
@@ -368,13 +609,28 @@ std::string CodeGenerator::generisi() {
     izlaz << ".EQU OUT 0xF8\n\n";
 
     izlaz << ".DATA\n";
+
     for (const std::string& var : varijableRedom) {
-        izlaz << labelaVarijable(var) << ": .BYTE 0\n";
+        VarInfo info = infoVarijable(var);
+
+        izlaz << labelaVarijable(var) << ": .BYTE ";
+
+        for (int i = 0; i < info.velicina; i++) {
+            if (i != 0) {
+                izlaz << ", ";
+            }
+
+            izlaz << "0";
+        }
+
+        izlaz << "\n";
     }
 
     for (const std::string& tmp : privremeneVarijable) {
         izlaz << tmp << ": .BYTE 0\n";
     }
+
+    izlaz << "TMP_RETURN: .BYTE 0\n";
 
     izlaz << "\n";
     izlaz << codeSekcija;

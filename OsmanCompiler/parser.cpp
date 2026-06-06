@@ -108,8 +108,9 @@ std::unique_ptr<Stmt> Parser::parsirajNaredbu() {
         return parsirajFor();
     }
 
-    if (provjeri(TokenType::Increment) || provjeri(TokenType::Decrement) || provjeri(TokenType::Identifier)) {
-        return parsirajDodjeluIliInkrement();
+    if (provjeri(TokenType::Increment) || provjeri(TokenType::Decrement) ||
+        provjeri(TokenType::Identifier) || provjeri(TokenType::Star)) {
+        return parsirajDodjeluIliInkrement(true);
     }
 
     throw std::runtime_error(
@@ -121,50 +122,89 @@ std::unique_ptr<Stmt> Parser::parsirajNaredbu() {
 std::unique_ptr<Stmt> Parser::parsirajDeklaracijuVarijable() {
     ocekuj(TokenType::KeywordNumber, "ocekivano 'number'");
 
+    VarKind kind = VarKind::Normal;
+
+    if (poklopi(TokenType::Star)) {
+        kind = VarKind::Pointer;
+    }
+
     Token ime = ocekuj(TokenType::Identifier, "ocekivano ime varijable");
+
+    int velicina = 1;
+
+    if (poklopi(TokenType::LeftBracket)) {
+        kind = VarKind::Array;
+
+        Token broj = ocekuj(TokenType::NumberLiteral, "ocekivana velicina niza");
+        velicina = std::stoi(broj.value);
+
+        if (velicina <= 0) {
+            throw std::runtime_error("Greska na liniji " + std::to_string(broj.line) + ": velicina niza mora biti veca od 0");
+        }
+
+        ocekuj(TokenType::RightBracket, "ocekivano ']' nakon velicine niza");
+    }
 
     ocekuj(TokenType::Semicolon, "ocekivano ';' nakon deklaracije varijable");
 
-    return std::make_unique<VarDeclStmt>(ime.value);
+    return std::make_unique<VarDeclStmt>(ime.value, kind, velicina);
 }
 
-std::unique_ptr<Stmt> Parser::parsirajDodjeluIliInkrement() {
-    if (poklopi(TokenType::Increment)) {
-        Token ime = ocekuj(TokenType::Identifier, "ocekivano ime varijable nakon '++'");
-        ocekuj(TokenType::Semicolon, "ocekivano ';' nakon inkrementa");
-        return std::make_unique<IncrementStmt>(ime.value, true);
-    }
-
-    if (poklopi(TokenType::Decrement)) {
-        Token ime = ocekuj(TokenType::Identifier, "ocekivano ime varijable nakon '--'");
-        ocekuj(TokenType::Semicolon, "ocekivano ';' nakon dekrementa");
-        return std::make_unique<IncrementStmt>(ime.value, false);
+std::unique_ptr<Expr> Parser::parsirajLValue() {
+    if (poklopi(TokenType::Star)) {
+        std::unique_ptr<Expr> pokazivac = parsirajUnarni();
+        return std::make_unique<DereferenceExpr>(std::move(pokazivac));
     }
 
     Token ime = ocekuj(TokenType::Identifier, "ocekivano ime varijable");
 
+    if (poklopi(TokenType::LeftBracket)) {
+        std::unique_ptr<Expr> indeks = parsirajIzraz();
+        ocekuj(TokenType::RightBracket, "ocekivano ']' nakon indeksa");
+        return std::make_unique<ArrayAccessExpr>(ime.value, std::move(indeks));
+    }
+
+    return std::make_unique<VariableExpr>(ime.value);
+}
+
+std::unique_ptr<Stmt> Parser::parsirajDodjeluIliInkrement(bool ocekujTackaZarez) {
     if (poklopi(TokenType::Increment)) {
-        ocekuj(TokenType::Semicolon, "ocekivano ';' nakon inkrementa");
-        return std::make_unique<IncrementStmt>(ime.value, true);
+        std::unique_ptr<Expr> cilj = parsirajLValue();
+        if (ocekujTackaZarez) ocekuj(TokenType::Semicolon, "ocekivano ';' nakon inkrementa");
+        return std::make_unique<IncrementStmt>(std::move(cilj), true);
     }
 
     if (poklopi(TokenType::Decrement)) {
-        ocekuj(TokenType::Semicolon, "ocekivano ';' nakon dekrementa");
-        return std::make_unique<IncrementStmt>(ime.value, false);
+        std::unique_ptr<Expr> cilj = parsirajLValue();
+        if (ocekujTackaZarez) ocekuj(TokenType::Semicolon, "ocekivano ';' nakon dekrementa");
+        return std::make_unique<IncrementStmt>(std::move(cilj), false);
+    }
+
+    std::unique_ptr<Expr> cilj = parsirajLValue();
+
+    if (poklopi(TokenType::Increment)) {
+        if (ocekujTackaZarez) ocekuj(TokenType::Semicolon, "ocekivano ';' nakon inkrementa");
+        return std::make_unique<IncrementStmt>(std::move(cilj), true);
+    }
+
+    if (poklopi(TokenType::Decrement)) {
+        if (ocekujTackaZarez) ocekuj(TokenType::Semicolon, "ocekivano ';' nakon dekrementa");
+        return std::make_unique<IncrementStmt>(std::move(cilj), false);
     }
 
     ocekuj(TokenType::Assign, "ocekivano '=' u dodjeli");
 
     std::unique_ptr<Expr> izraz = parsirajIzraz();
 
-    ocekuj(TokenType::Semicolon, "ocekivano ';' nakon dodjele");
+    if (ocekujTackaZarez) {
+        ocekuj(TokenType::Semicolon, "ocekivano ';' nakon dodjele");
+    }
 
-    return std::make_unique<AssignStmt>(ime.value, std::move(izraz));
+    return std::make_unique<AssignStmt>(std::move(cilj), std::move(izraz));
 }
 
 std::unique_ptr<Stmt> Parser::parsirajOutput() {
     ocekuj(TokenType::KeywordOutput, "ocekivano 'output'");
-
     ocekuj(TokenType::LeftParen, "ocekivano '(' nakon output");
 
     std::unique_ptr<Expr> izraz = parsirajIzraz();
@@ -187,7 +227,6 @@ std::unique_ptr<Stmt> Parser::parsirajReturn() {
 
 std::unique_ptr<Stmt> Parser::parsirajIf() {
     ocekuj(TokenType::KeywordIf, "ocekivano 'if'");
-
     ocekuj(TokenType::LeftParen, "ocekivano '(' nakon if");
 
     std::unique_ptr<Expr> uslov = parsirajIzraz();
@@ -206,7 +245,6 @@ std::unique_ptr<Stmt> Parser::parsirajIf() {
 
 std::unique_ptr<Stmt> Parser::parsirajWhile() {
     ocekuj(TokenType::KeywordWhile, "ocekivano 'while'");
-
     ocekuj(TokenType::LeftParen, "ocekivano '(' nakon while");
 
     std::unique_ptr<Expr> uslov = parsirajIzraz();
@@ -220,43 +258,28 @@ std::unique_ptr<Stmt> Parser::parsirajWhile() {
 
 std::unique_ptr<Stmt> Parser::parsirajFor() {
     ocekuj(TokenType::KeywordFor, "ocekivano 'for'");
-
     ocekuj(TokenType::LeftParen, "ocekivano '(' nakon for");
 
     std::unique_ptr<Stmt> inicijalizacija = nullptr;
+
     if (!provjeri(TokenType::Semicolon)) {
-        inicijalizacija = parsirajDodjeluIliInkrement();
+        inicijalizacija = parsirajDodjeluIliInkrement(true);
     } else {
         ocekuj(TokenType::Semicolon, "ocekivano ';'");
     }
 
     std::unique_ptr<Expr> uslov = nullptr;
+
     if (!provjeri(TokenType::Semicolon)) {
         uslov = parsirajIzraz();
     }
+
     ocekuj(TokenType::Semicolon, "ocekivano ';' nakon for uslova");
 
     std::unique_ptr<Stmt> promjena = nullptr;
-    if (!provjeri(TokenType::RightParen)) {
-        if (poklopi(TokenType::Increment)) {
-            Token ime = ocekuj(TokenType::Identifier, "ocekivano ime varijable nakon '++'");
-            promjena = std::make_unique<IncrementStmt>(ime.value, true);
-        } else if (poklopi(TokenType::Decrement)) {
-            Token ime = ocekuj(TokenType::Identifier, "ocekivano ime varijable nakon '--'");
-            promjena = std::make_unique<IncrementStmt>(ime.value, false);
-        } else {
-            Token ime = ocekuj(TokenType::Identifier, "ocekivano ime varijable u for promjeni");
 
-            if (poklopi(TokenType::Increment)) {
-                promjena = std::make_unique<IncrementStmt>(ime.value, true);
-            } else if (poklopi(TokenType::Decrement)) {
-                promjena = std::make_unique<IncrementStmt>(ime.value, false);
-            } else {
-                ocekuj(TokenType::Assign, "ocekivano '=' u for promjeni");
-                std::unique_ptr<Expr> izraz = parsirajIzraz();
-                promjena = std::make_unique<AssignStmt>(ime.value, std::move(izraz));
-            }
-        }
+    if (!provjeri(TokenType::RightParen)) {
+        promjena = parsirajDodjeluIliInkrement(false);
     }
 
     ocekuj(TokenType::RightParen, "ocekivano ')' nakon for dijela");
@@ -329,9 +352,21 @@ std::unique_ptr<Expr> Parser::parsirajBitAnd() {
 }
 
 std::unique_ptr<Expr> Parser::parsirajSabiranje() {
-    std::unique_ptr<Expr> izraz = parsirajUnarni();
+    std::unique_ptr<Expr> izraz = parsirajMnozenje();
 
     while (provjeri(TokenType::Plus) || provjeri(TokenType::Minus)) {
+        Token op = uzmi();
+        std::unique_ptr<Expr> desno = parsirajMnozenje();
+        izraz = std::make_unique<BinaryExpr>(std::move(izraz), op.value, std::move(desno));
+    }
+
+    return izraz;
+}
+
+std::unique_ptr<Expr> Parser::parsirajMnozenje() {
+    std::unique_ptr<Expr> izraz = parsirajUnarni();
+
+    while (provjeri(TokenType::Star) || provjeri(TokenType::Slash)) {
         Token op = uzmi();
         std::unique_ptr<Expr> desno = parsirajUnarni();
         izraz = std::make_unique<BinaryExpr>(std::move(izraz), op.value, std::move(desno));
@@ -353,6 +388,16 @@ std::unique_ptr<Expr> Parser::parsirajUnarni() {
         return std::make_unique<UnaryExpr>(op.value, std::move(izraz));
     }
 
+    if (poklopi(TokenType::Star)) {
+        std::unique_ptr<Expr> pokazivac = parsirajUnarni();
+        return std::make_unique<DereferenceExpr>(std::move(pokazivac));
+    }
+
+    if (poklopi(TokenType::Ampersand)) {
+        std::unique_ptr<Expr> cilj = parsirajLValue();
+        return std::make_unique<AddressOfExpr>(std::move(cilj));
+    }
+
     return parsirajPrimarni();
 }
 
@@ -362,7 +407,15 @@ std::unique_ptr<Expr> Parser::parsirajPrimarni() {
     }
 
     if (poklopi(TokenType::Identifier)) {
-        return std::make_unique<VariableExpr>(prethodni().value);
+        std::string ime = prethodni().value;
+
+        if (poklopi(TokenType::LeftBracket)) {
+            std::unique_ptr<Expr> indeks = parsirajIzraz();
+            ocekuj(TokenType::RightBracket, "ocekivano ']' nakon indeksa");
+            return std::make_unique<ArrayAccessExpr>(ime, std::move(indeks));
+        }
+
+        return std::make_unique<VariableExpr>(ime);
     }
 
     if (poklopi(TokenType::LeftParen)) {

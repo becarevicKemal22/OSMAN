@@ -1,0 +1,12 @@
+number main() {
+    number x;
+    number* p;
+
+    x = 5;
+
+    p = &x;
+    *p = 9;
+
+    output(x);
+    return 0;
+}

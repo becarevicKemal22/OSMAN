@@ -1,0 +1,13 @@
+number main() {
+    number a;
+    number b;
+    number c;
+
+    a = 20;
+    b = 4;
+
+    c = a / b;
+
+    output(c);
+    return 0;
+}
