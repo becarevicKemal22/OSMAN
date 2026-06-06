@@ -1,0 +1,15 @@
+number main() {
+    number i;
+    number suma;
+
+    i = 0;
+    suma = 0;
+
+    while (i < 5) {
+        suma = suma + i;
+        i++;
+    }
+
+    output(suma);
+    return 0;
+}

@@ -1,0 +1,17 @@
+number main() {
+    number a;
+    number b;
+    number rezultat;
+
+    a = 12;
+    b = 7;
+
+    if (a > b) {
+        rezultat = a - b;
+    } else {
+        rezultat = b - a;
+    }
+
+    output(rezultat);
+    return 0;
+}

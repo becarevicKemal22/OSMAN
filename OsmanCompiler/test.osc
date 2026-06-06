@@ -1,0 +1,10 @@
+number main() {
+    number a;
+    number b;
+
+    a = 5;
+    b = 7;
+
+    output(a + b);
+    return 0;
+}
