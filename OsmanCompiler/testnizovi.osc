@@ -1,0 +1,10 @@
+number main() {
+    number niz[3];
+
+    niz[0] = 2;
+    niz[1] = 5;
+    niz[2] = niz[0] + niz[1];
+
+    output(niz[2]);
+    return 0;
+}

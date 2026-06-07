@@ -21,12 +21,16 @@ enum class TokenType {
     RightParen,
     LeftBrace,
     RightBrace,
+    LeftBracket,
+    RightBracket,
 
     Semicolon,
     Comma,
 
     Plus,
     Minus,
+    Star,
+    Slash,
     Ampersand,
     Pipe,
     Caret,

@@ -108,6 +108,12 @@ std::vector<Token> Lexer::tokeniziraj() {
         } else if (c == '}') {
             dodajToken(TokenType::RightBrace, c);
             uzmiZnak();
+        } else if (c == '[') {
+            dodajToken(TokenType::LeftBracket, c);
+            uzmiZnak();
+        } else if (c == ']') {
+            dodajToken(TokenType::RightBracket, c);
+            uzmiZnak();
         } else if (c == ';') {
             dodajToken(TokenType::Semicolon, c);
             uzmiZnak();
@@ -130,6 +136,16 @@ std::vector<Token> Lexer::tokeniziraj() {
                 uzmiZnak();
             } else {
                 dodajToken(TokenType::Minus, c);
+                uzmiZnak();
+            }
+        } else if (c == '*') {
+            dodajToken(TokenType::Star, c);
+            uzmiZnak();
+        } else if (c == '/') {
+            if (sljedeciZnak() == '/') {
+                preskociKomentar();
+            } else {
+                dodajToken(TokenType::Slash, c);
                 uzmiZnak();
             }
         } else if (c == '&') {
@@ -176,12 +192,6 @@ std::vector<Token> Lexer::tokeniziraj() {
             } else {
                 dodajToken(TokenType::Greater, c);
                 uzmiZnak();
-            }
-        } else if (c == '/') {
-            if (sljedeciZnak() == '/') {
-                preskociKomentar();
-            } else {
-                throw std::runtime_error("Nepoznat znak '/' na liniji " + std::to_string(linija));
             }
         } else {
             throw std::runtime_error("Nepoznat znak '" + std::string(1, c) + "' na liniji " + std::to_string(linija));

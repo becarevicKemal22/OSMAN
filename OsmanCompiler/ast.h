@@ -5,6 +5,12 @@
 #include <string>
 #include <vector>
 
+enum class VarKind {
+    Normal,
+    Pointer,
+    Array
+};
+
 struct Expr {
     virtual ~Expr() = default;
 };
@@ -19,6 +25,28 @@ struct VariableExpr : Expr {
     std::string ime;
 
     VariableExpr(const std::string& ime) : ime(ime) {}
+};
+
+struct ArrayAccessExpr : Expr {
+    std::string ime;
+    std::unique_ptr<Expr> indeks;
+
+    ArrayAccessExpr(const std::string& ime, std::unique_ptr<Expr> indeks)
+        : ime(ime), indeks(std::move(indeks)) {}
+};
+
+struct AddressOfExpr : Expr {
+    std::unique_ptr<Expr> cilj;
+
+    AddressOfExpr(std::unique_ptr<Expr> cilj)
+        : cilj(std::move(cilj)) {}
+};
+
+struct DereferenceExpr : Expr {
+    std::unique_ptr<Expr> pokazivac;
+
+    DereferenceExpr(std::unique_ptr<Expr> pokazivac)
+        : pokazivac(std::move(pokazivac)) {}
 };
 
 struct UnaryExpr : Expr {
@@ -44,16 +72,19 @@ struct Stmt {
 
 struct VarDeclStmt : Stmt {
     std::string ime;
+    VarKind kind;
+    int velicina;
 
-    VarDeclStmt(const std::string& ime) : ime(ime) {}
+    VarDeclStmt(const std::string& ime, VarKind kind = VarKind::Normal, int velicina = 1)
+        : ime(ime), kind(kind), velicina(velicina) {}
 };
 
 struct AssignStmt : Stmt {
-    std::string ime;
+    std::unique_ptr<Expr> cilj;
     std::unique_ptr<Expr> izraz;
 
-    AssignStmt(const std::string& ime, std::unique_ptr<Expr> izraz)
-        : ime(ime), izraz(std::move(izraz)) {}
+    AssignStmt(std::unique_ptr<Expr> cilj, std::unique_ptr<Expr> izraz)
+        : cilj(std::move(cilj)), izraz(std::move(izraz)) {}
 };
 
 struct OutputStmt : Stmt {
@@ -71,11 +102,11 @@ struct ReturnStmt : Stmt {
 };
 
 struct IncrementStmt : Stmt {
-    std::string ime;
+    std::unique_ptr<Expr> cilj;
     bool povecaj;
 
-    IncrementStmt(const std::string& ime, bool povecaj)
-        : ime(ime), povecaj(povecaj) {}
+    IncrementStmt(std::unique_ptr<Expr> cilj, bool povecaj)
+        : cilj(std::move(cilj)), povecaj(povecaj) {}
 };
 
 struct BlockStmt : Stmt {
