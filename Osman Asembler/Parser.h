@@ -58,7 +58,7 @@ private:
     void emit(uint16_t instrMachineCode);
     void emitMemoryContents();
 
-    void writeOutputs(const std::string& binPath, const std::string& hexPath, const std::string& dataBinPath, const std::string& dataHexPath);
+    void writeOutputs(const std::string& path);
     uint8_t resolveRegister(std::string name);
     void parseNoOp(InstructionSpec spec);
     void parseOneReg(InstructionSpec spec);

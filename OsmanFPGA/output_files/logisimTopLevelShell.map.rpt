@@ -1,5 +1,5 @@
 Analysis & Synthesis report for logisimTopLevelShell
-Sat Jun 06 00:25:46 2026
+Sat Jun 06 20:52:08 2026
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -372,9 +372,8 @@ Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 364. Port Connectivity Checks: "OSMAN:CIRCUIT_0"
 365. In-System Memory Content Editor Settings
 366. Post-Synthesis Netlist Statistics for Top Partition
-367. Post-Synthesis Netlist Statistics for Partition sld_hub:auto_hub
-368. Elapsed Time Per Partition
-369. Analysis & Synthesis Messages
+367. Elapsed Time Per Partition
+368. Analysis & Synthesis Messages
 
 
 
@@ -400,7 +399,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Sat Jun 06 00:25:46 2026       ;
+; Analysis & Synthesis Status     ; Successful - Sat Jun 06 20:52:08 2026       ;
 ; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                   ; logisimTopLevelShell                        ;
 ; Top-level Entity Name           ; logisimTopLevelShell                        ;
@@ -520,7 +519,8 @@ refer to the applicable agreement for further details.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-12        ;   0.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processors 3-12        ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -993,30 +993,23 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                                                                                                                                                                                                                                                                                                                               ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                                                                                                                                                                                                                                                                                                     ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|InstrukcijskaMemorija:InstrukcijskaMemorijaKomp|altsyncram:altsyncram_component|altsyncram_rc54:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_data_reg[4]                                                                                                                                                                             ;
-; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|InstrukcijskaMemorija:InstrukcijskaMemorijaKomp|altsyncram:altsyncram_component|altsyncram_rc54:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_data_shift_cntr_reg[0]                                                                                                                                                                  ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|InstrukcijskaMemorija:InstrukcijskaMemorijaKomp|altsyncram:altsyncram_component|altsyncram_rc54:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_addr_reg[0]                                                                                                                                                                             ;
-; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ProgramskiBrojac:PB|D_FLIPFLOP:MEMORY_13|s_currentState                                                                                                                                                                                                                                                                                  ;
-; 4:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|InstrukcijskaMemorija:InstrukcijskaMemorijaKomp|altsyncram:altsyncram_component|altsyncram_rc54:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_rom_sr:\ram_rom_logic_gen:name_gen:info_rom_sr|word_counter[4]                                                                                                                              ;
-; 26:1               ; 4 bits    ; 68 LEs        ; 36 LEs               ; 32 LEs                 ; Yes        ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|InstrukcijskaMemorija:InstrukcijskaMemorijaKomp|altsyncram:altsyncram_component|altsyncram_rc54:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_rom_sr:\ram_rom_logic_gen:name_gen:info_rom_sr|WORD_SR[0]                                                                                                                                   ;
-; 4:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|Multiplexer_bus_4:PLEXERS_4|Mux5                                                                                                                                                                                                                                                                                             ;
-; 8:1                ; 8 bits    ; 40 LEs        ; 40 LEs               ; 0 LEs                  ; No         ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|RegistarskaDatoteka:RD|Multiplexer_bus_8:PLEXERS_2|Mux1                                                                                                                                                                                                                                                                                  ;
-; 9:1                ; 8 bits    ; 48 LEs        ; 48 LEs               ; 0 LEs                  ; No         ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|Multiplexer_bus_2:PLEXERS_2|muxOut                                                                                                                                                                                                                                                                                                       ;
-; 6:1                ; 5 bits    ; 20 LEs        ; 20 LEs               ; 0 LEs                  ; No         ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|Multiplexer_bus_4:PLEXERS_5|Mux4                                                                                                                                                                                                                                                                                                         ;
-; 8:1                ; 3 bits    ; 15 LEs        ; 12 LEs               ; 3 LEs                  ; No         ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|Multiplexer_bus_4:PLEXERS_5|Mux5                                                                                                                                                                                                                                                                                                         ;
-; 3:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; Yes        ; |logisimTopLevelShell|sld_hub:auto_hub|alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric|alt_sld_fab:instrumentation_fabric|alt_sld_fab_alt_sld_fab:alt_sld_fab|alt_sld_fab_alt_sld_fab_sldfabric:sldfabric|sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub|irsr_reg[2]                             ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |logisimTopLevelShell|sld_hub:auto_hub|alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric|alt_sld_fab:instrumentation_fabric|alt_sld_fab_alt_sld_fab:alt_sld_fab|alt_sld_fab_alt_sld_fab_sldfabric:sldfabric|sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub|hub_minor_ver_reg[0]                    ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |logisimTopLevelShell|sld_hub:auto_hub|alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric|alt_sld_fab:instrumentation_fabric|alt_sld_fab_alt_sld_fab:alt_sld_fab|alt_sld_fab_alt_sld_fab_sldfabric:sldfabric|sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub|hub_minor_ver_reg[1]                    ;
-; 4:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |logisimTopLevelShell|sld_hub:auto_hub|alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric|alt_sld_fab:instrumentation_fabric|alt_sld_fab_alt_sld_fab:alt_sld_fab|alt_sld_fab_alt_sld_fab_sldfabric:sldfabric|sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub|mixer_addr_reg_internal[2]              ;
-; 4:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |logisimTopLevelShell|sld_hub:auto_hub|alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric|alt_sld_fab:instrumentation_fabric|alt_sld_fab_alt_sld_fab:alt_sld_fab|alt_sld_fab_alt_sld_fab_sldfabric:sldfabric|sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub|sld_rom_sr:hub_info_reg|word_counter[0] ;
-; 34:1               ; 4 bits    ; 88 LEs        ; 64 LEs               ; 24 LEs                 ; Yes        ; |logisimTopLevelShell|sld_hub:auto_hub|alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric|alt_sld_fab:instrumentation_fabric|alt_sld_fab_alt_sld_fab:alt_sld_fab|alt_sld_fab_alt_sld_fab_sldfabric:sldfabric|sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub|design_hash_reg[2]                      ;
-; 20:1               ; 4 bits    ; 52 LEs        ; 32 LEs               ; 20 LEs                 ; Yes        ; |logisimTopLevelShell|sld_hub:auto_hub|alt_sld_fab_with_jtag_input:\instrumentation_fabric_with_node_gen:fabric_gen_new_way:with_jtag_input_gen:instrumentation_fabric|alt_sld_fab:instrumentation_fabric|alt_sld_fab_alt_sld_fab:alt_sld_fab|alt_sld_fab_alt_sld_fab_sldfabric:sldfabric|sld_jtag_hub:\jtag_hub_gen:real_sld_jtag_hub|sld_rom_sr:hub_info_reg|WORD_SR[1]      ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                                                                                                                                                                                                  ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                                                                                                                                                                        ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|InstrukcijskaMemorija:InstrukcijskaMemorijaKomp|altsyncram:altsyncram_component|altsyncram_rc54:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_data_reg[4]                                                ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|InstrukcijskaMemorija:InstrukcijskaMemorijaKomp|altsyncram:altsyncram_component|altsyncram_rc54:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_data_shift_cntr_reg[0]                                     ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|InstrukcijskaMemorija:InstrukcijskaMemorijaKomp|altsyncram:altsyncram_component|altsyncram_rc54:auto_generated|sld_mod_ram_rom:mgl_prim2|ram_rom_addr_reg[0]                                                ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ProgramskiBrojac:PB|D_FLIPFLOP:MEMORY_13|s_currentState                                                                                                                                                     ;
+; 4:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|InstrukcijskaMemorija:InstrukcijskaMemorijaKomp|altsyncram:altsyncram_component|altsyncram_rc54:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_rom_sr:\ram_rom_logic_gen:name_gen:info_rom_sr|word_counter[4] ;
+; 26:1               ; 4 bits    ; 68 LEs        ; 36 LEs               ; 32 LEs                 ; Yes        ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|InstrukcijskaMemorija:InstrukcijskaMemorijaKomp|altsyncram:altsyncram_component|altsyncram_rc54:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_rom_sr:\ram_rom_logic_gen:name_gen:info_rom_sr|WORD_SR[0]      ;
+; 4:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|Multiplexer_bus_4:PLEXERS_4|Mux5                                                                                                                                                                ;
+; 8:1                ; 8 bits    ; 40 LEs        ; 40 LEs               ; 0 LEs                  ; No         ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|RegistarskaDatoteka:RD|Multiplexer_bus_8:PLEXERS_2|Mux1                                                                                                                                                     ;
+; 9:1                ; 8 bits    ; 48 LEs        ; 48 LEs               ; 0 LEs                  ; No         ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|Multiplexer_bus_2:PLEXERS_2|muxOut                                                                                                                                                                          ;
+; 6:1                ; 5 bits    ; 20 LEs        ; 20 LEs               ; 0 LEs                  ; No         ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|Multiplexer_bus_4:PLEXERS_5|Mux4                                                                                                                                                                            ;
+; 8:1                ; 3 bits    ; 15 LEs        ; 12 LEs               ; 3 LEs                  ; No         ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|Multiplexer_bus_4:PLEXERS_5|Mux5                                                                                                                                                                            ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -4663,42 +4656,13 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 
 
-+------------------------------------------------------------------+
-; Post-Synthesis Netlist Statistics for Partition sld_hub:auto_hub ;
-+-----------------------+------------------------------------------+
-; Type                  ; Count                                    ;
-+-----------------------+------------------------------------------+
-; arriav_ff             ; 87                                       ;
-;     CLR               ; 4                                        ;
-;     ENA               ; 30                                       ;
-;     ENA CLR           ; 29                                       ;
-;     ENA CLR SLD       ; 1                                        ;
-;     SCLR              ; 7                                        ;
-;     plain             ; 16                                       ;
-; arriav_lcell_comb     ; 104                                      ;
-;     normal            ; 104                                      ;
-;         0 data inputs ; 1                                        ;
-;         1 data inputs ; 4                                        ;
-;         2 data inputs ; 23                                       ;
-;         3 data inputs ; 25                                       ;
-;         4 data inputs ; 19                                       ;
-;         5 data inputs ; 16                                       ;
-;         6 data inputs ; 16                                       ;
-; boundary_port         ; 103                                      ;
-;                       ;                                          ;
-; Max LUT depth         ; 3.00                                     ;
-; Average LUT depth     ; 1.53                                     ;
-+-----------------------+------------------------------------------+
-
-
-+---------------------------------+
-; Elapsed Time Per Partition      ;
-+------------------+--------------+
-; Partition Name   ; Elapsed Time ;
-+------------------+--------------+
-; Top              ; 00:00:02     ;
-; sld_hub:auto_hub ; 00:00:00     ;
-+------------------+--------------+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:02     ;
++----------------+--------------+
 
 
 +-------------------------------+
@@ -4707,7 +4671,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Sat Jun 06 00:25:15 2026
+    Info: Processing started: Sat Jun 06 20:51:36 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off OSMAN -c logisimTopLevelShell
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 12 of the 12 processors detected
@@ -4937,15 +4901,15 @@ Info (12133): Instantiated megafunction "OSMAN:CIRCUIT_0|InstrukcijskaMemorija:I
 Info (12128): Elaborating entity "sld_jtag_endpoint_adapter" for hierarchy "OSMAN:CIRCUIT_0|InstrukcijskaMemorija:InstrukcijskaMemorijaKomp|altsyncram:altsyncram_component|altsyncram_rc54:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_jtag_endpoint_adapter:jtag_signal_adapter" File: e:/quartusprimelite/quartus/libraries/megafunctions/sld_mod_ram_rom.vhd Line: 302
 Info (12128): Elaborating entity "sld_jtag_endpoint_adapter_impl" for hierarchy "OSMAN:CIRCUIT_0|InstrukcijskaMemorija:InstrukcijskaMemorijaKomp|altsyncram:altsyncram_component|altsyncram_rc54:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_jtag_endpoint_adapter:jtag_signal_adapter|sld_jtag_endpoint_adapter_impl:sld_jtag_endpoint_adapter_impl_inst" File: e:/quartusprimelite/quartus/libraries/megafunctions/sld_jtag_endpoint_adapter.vhd Line: 232
 Info (12128): Elaborating entity "sld_rom_sr" for hierarchy "OSMAN:CIRCUIT_0|InstrukcijskaMemorija:InstrukcijskaMemorijaKomp|altsyncram:altsyncram_component|altsyncram_rc54:auto_generated|sld_mod_ram_rom:mgl_prim2|sld_rom_sr:\ram_rom_logic_gen:name_gen:info_rom_sr" File: e:/quartusprimelite/quartus/libraries/megafunctions/sld_mod_ram_rom.vhd Line: 828
-Info (12128): Elaborating entity "Multiplexer_bus_2" for hierarchy "OSMAN:CIRCUIT_0|Multiplexer_bus_2:PLEXERS_1" File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 430
-Info (12128): Elaborating entity "Multiplexer_bus_4" for hierarchy "OSMAN:CIRCUIT_0|Multiplexer_bus_4:PLEXERS_5" File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 462
-Info (12128): Elaborating entity "RAMCONTENTS_MemorijaPodataka" for hierarchy "OSMAN:CIRCUIT_0|RAMCONTENTS_MemorijaPodataka:MemorijaPodataka" File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 482
-Info (12128): Elaborating entity "D_FLIPFLOP" for hierarchy "OSMAN:CIRCUIT_0|D_FLIPFLOP:MEMORY_8" File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 491
-Info (12128): Elaborating entity "StatusniRegistar" for hierarchy "OSMAN:CIRCUIT_0|StatusniRegistar:SR" File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 506
+Info (12128): Elaborating entity "Multiplexer_bus_2" for hierarchy "OSMAN:CIRCUIT_0|Multiplexer_bus_2:PLEXERS_1" File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 429
+Info (12128): Elaborating entity "Multiplexer_bus_4" for hierarchy "OSMAN:CIRCUIT_0|Multiplexer_bus_4:PLEXERS_5" File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 461
+Info (12128): Elaborating entity "RAMCONTENTS_MemorijaPodataka" for hierarchy "OSMAN:CIRCUIT_0|RAMCONTENTS_MemorijaPodataka:MemorijaPodataka" File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 481
+Info (12128): Elaborating entity "D_FLIPFLOP" for hierarchy "OSMAN:CIRCUIT_0|D_FLIPFLOP:MEMORY_8" File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 490
+Info (12128): Elaborating entity "StatusniRegistar" for hierarchy "OSMAN:CIRCUIT_0|StatusniRegistar:SR" File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 505
 Warning (10036): Verilog HDL or VHDL warning at StatusniRegistar_behavior.vhd(50): object "s_logisimNet5" assigned a value but never read File: C:/.Cloud Documents/Osman/OsmanFPGA/StatusniRegistar_behavior.vhd Line: 50
 Info (12128): Elaborating entity "Multiplexer_2" for hierarchy "OSMAN:CIRCUIT_0|StatusniRegistar:SR|Multiplexer_2:PLEXERS_1" File: C:/.Cloud Documents/Osman/OsmanFPGA/StatusniRegistar_behavior.vhd Line: 87
 Info (12128): Elaborating entity "D_FLIPFLOP" for hierarchy "OSMAN:CIRCUIT_0|StatusniRegistar:SR|D_FLIPFLOP:MEMORY_5" File: C:/.Cloud Documents/Osman/OsmanFPGA/StatusniRegistar_behavior.vhd Line: 115
-Info (12128): Elaborating entity "ALU8Bit" for hierarchy "OSMAN:CIRCUIT_0|ALU8Bit:ALU" File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 521
+Info (12128): Elaborating entity "ALU8Bit" for hierarchy "OSMAN:CIRCUIT_0|ALU8Bit:ALU" File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 520
 Info (12128): Elaborating entity "NOR_GATE_8_INPUTS" for hierarchy "OSMAN:CIRCUIT_0|ALU8Bit:ALU|NOR_GATE_8_INPUTS:GATES_1" File: C:/.Cloud Documents/Osman/OsmanFPGA/ALU8Bit_behavior.vhd Line: 202
 Info (12128): Elaborating entity "XOR_GATE_ONEHOT" for hierarchy "OSMAN:CIRCUIT_0|ALU8Bit:ALU|XOR_GATE_ONEHOT:GATES_2" File: C:/.Cloud Documents/Osman/OsmanFPGA/ALU8Bit_behavior.vhd Line: 214
 Info (12128): Elaborating entity "AND_GATE_3_INPUTS" for hierarchy "OSMAN:CIRCUIT_0|ALU8Bit:ALU|AND_GATE_3_INPUTS:GATES_3" File: C:/.Cloud Documents/Osman/OsmanFPGA/ALU8Bit_behavior.vhd Line: 220
@@ -4954,26 +4918,26 @@ Info (12128): Elaborating entity "AND_GATE" for hierarchy "OSMAN:CIRCUIT_0|ALU8B
 Info (12128): Elaborating entity "OR_GATE" for hierarchy "OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_1|OR_GATE:GATES_3" File: C:/.Cloud Documents/Osman/OsmanFPGA/ALU1Bit_behavior.vhd Line: 118
 Info (12128): Elaborating entity "Multiplexer_8" for hierarchy "OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_1|Multiplexer_8:PLEXERS_5" File: C:/.Cloud Documents/Osman/OsmanFPGA/ALU1Bit_behavior.vhd Line: 130
 Info (12128): Elaborating entity "FullAdder" for hierarchy "OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_1|FullAdder:FullAdder_1" File: C:/.Cloud Documents/Osman/OsmanFPGA/ALU1Bit_behavior.vhd Line: 148
-Info (12128): Elaborating entity "KontrolnaJedinicaGrananja" for hierarchy "OSMAN:CIRCUIT_0|KontrolnaJedinicaGrananja:KJG" File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 533
-Info (12128): Elaborating entity "DekoderAdresa" for hierarchy "OSMAN:CIRCUIT_0|DekoderAdresa:Dekoder_Adresa" File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 544
+Info (12128): Elaborating entity "KontrolnaJedinicaGrananja" for hierarchy "OSMAN:CIRCUIT_0|KontrolnaJedinicaGrananja:KJG" File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 532
+Info (12128): Elaborating entity "DekoderAdresa" for hierarchy "OSMAN:CIRCUIT_0|DekoderAdresa:Dekoder_Adresa" File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 543
 Info (12128): Elaborating entity "Comparator" for hierarchy "OSMAN:CIRCUIT_0|DekoderAdresa:Dekoder_Adresa|Comparator:ARITH_5" File: C:/.Cloud Documents/Osman/OsmanFPGA/DekoderAdresa_behavior.vhd Line: 105
-Info (12128): Elaborating entity "UIKontroler" for hierarchy "OSMAN:CIRCUIT_0|UIKontroler:UI_Kontroler" File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 556
+Info (12128): Elaborating entity "UIKontroler" for hierarchy "OSMAN:CIRCUIT_0|UIKontroler:UI_Kontroler" File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 555
 Info (12128): Elaborating entity "Decoder_4" for hierarchy "OSMAN:CIRCUIT_0|UIKontroler:UI_Kontroler|Decoder_4:PLEXERS_1" File: C:/.Cloud Documents/Osman/OsmanFPGA/UIKontroler_behavior.vhd Line: 109
 Info (12128): Elaborating entity "Registar8Bit" for hierarchy "OSMAN:CIRCUIT_0|UIKontroler:UI_Kontroler|Registar8Bit:UIIzlazniReg1" File: C:/.Cloud Documents/Osman/OsmanFPGA/UIKontroler_behavior.vhd Line: 132
 Warning (10036): Verilog HDL or VHDL warning at Registar8Bit_behavior.vhd(63): object "s_logisimNet4" assigned a value but never read File: C:/.Cloud Documents/Osman/OsmanFPGA/Registar8Bit_behavior.vhd Line: 63
 Info (12128): Elaborating entity "StabilizatorUlaza8Bit" for hierarchy "OSMAN:CIRCUIT_0|UIKontroler:UI_Kontroler|StabilizatorUlaza8Bit:UIUlazniStabilizator1" File: C:/.Cloud Documents/Osman/OsmanFPGA/UIKontroler_behavior.vhd Line: 168
 Warning (10036): Verilog HDL or VHDL warning at StabilizatorUlaza8Bit_behavior.vhd(43): object "s_logisimNet2" assigned a value but never read File: C:/.Cloud Documents/Osman/OsmanFPGA/StabilizatorUlaza8Bit_behavior.vhd Line: 43
-Info (12128): Elaborating entity "SevenSegAdapter" for hierarchy "OSMAN:CIRCUIT_0|SevenSegAdapter:SedSeg3" File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 574
-Info (12128): Elaborating entity "ProgramskiBrojac" for hierarchy "OSMAN:CIRCUIT_0|ProgramskiBrojac:PB" File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 592
+Info (12128): Elaborating entity "SevenSegAdapter" for hierarchy "OSMAN:CIRCUIT_0|SevenSegAdapter:SedSeg3" File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 573
+Info (12128): Elaborating entity "ProgramskiBrojac" for hierarchy "OSMAN:CIRCUIT_0|ProgramskiBrojac:PB" File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 591
 Warning (10036): Verilog HDL or VHDL warning at ProgramskiBrojac_behavior.vhd(63): object "s_logisimNet4" assigned a value but never read File: C:/.Cloud Documents/Osman/OsmanFPGA/ProgramskiBrojac_behavior.vhd Line: 63
-Info (12128): Elaborating entity "Sabirac" for hierarchy "OSMAN:CIRCUIT_0|Sabirac:PBSab" File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 601
-Info (12128): Elaborating entity "KontrolnaJedinica" for hierarchy "OSMAN:CIRCUIT_0|KontrolnaJedinica:KJ" File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 608
-Info (12128): Elaborating entity "PredznacenoProsirenje" for hierarchy "OSMAN:CIRCUIT_0|PredznacenoProsirenje:Predznaceno_Prosirenje" File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 624
-Info (12128): Elaborating entity "RegistarskaDatoteka" for hierarchy "OSMAN:CIRCUIT_0|RegistarskaDatoteka:RD" File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 630
+Info (12128): Elaborating entity "Sabirac" for hierarchy "OSMAN:CIRCUIT_0|Sabirac:PBSab" File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 600
+Info (12128): Elaborating entity "KontrolnaJedinica" for hierarchy "OSMAN:CIRCUIT_0|KontrolnaJedinica:KJ" File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 607
+Info (12128): Elaborating entity "PredznacenoProsirenje" for hierarchy "OSMAN:CIRCUIT_0|PredznacenoProsirenje:Predznaceno_Prosirenje" File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 623
+Info (12128): Elaborating entity "RegistarskaDatoteka" for hierarchy "OSMAN:CIRCUIT_0|RegistarskaDatoteka:RD" File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 629
 Info (12128): Elaborating entity "Decoder_8" for hierarchy "OSMAN:CIRCUIT_0|RegistarskaDatoteka:RD|Decoder_8:PLEXERS_1" File: C:/.Cloud Documents/Osman/OsmanFPGA/RegistarskaDatoteka_behavior.vhd Line: 104
 Info (12128): Elaborating entity "Multiplexer_bus_8" for hierarchy "OSMAN:CIRCUIT_0|RegistarskaDatoteka:RD|Multiplexer_bus_8:PLEXERS_2" File: C:/.Cloud Documents/Osman/OsmanFPGA/RegistarskaDatoteka_behavior.vhd Line: 116
 Info (11170): Starting IP generation for the debug fabric: alt_sld_fab.
-Info (11172): 2026.06.06.00:25:32 Progress: Loading sld8f8b3542/alt_sld_fab_wrapper_hw.tcl
+Info (11172): 2026.06.06.20:51:53 Progress: Loading sld8f8b3542/alt_sld_fab_wrapper_hw.tcl
 Info (11172): Alt_sld_fab.alt_sld_fab: SLD fabric agents which did not specify prefer_host were connected to JTAG
 Info (11172): Alt_sld_fab: Generating alt_sld_fab "alt_sld_fab" for QUARTUS_SYNTH
 Info (11172): Alt_sld_fab: "alt_sld_fab" instantiated alt_sld_fab "alt_sld_fab"
@@ -5034,9 +4998,9 @@ Info (12133): Instantiated megafunction "OSMAN:CIRCUIT_0|RAMCONTENTS_MemorijaPod
     Info (12134): Parameter "READ_DURING_WRITE_MODE_MIXED_PORTS" = "OLD_DATA"
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_sro1.tdf
     Info (12023): Found entity 1: altsyncram_sro1 File: C:/.Cloud Documents/Osman/OsmanFPGA/db/altsyncram_sro1.tdf Line: 27
+Critical Warning (127005): Memory depth (257) in the design file differs from memory depth (256) in the Memory Initialization File "C:/.Cloud Documents/Osman/OsmanFPGA/ram.mif" -- setting initial value for remaining addresses to 0 File: e:/quartusprimelite/quartus/libraries/megafunctions/altsyncram.tdf Line: 791
 Info (286031): Timing-Driven Synthesis is running on partition "Top"
 Info (17036): Removed 1 MSB VCC or GND address nodes from RAM block "OSMAN:CIRCUIT_0|RAMCONTENTS_MemorijaPodataka:MemorijaPodataka|altsyncram:s_memContents_rtl_0|altsyncram_sro1:auto_generated|ALTSYNCRAM" File: C:/.Cloud Documents/Osman/OsmanFPGA/db/altsyncram_sro1.tdf Line: 247
-Info (286031): Timing-Driven Synthesis is running on partition "sld_hub:auto_hub"
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 9 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
 Info (21057): Implemented 638 device resources after synthesis - the final resource count might be different
@@ -5044,10 +5008,10 @@ Info (21057): Implemented 638 device resources after synthesis - the final resou
     Info (21059): Implemented 30 output pins
     Info (21061): Implemented 567 logic cells
     Info (21064): Implemented 24 RAM segments
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 8 warnings
-    Info: Peak virtual memory: 4937 megabytes
-    Info: Processing ended: Sat Jun 06 00:25:46 2026
-    Info: Elapsed time: 00:00:31
-    Info: Total CPU time (on all processors): 00:00:20
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 9 warnings
+    Info: Peak virtual memory: 4941 megabytes
+    Info: Processing ended: Sat Jun 06 20:52:08 2026
+    Info: Elapsed time: 00:00:32
+    Info: Total CPU time (on all processors): 00:00:18
 
 

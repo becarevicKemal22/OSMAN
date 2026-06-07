@@ -372,8 +372,7 @@ BEGIN
 		PORT MAP (
 			address => s_logisimBus29,
 			clock   => s_logisimNet75,
-			q       => s_logisimBus9
-		);
+			q       => s_logisimBus9);
 
    -- Button: RST
    s_logisimNet19 <= logisimInputBubbles(0);

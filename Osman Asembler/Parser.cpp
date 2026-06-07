@@ -5,6 +5,7 @@
 #include "Parser.h"
 
 #include <bitset>
+#include <filesystem>
 #include <fstream>
 #include <iomanip>
 #include <iostream>
@@ -184,7 +185,7 @@ void Parser::secondPass() {
                 break;
         }
     }
-    writeOutputs("binary.txt", "hex.txt", "dataBin.txt", "dataHex.txt");
+    writeOutputs("output");
 }
 
 void Parser::expectAndAdvance(TokenType tokenType) {
@@ -217,23 +218,56 @@ void Parser::emitMemoryContents() {
     }
 }
 
-void dumpStringStreamIntoFile(const std::string& path, const std::stringstream& stream) {
-    std::ofstream f(path);
+void dumpStringStreamIntoFile(const std::string& path, const std::string& name, const std::stringstream& stream) {
+    std::ofstream f(path + "/" + name);
     if (f.is_open()) {
         f << stream.str();
         f.close();
     } else {
-        std::cout << "Greška pri otvaranju fajla 1" << std::endl;
+        throw std::runtime_error("Greska pri otvaranju fajla");
     }
 }
 
-void Parser::writeOutputs(const std::string& binPath, const std::string& hexPath, const std::string& dataBinPath, const std::string& dataHexPath) {
-    dumpStringStreamIntoFile(binPath, binaryOutput);
-    dumpStringStreamIntoFile(hexPath, hexOutput);
+void createMif(const std::string& path, const std::string name, const std::stringstream& stream, const int width, const int depth) {
+    std::ofstream f(path + "/" + name + ".mif");
+    if (f.is_open()) {
+        f << "WIDTH=" << width << ";\n";
+        f << "DEPTH=" << depth << ";\n";
+        f << "ADDRESS_RADIX=UNS;\n";
+        f << "DATA_RADIX=HEX;\n";
+        f << "CONTENT BEGIN;\n";
+
+        int i = 0;
+        std::string line;
+        std::stringstream streamCopy(stream.str());
+        while (i < depth && std::getline(streamCopy, line)) {
+            if (line.empty()) continue;
+
+            f << i << " : " << line << ";\n";
+            i++;
+        }
+
+        if (i < depth) {
+            f << "[" << i << ".." << (depth - 1) << "] : 0;\n";
+        }
+
+        f << "END;\n";
+        f.close();
+    } else {
+        throw std::runtime_error("Greska pri otvaranju .mif fajla");
+    }
+}
+
+void Parser::writeOutputs(const std::string& path) {
+    std::filesystem::create_directories(path);
+    dumpStringStreamIntoFile(path, "instrukcijskaMemorija.bin", binaryOutput);
+    dumpStringStreamIntoFile(path, "instrukcijskaMemorija.hex", hexOutput);
+    createMif(path, "instrukcijskaMemorija", hexOutput, 16, 256);
 
     emitMemoryContents();
-    dumpStringStreamIntoFile(dataBinPath, dataBinaryOutput);
-    dumpStringStreamIntoFile(dataHexPath, dataHexOutput);
+    dumpStringStreamIntoFile(path, "ram.bin", dataBinaryOutput);
+    dumpStringStreamIntoFile(path, "ram.hex", dataHexOutput);
+    createMif(path, "ram", dataHexOutput, 8, 256);
 }
 
 uint8_t Parser::resolveRegister(std::string name) {

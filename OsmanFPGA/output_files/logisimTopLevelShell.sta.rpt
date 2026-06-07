@@ -1,5 +1,5 @@
 Timing Analyzer report for logisimTopLevelShell
-Sat Jun 06 00:26:57 2026
+Sat Jun 06 20:53:25 2026
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -101,22 +101,22 @@ refer to the applicable agreement for further details.
 ; Number detected on machine ; 12          ;
 ; Maximum allowed            ; 12          ;
 ;                            ;             ;
-; Average used               ; 1.60        ;
+; Average used               ; 1.65        ;
 ; Maximum used               ; 12          ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   5.6%      ;
-;     Processor 3            ;   5.6%      ;
-;     Processor 4            ;   5.6%      ;
-;     Processor 5            ;   5.4%      ;
-;     Processor 6            ;   5.4%      ;
-;     Processor 7            ;   5.4%      ;
-;     Processor 8            ;   5.4%      ;
-;     Processor 9            ;   5.4%      ;
-;     Processor 10           ;   5.4%      ;
-;     Processor 11           ;   5.4%      ;
-;     Processor 12           ;   5.3%      ;
+;     Processor 2            ;   6.2%      ;
+;     Processor 3            ;   6.1%      ;
+;     Processor 4            ;   6.1%      ;
+;     Processor 5            ;   5.9%      ;
+;     Processor 6            ;   5.8%      ;
+;     Processor 7            ;   5.8%      ;
+;     Processor 8            ;   5.8%      ;
+;     Processor 9            ;   5.8%      ;
+;     Processor 10           ;   5.8%      ;
+;     Processor 11           ;   5.8%      ;
+;     Processor 12           ;   5.7%      ;
 +----------------------------+-------------+
 
 
@@ -788,7 +788,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus Prime Timing Analyzer
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Sat Jun 06 00:26:51 2026
+    Info: Processing started: Sat Jun 06 20:53:18 2026
 Info: Command: quartus_sta OSMAN -c logisimTopLevelShell
 Info: qsta_default_script.tcl version: #1
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
@@ -915,8 +915,8 @@ Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus Prime Timing Analyzer was successful. 0 errors, 10 warnings
     Info: Peak virtual memory: 5275 megabytes
-    Info: Processing ended: Sat Jun 06 00:26:57 2026
-    Info: Elapsed time: 00:00:06
+    Info: Processing ended: Sat Jun 06 20:53:25 2026
+    Info: Elapsed time: 00:00:07
     Info: Total CPU time (on all processors): 00:00:05
 
 
