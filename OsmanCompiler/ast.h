@@ -74,9 +74,11 @@ struct VarDeclStmt : Stmt {
     std::string ime;
     VarKind kind;
     int velicina;
+    std::vector<std::unique_ptr<Expr>> inicijalizator;
 
-    VarDeclStmt(const std::string& ime, VarKind kind = VarKind::Normal, int velicina = 1)
-        : ime(ime), kind(kind), velicina(velicina) {}
+    VarDeclStmt(const std::string& ime, VarKind kind = VarKind::Normal, int velicina = 1,
+        std::vector<std::unique_ptr<Expr>> inicijalizator = {})
+        : ime(ime), kind(kind), velicina(velicina), inicijalizator(std::move(inicijalizator)) {}
 };
 
 struct AssignStmt : Stmt {
@@ -89,9 +91,13 @@ struct AssignStmt : Stmt {
 
 struct OutputStmt : Stmt {
     std::unique_ptr<Expr> izraz;
+    std::unique_ptr<Expr> adresa;
+    std::unique_ptr<Expr> bit;
 
-    OutputStmt(std::unique_ptr<Expr> izraz)
-        : izraz(std::move(izraz)) {}
+    OutputStmt(std::unique_ptr<Expr> izraz,
+                std::unique_ptr<Expr> adresa = nullptr,
+                std::unique_ptr<Expr> bit = nullptr)
+         : izraz(std::move(izraz)), adresa(std::move(adresa)), bit(std::move(bit)) {}
 };
 
 struct ReturnStmt : Stmt {

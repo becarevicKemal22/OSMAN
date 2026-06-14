@@ -1,0 +1,17 @@
+number main() {
+    number x;
+    number y;
+    number resAnd;
+    number resOr;
+
+    x = 12;
+    y = 7;
+
+    resAnd = x & y;  // Očekuje se 4
+    output(resAnd);
+
+    resOr = x | y;   // Očekuje se 15
+    output(resOr);
+
+    return 0;
+}

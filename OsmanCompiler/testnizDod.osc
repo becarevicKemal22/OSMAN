@@ -1,0 +1,6 @@
+number main() {
+    number niz[3] = {12, 7, 4};
+    output(niz[1]);
+
+    return 0;
+}

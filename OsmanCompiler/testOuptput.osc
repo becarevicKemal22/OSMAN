@@ -1,0 +1,13 @@
+number main() {
+    number x;
+    x = 12;
+
+    output(x);
+
+    output(240, x);
+
+    output(245, x, 2);
+    output(245, x, 4);
+
+    return 0;
+}

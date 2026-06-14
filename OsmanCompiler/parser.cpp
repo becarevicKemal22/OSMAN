@@ -131,6 +131,7 @@ std::unique_ptr<Stmt> Parser::parsirajDeklaracijuVarijable() {
     Token ime = ocekuj(TokenType::Identifier, "ocekivano ime varijable");
 
     int velicina = 1;
+    std::vector<std::unique_ptr<Expr>> inicijalizator;
 
     if (poklopi(TokenType::LeftBracket)) {
         kind = VarKind::Array;
@@ -145,9 +146,24 @@ std::unique_ptr<Stmt> Parser::parsirajDeklaracijuVarijable() {
         ocekuj(TokenType::RightBracket, "ocekivano ']' nakon velicine niza");
     }
 
+    if (poklopi(TokenType::Assign)) {
+        ocekuj(TokenType::LeftBrace, "ocekivano '{' na pocetku liste inicijalizacije");
+
+        if (!provjeri(TokenType::RightBrace)) {
+            do {
+                inicijalizator.push_back(parsirajIzraz());
+            } while (poklopi(TokenType::Comma));
+        }
+
+        ocekuj(TokenType::RightBrace, "ocekivano '}' na kraju liste inicijalizacije");
+        if (kind == VarKind::Array && inicijalizator.size() > static_cast<size_t>(velicina)) {
+            throw std::runtime_error("Greska: Broj elemenata u inicijalizatoru je veci od velicine niza.");
+        }
+    }
+
     ocekuj(TokenType::Semicolon, "ocekivano ';' nakon deklaracije varijable");
 
-    return std::make_unique<VarDeclStmt>(ime.value, kind, velicina);
+    return std::make_unique<VarDeclStmt>(ime.value, kind, velicina, std::move(inicijalizator));
 }
 
 std::unique_ptr<Expr> Parser::parsirajLValue() {
@@ -207,12 +223,27 @@ std::unique_ptr<Stmt> Parser::parsirajOutput() {
     ocekuj(TokenType::KeywordOutput, "ocekivano 'output'");
     ocekuj(TokenType::LeftParen, "ocekivano '(' nakon output");
 
-    std::unique_ptr<Expr> izraz = parsirajIzraz();
-
-    ocekuj(TokenType::RightParen, "ocekivano ')' nakon output izraza");
+    std::vector<std::unique_ptr<Expr>> argumenti;
+    if (!provjeri(TokenType::RightParen)) {
+        do {
+            argumenti.push_back(parsirajIzraz());
+        } while (poklopi(TokenType::Comma));
+    }
+    ocekuj(TokenType::RightParen, "ocekivano ')' nakon output argumenata");
     ocekuj(TokenType::Semicolon, "ocekivano ';' nakon output naredbe");
 
-    return std::make_unique<OutputStmt>(std::move(izraz));
+    if (argumenti.size() == 1) {
+        return std::make_unique<OutputStmt>(std::move(argumenti[0]));
+    }
+    else if (argumenti.size() == 2) {
+        return std::make_unique<OutputStmt>(std::move(argumenti[1]), std::move(argumenti[0]));
+    }
+    else if (argumenti.size() == 3) {
+        return std::make_unique<OutputStmt>(std::move(argumenti[1]), std::move(argumenti[0]), std::move(argumenti[2]));
+    }
+    else {
+        throw std::runtime_error("Greska: Funkcija output prima minimalno 1, a maksimalno 3 argumenta.");
+    }
 }
 
 std::unique_ptr<Stmt> Parser::parsirajReturn() {

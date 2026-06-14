@@ -94,8 +94,54 @@ void CodeGenerator::generisiNaredbu(const Stmt* naredba) {
     }
 
     if (auto output = dynamic_cast<const OutputStmt*>(naredba)) {
+        std::string ciljnaAdresa;
+        bool dinamickaAdresa = false;
+
+        if (output->adresa) {
+            if (auto fiksnaAdresa = dynamic_cast<const NumberExpr*>(output->adresa.get())) {
+                ciljnaAdresa = std::to_string(fiksnaAdresa->vrijednost);
+            } else {
+                generisiIzraz(output->adresa.get(), "C");
+                dinamickaAdresa = true;
+            }
+        } else {
+            ciljnaAdresa = "OUT";
+        }
+
         generisiIzraz(output->izraz.get(), "A");
-        emituj("STI A, OUT");
+
+        if (output->bit) {
+            std::string tmpVrijednost = novaPrivremena();
+            emituj("STI A, " + tmpVrijednost);
+
+            if (auto konstantanBit = dynamic_cast<const NumberExpr*>(output->bit.get())) {
+                int maska = 1 << konstantanBit->vrijednost;
+                std::string tmpMaska = novaPrivremena();
+                emituj("LI A, " + std::to_string(maska));
+                emituj("STI A, " + tmpMaska);
+
+                emituj("LDI A, " + tmpVrijednost);
+                emituj("LDI B, " + tmpMaska);
+                emituj("AND A, B");
+            } else {
+                throw std::runtime_error("Inicijalizacija bita podrzava samo konstantne vrijednosti.");
+            }
+
+            std::string labelaNula = novaLabela("BIT_IS_ZERO");
+            std::string labelaKraj = novaLabela("BIT_END");
+            emituj("CMPI A, 0");
+            emituj("BEQ " + labelaNula);
+            emituj("LI A, 1");
+            emituj("JMP " + labelaKraj);
+            emituj(labelaNula + ":");
+            emituj("LI A, 0");
+            emituj(labelaKraj + ":");
+        }
+        if (dinamickaAdresa) {
+            emituj("ST A, C[0]");
+        } else {
+            emituj("STI A, " + ciljnaAdresa);
+        }
         return;
     }
 
@@ -614,13 +660,35 @@ std::string CodeGenerator::generisi() {
         VarInfo info = infoVarijable(var);
 
         izlaz << labelaVarijable(var) << ": .BYTE ";
-
-        for (int i = 0; i < info.velicina; i++) {
-            if (i != 0) {
-                izlaz << ", ";
+        const VarDeclStmt* dekl = nullptr;
+        for (const auto& naredba : mainFunkcija->tijelo->naredbe) {
+            if (auto v = dynamic_cast<const VarDeclStmt*>(naredba.get())) {
+                if (v->ime == var) {
+                    dekl = v;
+                    break;
+                }
             }
+        }
 
-            izlaz << "0";
+        if (dekl && !dekl->inicijalizator.empty()) {
+            for (int i = 0; i < info.velicina; i++) {
+                if (i != 0) izlaz << ", ";
+
+                if (i < static_cast<int>(dekl->inicijalizator.size())) {
+                    if (auto broj = dynamic_cast<const NumberExpr*>(dekl->inicijalizator[i].get())) {
+                        izlaz << broj->vrijednost;
+                    } else {
+                        throw std::runtime_error("Inicijalizacija niza podrzava samo konstantne vrijednosti.");
+                    }
+                } else {
+                    izlaz << "0";
+                }
+            }
+        } else {
+            for (int i = 0; i < info.velicina; i++) {
+                if (i != 0) izlaz << ", ";
+                izlaz << "0";
+            }
         }
 
         izlaz << "\n";
