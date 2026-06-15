@@ -23,7 +23,7 @@ std::string ucitajFajl(const std::string& nazivFajla) {
 
 int main() {
     try {
-        std::string kod = ucitajFajl("testnizDod.osc");
+        std::string kod = ucitajFajl("kemal.osc");
 
         Lexer lexer(kod);
         std::vector<Token> tokeni = lexer.tokeniziraj();

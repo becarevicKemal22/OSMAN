@@ -59,6 +59,7 @@ const std::unordered_map<std::string, InstructionSpec> INSTRUCTIONS = {
     {"LEA",  {0b11100, InstructionFormat::RegBaseOffset, {}}},
     {"CMP",  {0b11101, InstructionFormat::RegReg, {}}},
     {"CMPI", {0b11110, InstructionFormat::RegImm, {Section::EQU}}},
+    {"MOV", {0b11111, InstructionFormat::RegReg, {}}},
 };
 
 enum class DirectiveType {

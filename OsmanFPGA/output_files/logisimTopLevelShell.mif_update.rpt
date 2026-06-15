@@ -1,5 +1,5 @@
 MIF/HEX Update report for logisimTopLevelShell
-Sat Jun 06 20:25:15 2026
+Sun Jun 07 19:42:51 2026
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -35,7 +35,7 @@ refer to the applicable agreement for further details.
 +---------------------------------------------------------------+
 ; MIF/HEX Update Summary                                        ;
 +-----------------------+---------------------------------------+
-; MIF/HEX Update Status ; Successful - Sat Jun 06 20:25:15 2026 ;
+; MIF/HEX Update Status ; Successful - Sun Jun 07 19:42:51 2026 ;
 ; Revision Name         ; logisimTopLevelShell                  ;
 ; Top-level Entity Name ; logisimTopLevelShell                  ;
 ; Family                ; Cyclone V                             ;
@@ -59,7 +59,7 @@ refer to the applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime MIF/HEX Update
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Sat Jun 06 20:25:12 2026
+    Info: Processing started: Sun Jun 07 19:42:48 2026
 Info: Command: quartus_cdb OSMAN -c logisimTopLevelShell --update_mif
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Critical Warning (127005): Memory depth (257) in the design file differs from memory depth (256) in the Memory Initialization File "C:/.Cloud Documents/Osman/OsmanFPGA/ram.mif" -- setting initial value for remaining addresses to 0
@@ -68,7 +68,7 @@ Info (39024): Processed the following Memory Initialization File(s)
     Info (39025): Processed Memory Initialization File C:/.Cloud Documents/Osman/OsmanFPGA/ram.mif File: C:/.Cloud Documents/Osman/OsmanFPGA/ram.mif Line: 0
 Info: Quartus Prime MIF/HEX Update was successful. 0 errors, 2 warnings
     Info: Peak virtual memory: 4879 megabytes
-    Info: Processing ended: Sat Jun 06 20:25:15 2026
+    Info: Processing ended: Sun Jun 07 19:42:51 2026
     Info: Elapsed time: 00:00:03
     Info: Total CPU time (on all processors): 00:00:01
 

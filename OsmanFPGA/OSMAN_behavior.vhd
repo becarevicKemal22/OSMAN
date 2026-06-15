@@ -370,7 +370,7 @@ BEGIN
 
 	InstrukcijskaMemorijaKomp : InstrukcijskaMemorija
 		PORT MAP (
-			address => s_logisimBus29,
+			address => s_logisimBus22,
 			clock   => s_logisimNet75,
 			q       => s_logisimBus9);
 

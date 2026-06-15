@@ -72,7 +72,6 @@
     <a name="downloadFrequency" val="256.00065536167773"/>
     <a name="simulationFrequency" val="1.0"/>
     <boardmap boardname="TERASIC_DE1_SOC">
-      <mc/>
       <mc key="/DIP_Switch" pmap="90_337_0,117_337_0,145_337_0,173_337_0,200_337_0,228_337_0,254_337_0,283_338_0"/>
       <mc key="/LED1" map="101,319"/>
       <mc key="/LED2" map="126,319"/>
@@ -429,14 +428,14 @@
     <comp lib="4" loc="(350,400)" name="ROM">
       <a name="appearance" val="logisim_evolution"/>
       <a name="contents">addr/data: 8 16
-91ee 923f da20 9206 da21 925b da22 924f
-da23 9266 da24 926d da25 927d da26 9207
-da27 927f da28 926f da29 81f9 5901 f101
-af15 81f8 9200 f164 b720 4a01 5164 9f1b
-95ee d40 d5a0 8dfc 9200 f10a b72a 4a01
-510a 9f25 95ee d40 d5a0 8dfd 9200 f101
-b734 4a01 5101 9f2f 95ee d40 d5a0 8dfe
-9f15
+9102 89f4 9100 89f3 93f5 82f3 b40 81f4
+d960 9105 89f2 9101 89f1 93f5 82f1 b40
+81f2 d960 9100 89ee 93f5 82ee b40 d160
+89f0 9101 89ed 93f5 82ed b40 d160 89ef
+81f0 82ef 940 89ec 9102 89eb 93f5 82eb
+b40 81ec d960 9102 89ea 93f5 82ea b40
+d160 89ff 9100 89e9 86e9 9f36 9f36 81f9
+5908 f101
 </a>
       <a name="dataWidth" val="16"/>
       <a name="label" val="InstrukcijskaMemorija"/>
@@ -2252,7 +2251,7 @@ b734 4a01 5101 9f2f 95ee d40 d5a0 8dfe
 0 88 c8 48 108 148 188 208
 248 98 d8 118 158 198 1c01c 2000
 81b 413 1d8 1c010 4010 8010 c010 10010
-14010 18010 8aa 4a2 a8 10c0 10d0
+14010 18010 8aa 4a2 a8 10c0 10d0 1c8
 </a>
       <a name="dataWidth" val="17"/>
       <a name="label" val="KontrolniROM"/>
