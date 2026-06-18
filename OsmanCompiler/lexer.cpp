@@ -7,6 +7,11 @@
 Lexer::Lexer(const std::string& izvor)
     : izvor(izvor), trenutni(0), linija(1) {
 }
+bool Lexer::isHexDigit(char c) {
+    return std::isdigit(static_cast<unsigned char>(c)) ||
+           (c >= 'a' && c <= 'f') ||
+           (c >= 'A' && c <= 'F');
+}
 
 bool Lexer::jeNaKraju() const {
     return trenutni >= static_cast<int>(izvor.length());
@@ -49,7 +54,9 @@ void Lexer::obradiIdentifikator() {
         {"else", TokenType::KeywordElse},
         {"while", TokenType::KeywordWhile},
         {"for", TokenType::KeywordFor},
-        {"output", TokenType::KeywordOutput}
+        {"output", TokenType::KeywordOutput},
+        {"input", TokenType::KeywordInput},
+
     };
 
     auto it = kljucneRijeci.find(tekst);
@@ -63,6 +70,25 @@ void Lexer::obradiIdentifikator() {
 
 void Lexer::obradiBroj() {
     std::string broj;
+
+    if (trenutniZnak() == '0' &&
+        (sljedeciZnak() == 'x' || sljedeciZnak() == 'X')) {
+
+        broj += uzmiZnak();
+        broj += uzmiZnak();
+
+        if (!isHexDigit(trenutniZnak())) {
+            throw std::runtime_error(
+                "Hex literal bez cifri iza '0x' na liniji " + std::to_string(linija));
+        }
+
+        while (isHexDigit(trenutniZnak())) {
+            broj += uzmiZnak();
+        }
+
+        dodajToken(TokenType::NumberLiteral, broj);
+        return;
+    }
 
     while (std::isdigit(static_cast<unsigned char>(trenutniZnak()))) {
         broj += uzmiZnak();

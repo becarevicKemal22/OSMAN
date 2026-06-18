@@ -62,11 +62,27 @@ std::unique_ptr<FunctionDecl> Parser::parsirajFunkciju() {
     Token ime = ocekuj(TokenType::Identifier, "ocekivano ime funkcije");
 
     ocekuj(TokenType::LeftParen, "ocekivano '(' nakon imena funkcije");
-    ocekuj(TokenType::RightParen, "ocekivano ')' nakon '('");
+
+    std::vector<Parametar> parametri;
+if (!provjeri(TokenType::RightParen)) {
+    do {
+        ocekuj(TokenType::KeywordNumber, "ocekivan tip parametra 'number'");
+
+        VarKind kind = VarKind::Normal;
+        if (poklopi(TokenType::Star)) {
+            kind = VarKind::Pointer;
+        }
+
+        Token p = ocekuj(TokenType::Identifier, "ocekivano ime parametra");
+        parametri.push_back(Parametar(p.value, kind));
+    } while (poklopi(TokenType::Comma));
+}
+
+    ocekuj(TokenType::RightParen, "ocekivano ')' nakon parametara");
 
     std::unique_ptr<BlockStmt> tijelo = parsirajBlok();
 
-    return std::make_unique<FunctionDecl>(ime.value, std::move(tijelo));
+    return std::make_unique<FunctionDecl>(ime.value, std::move(parametri), std::move(tijelo));
 }
 
 std::unique_ptr<BlockStmt> Parser::parsirajBlok() {
@@ -110,6 +126,11 @@ std::unique_ptr<Stmt> Parser::parsirajNaredbu() {
 
     if (provjeri(TokenType::Increment) || provjeri(TokenType::Decrement) ||
         provjeri(TokenType::Identifier) || provjeri(TokenType::Star)) {
+        if (provjeri(TokenType::Identifier) && provjeriSljedeci(TokenType::LeftParen)) {
+            std::unique_ptr<Expr> izraz = parsirajIzraz();
+            ocekuj(TokenType::Semicolon, "ocekivano ';' nakon poziva funkcije");
+            return std::make_unique<ExprStmt>(std::move(izraz));
+        }
         return parsirajDodjeluIliInkrement(true);
     }
 
@@ -137,7 +158,7 @@ std::unique_ptr<Stmt> Parser::parsirajDeklaracijuVarijable() {
         kind = VarKind::Array;
 
         Token broj = ocekuj(TokenType::NumberLiteral, "ocekivana velicina niza");
-        velicina = std::stoi(broj.value);
+velicina = std::stoi(broj.value, nullptr, 0);
 
         if (velicina <= 0) {
             throw std::runtime_error("Greska na liniji " + std::to_string(broj.line) + ": velicina niza mora biti veca od 0");
@@ -434,11 +455,29 @@ std::unique_ptr<Expr> Parser::parsirajUnarni() {
 
 std::unique_ptr<Expr> Parser::parsirajPrimarni() {
     if (poklopi(TokenType::NumberLiteral)) {
-        return std::make_unique<NumberExpr>(std::stoi(prethodni().value));
+    return std::make_unique<NumberExpr>(std::stoi(prethodni().value, nullptr, 0));
+}
+
+ if (poklopi(TokenType::KeywordInput)) {
+        ocekuj(TokenType::LeftParen, "ocekivano '(' nakon input");
+        std::unique_ptr<Expr> adresa = parsirajIzraz();
+        ocekuj(TokenType::RightParen, "ocekivano ')' nakon input adrese");
+        return std::make_unique<InputExpr>(std::move(adresa));
     }
 
     if (poklopi(TokenType::Identifier)) {
         std::string ime = prethodni().value;
+
+        if (poklopi(TokenType::LeftParen)) {
+            std::vector<std::unique_ptr<Expr>> argumenti;
+            if (!provjeri(TokenType::RightParen)) {
+                do {
+                    argumenti.push_back(parsirajIzraz());
+                } while (poklopi(TokenType::Comma));
+            }
+            ocekuj(TokenType::RightParen, "ocekivano ')' nakon argumenata poziva");
+            return std::make_unique<CallExpr>(ime, std::move(argumenti));
+        }
 
         if (poklopi(TokenType::LeftBracket)) {
             std::unique_ptr<Expr> indeks = parsirajIzraz();

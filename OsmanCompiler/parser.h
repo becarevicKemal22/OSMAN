@@ -27,6 +27,7 @@ class Parser {
     std::unique_ptr<BlockStmt> parsirajBlok();
 
     std::unique_ptr<Stmt> parsirajNaredbu();
+    std::unique_ptr<Expr> parsirajInput();
     std::unique_ptr<Stmt> parsirajDeklaracijuVarijable();
     std::unique_ptr<Stmt> parsirajDodjeluIliInkrement(bool ocekujTackaZarez = true);
     std::unique_ptr<Stmt> parsirajOutput();

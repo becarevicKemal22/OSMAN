@@ -1,13 +1,7 @@
 number main() {
     number x;
-    x = 12;
-
-    output(x);
-
-    output(240, x);
-
-    output(245, x, 2);
-    output(245, x, 4);
+    x = 0xFF;
+    output(254, x);
 
     return 0;
 }

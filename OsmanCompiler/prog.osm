@@ -1,22 +1,19 @@
-.EQU OUT 0xF8
+.EQU OUT 0xFF
 
 .DATA
-VAR_niz: .BYTE 12, 7, 4
-TMP_0: .BYTE 0
-TMP_RETURN: .BYTE 0
+STACK_TOP: .BYTE 0
+STACK_BUFFER: .BYTE 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+VAR_x: .BYTE 0
 
 .CODE
+LA SP, STACK_TOP
 MAIN:
-LI A, 1
-STI A, TMP_0
-LA C, VAR_niz
-LDI B, TMP_0
-ADD C, B
-LD A, C[0]
-STI A, OUT
+LDI A, 249
+STI A, VAR_x
+LDI A, VAR_x
+STI A, 254
 LI A, 0
-STI A, TMP_RETURN
-LDI PV, TMP_RETURN
+MOV PV, A
 JMP END
 END:
 JMP END

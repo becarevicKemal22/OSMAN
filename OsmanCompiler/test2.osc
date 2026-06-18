@@ -1,17 +1,6 @@
 number main() {
-    number a;
-    number b;
-    number rezultat;
-
-    a = 12;
-    b = 7;
-
-    if (a > b) {
-        rezultat = a - b;
-    } else {
-        rezultat = b - a;
-    }
-
-    output(rezultat);
+    number x;
+    x = input(0xF9);
+    output(254, x);
     return 0;
 }

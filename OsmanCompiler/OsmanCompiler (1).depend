@@ -1,0 +1,56 @@
+# depslib dependency file v1.0
+1781794753 source:c:\users\hanah\moj-osman-projekat\osmancompiler\lexer.cpp
+	"lexer.h"
+	<cctype>
+	<stdexcept>
+	<unordered_map>
+
+1781789596 c:\users\hanah\moj-osman-projekat\osmancompiler\lexer.h
+	<string>
+	<vector>
+	"token.h"
+
+1781794002 c:\users\hanah\moj-osman-projekat\osmancompiler\token.h
+	<string>
+
+1781790223 source:c:\users\hanah\moj-osman-projekat\osmancompiler\main.cpp
+	<iostream>
+	<fstream>
+	<sstream>
+	<vector>
+	<stdexcept>
+	"lexer.h"
+	"parser.h"
+	"codegen.h"
+
+1781794118 c:\users\hanah\moj-osman-projekat\osmancompiler\parser.h
+	<memory>
+	<stdexcept>
+	<string>
+	<vector>
+	"token.h"
+	"ast.h"
+
+1781794091 c:\users\hanah\moj-osman-projekat\osmancompiler\ast.h
+	<memory>
+	<string>
+	<vector>
+
+1781791092 c:\users\hanah\moj-osman-projekat\osmancompiler\codegen.h
+	<sstream>
+	<string>
+	<unordered_map>
+	<vector>
+	"ast.h"
+
+1781794197 source:c:\users\hanah\moj-osman-projekat\osmancompiler\parser.cpp
+	"parser.h"
+
+1781736408 source:c:\users\hanah\moj-osman-projekat\osmancompiler\token.cpp
+	"token.h"
+
+1781794348 source:c:\users\hanah\moj-osman-projekat\osmancompiler\codegen.cpp
+	"codegen.h"
+	<fstream>
+	<stdexcept>
+

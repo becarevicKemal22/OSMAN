@@ -13,6 +13,7 @@ enum class TokenType {
     KeywordWhile,
     KeywordFor,
     KeywordOutput,
+    KeywordInput,
 
     Identifier,
     NumberLiteral,

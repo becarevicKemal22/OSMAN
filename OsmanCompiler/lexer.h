@@ -23,6 +23,7 @@ class Lexer {
     void obradiIdentifikator();
     void obradiBroj();
     void preskociKomentar();
+    bool isHexDigit(char c);
 
 public:
     Lexer(const std::string& izvor);

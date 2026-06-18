@@ -11,6 +11,14 @@ enum class VarKind {
     Array
 };
 
+struct Parametar {
+    std::string ime;
+    VarKind kind;
+
+    Parametar(const std::string& ime, VarKind kind = VarKind::Normal)
+        : ime(ime), kind(kind) {}
+};
+
 struct Expr {
     virtual ~Expr() = default;
 };
@@ -66,6 +74,21 @@ struct BinaryExpr : Expr {
         : op(op), lijevo(std::move(lijevo)), desno(std::move(desno)) {}
 };
 
+struct CallExpr : Expr {
+    std::string ime;
+    std::vector<std::unique_ptr<Expr>> argumenti;
+
+    CallExpr(const std::string& ime, std::vector<std::unique_ptr<Expr>> argumenti)
+        : ime(ime), argumenti(std::move(argumenti)) {}
+};
+
+struct InputExpr : Expr {
+    std::unique_ptr<Expr> adresa;
+
+    InputExpr(std::unique_ptr<Expr> adresa)
+        : adresa(std::move(adresa)) {}
+};
+
 struct Stmt {
     virtual ~Stmt() = default;
 };
@@ -104,6 +127,13 @@ struct ReturnStmt : Stmt {
     std::unique_ptr<Expr> izraz;
 
     ReturnStmt(std::unique_ptr<Expr> izraz)
+        : izraz(std::move(izraz)) {}
+};
+
+struct ExprStmt : Stmt {
+    std::unique_ptr<Expr> izraz;
+
+    ExprStmt(std::unique_ptr<Expr> izraz)
         : izraz(std::move(izraz)) {}
 };
 
@@ -158,10 +188,11 @@ struct ForStmt : Stmt {
 
 struct FunctionDecl {
     std::string ime;
+    std::vector<Parametar> parametri;
     std::unique_ptr<BlockStmt> tijelo;
 
-    FunctionDecl(const std::string& ime, std::unique_ptr<BlockStmt> tijelo)
-        : ime(ime), tijelo(std::move(tijelo)) {}
+    FunctionDecl(const std::string& ime, std::vector<Parametar> parametri, std::unique_ptr<BlockStmt> tijelo)
+        : ime(ime), parametri(std::move(parametri)), tijelo(std::move(tijelo)) {}
 };
 
 struct Program {
