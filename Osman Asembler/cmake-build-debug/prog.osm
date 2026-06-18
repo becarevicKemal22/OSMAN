@@ -1,2 +1,38 @@
-LI A, 0xF0
-STI A, 0xFF
+.equ DISP1 0xFE
+.equ DISP2 0xFD
+.equ DISP3 0xFC
+.equ TASTERI 0xF9
+.equ MASKA_TAST1 0x01
+.equ LED 0xFF
+.equ DIP 0xF8
+
+.data
+brojevi: .byte 63, 6, 91, 79, 102, 109, 125, 7, 127, 111
+test: .byte 91, 63
+
+.code
+start:
+LA E, test
+NOP
+LD B, E[1]
+STI B, LED
+jmp start
+LA E, brojevi
+LD B, E[0]
+LDI A, TASTERI
+CMPI A, 0x01
+BNE iza1
+LD B, E[1]
+JMP ispis
+iza1:
+CMPI A, 0x02
+BNE iza2
+LD B, E[2]
+JMP ispis
+iza2:
+CMPI A, 0x04
+BNE ispis
+LD B, E[3]
+ispis:
+STI B, LED
+JMP start

@@ -116,6 +116,7 @@ BEGIN
       "0"&X"00A8" WHEN "1"&X"C",
       "0"&X"10C0" WHEN "1"&X"D",
       "0"&X"10D0" WHEN "1"&X"E",
+      "0"&X"01C8" WHEN "1"&X"F",
       "0"&X"0000" WHEN OTHERS;
 
 END platformIndependent;

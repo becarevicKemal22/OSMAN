@@ -2,84 +2,84 @@
 Timing Analyzer Summary
 ------------------------------------------------------------
 
-Type  : Slow 1100mV 85C Model Setup 'altera_reserved_tck'
-Slack : 12.066
+Type  : Slow 1100mV 85C Model Setup 'fpgaGlobalClock'
+Slack : -9.123
+TNS   : -1194.333
+
+Type  : Slow 1100mV 85C Model Hold 'fpgaGlobalClock'
+Slack : 0.299
 TNS   : 0.000
 
-Type  : Slow 1100mV 85C Model Hold 'altera_reserved_tck'
-Slack : 0.649
+Type  : Slow 1100mV 85C Model Recovery 'fpgaGlobalClock'
+Slack : -1.460
+TNS   : -149.361
+
+Type  : Slow 1100mV 85C Model Removal 'fpgaGlobalClock'
+Slack : 1.048
 TNS   : 0.000
 
-Type  : Slow 1100mV 85C Model Recovery 'altera_reserved_tck'
-Slack : 30.649
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'fpgaGlobalClock'
+Slack : -2.636
+TNS   : -199.006
+
+Type  : Slow 1100mV 0C Model Setup 'fpgaGlobalClock'
+Slack : -8.881
+TNS   : -1165.645
+
+Type  : Slow 1100mV 0C Model Hold 'fpgaGlobalClock'
+Slack : 0.279
 TNS   : 0.000
 
-Type  : Slow 1100mV 85C Model Removal 'altera_reserved_tck'
-Slack : 0.874
+Type  : Slow 1100mV 0C Model Recovery 'fpgaGlobalClock'
+Slack : -1.394
+TNS   : -141.737
+
+Type  : Slow 1100mV 0C Model Removal 'fpgaGlobalClock'
+Slack : 0.996
 TNS   : 0.000
 
-Type  : Slow 1100mV 85C Model Minimum Pulse Width 'altera_reserved_tck'
-Slack : 15.235
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'fpgaGlobalClock'
+Slack : -2.636
+TNS   : -188.817
+
+Type  : Fast 1100mV 85C Model Setup 'fpgaGlobalClock'
+Slack : -4.655
+TNS   : -589.131
+
+Type  : Fast 1100mV 85C Model Hold 'fpgaGlobalClock'
+Slack : 0.180
 TNS   : 0.000
 
-Type  : Slow 1100mV 0C Model Setup 'altera_reserved_tck'
-Slack : 12.091
+Type  : Fast 1100mV 85C Model Recovery 'fpgaGlobalClock'
+Slack : -0.271
+TNS   : -16.539
+
+Type  : Fast 1100mV 85C Model Removal 'fpgaGlobalClock'
+Slack : 0.372
 TNS   : 0.000
 
-Type  : Slow 1100mV 0C Model Hold 'altera_reserved_tck'
-Slack : 0.580
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'fpgaGlobalClock'
+Slack : -2.636
+TNS   : -169.223
+
+Type  : Fast 1100mV 0C Model Setup 'fpgaGlobalClock'
+Slack : -4.074
+TNS   : -512.670
+
+Type  : Fast 1100mV 0C Model Hold 'fpgaGlobalClock'
+Slack : 0.167
 TNS   : 0.000
 
-Type  : Slow 1100mV 0C Model Recovery 'altera_reserved_tck'
-Slack : 30.725
+Type  : Fast 1100mV 0C Model Recovery 'fpgaGlobalClock'
+Slack : -0.143
+TNS   : -2.442
+
+Type  : Fast 1100mV 0C Model Removal 'fpgaGlobalClock'
+Slack : 0.280
 TNS   : 0.000
 
-Type  : Slow 1100mV 0C Model Removal 'altera_reserved_tck'
-Slack : 0.827
-TNS   : 0.000
-
-Type  : Slow 1100mV 0C Model Minimum Pulse Width 'altera_reserved_tck'
-Slack : 15.229
-TNS   : 0.000
-
-Type  : Fast 1100mV 85C Model Setup 'altera_reserved_tck'
-Slack : 14.291
-TNS   : 0.000
-
-Type  : Fast 1100mV 85C Model Hold 'altera_reserved_tck'
-Slack : 0.312
-TNS   : 0.000
-
-Type  : Fast 1100mV 85C Model Recovery 'altera_reserved_tck'
-Slack : 31.482
-TNS   : 0.000
-
-Type  : Fast 1100mV 85C Model Removal 'altera_reserved_tck'
-Slack : 0.426
-TNS   : 0.000
-
-Type  : Fast 1100mV 85C Model Minimum Pulse Width 'altera_reserved_tck'
-Slack : 14.907
-TNS   : 0.000
-
-Type  : Fast 1100mV 0C Model Setup 'altera_reserved_tck'
-Slack : 14.602
-TNS   : 0.000
-
-Type  : Fast 1100mV 0C Model Hold 'altera_reserved_tck'
-Slack : 0.257
-TNS   : 0.000
-
-Type  : Fast 1100mV 0C Model Recovery 'altera_reserved_tck'
-Slack : 31.641
-TNS   : 0.000
-
-Type  : Fast 1100mV 0C Model Removal 'altera_reserved_tck'
-Slack : 0.384
-TNS   : 0.000
-
-Type  : Fast 1100mV 0C Model Minimum Pulse Width 'altera_reserved_tck'
-Slack : 14.873
-TNS   : 0.000
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'fpgaGlobalClock'
+Slack : -2.636
+TNS   : -186.838
 
 ------------------------------------------------------------
