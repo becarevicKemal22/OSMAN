@@ -18,79 +18,34 @@ ARCHITECTURE platformIndependent OF RAMCONTENTS_MemorijaPodataka IS
 --------------------------------------------------------------------------------
 -- All used signals are defined here                                          --
 --------------------------------------------------------------------------------
-   SIGNAL s_dataInReg       : std_logic_vector( 7 DOWNTO 0 );
-   SIGNAL s_dataOutReg      : std_logic_vector( 7 DOWNTO 0 );
    SIGNAL s_memContents     : memoryArray;
-   SIGNAL s_oe              : std_logic;
-   SIGNAL s_oeReg           : std_logic;
-   SIGNAL s_ramAddress      : std_logic_vector( 7 DOWNTO 0 );
    SIGNAL s_ramDataOut      : std_logic_vector( 7 DOWNTO 0 );
-   SIGNAL s_readAddressReg  : std_logic_vector( 7 DOWNTO 0 );
-   SIGNAL s_tickDelayLine   : std_logic_vector( 2 DOWNTO 0 );
-   SIGNAL s_we              : std_logic;
-   SIGNAL s_weReg           : std_logic;
-   SIGNAL s_writeAddressReg : std_logic_vector( 7 DOWNTO 0 );
 	
-	attribute ram_init_file : string;
-	attribute ram_init_file of s_memContents : signal is "ram.mif";
+   attribute ram_init_file : string;
+   attribute ram_init_file of s_memContents : signal is "ram.mif";
 
 BEGIN
 
    --------------------------------------------------------------------------------
-   -- The control signals are defined here                                       --
+   -- IZLAZ BEZ REGISTRA (Imitira MegaWizard opciju gdje "q" nije registered)
    --------------------------------------------------------------------------------
-   s_oe <= s_tickDelayLine(2) AND s_oeReg;
-   s_we <= s_tickDelayLine(0) AND s_weReg;
+   dataOut <= s_ramDataOut WHEN oe = '1' ELSE (others => '0');
 
    --------------------------------------------------------------------------------
-   -- The input registers are defined here                                       --
+   -- GLAVNI MEMORIJSKI BLOK (Sintetizira se kao pravi M10K RAM na 50MHz)
    --------------------------------------------------------------------------------
-   inputRegs : PROCESS(clock, tick, address, dataIn, we, oe) IS
+   mem : PROCESS(clock) IS
    BEGIN
-      IF (rising_edge(clock)) THEN
-           IF (tick = '1') THEN
-             s_dataInReg       <= dataIn;
-             s_writeAddressReg <= address;
-             s_readAddressReg  <= address;
-             s_weReg           <= we;
-             s_oeReg           <= oe;
+      IF (falling_edge(clock)) THEN
+         -- 1. Sinhroni upis (vezan strogo za CPU tick signal generator)
+         IF (we = '1' AND tick = '1') THEN
+            s_memContents(to_integer(unsigned(address))) <= dataIn;
          END IF;
-      END IF;
-   END PROCESS inputRegs;
-
-   tickPipeReg : PROCESS(clock) IS
-   BEGIN
-      IF (rising_edge(clock)) THEN
-          s_tickDelayLine(0)          <= tick;
-          s_tickDelayLine(2 DOWNTO 1) <= s_tickDelayLine(1 DOWNTO 0);
-      END IF;
-   END PROCESS tickPipeReg;
-
-   --------------------------------------------------------------------------------
-   -- The actual memorie(s) is(are) defined here                                 --
-   --------------------------------------------------------------------------------
-   s_ramAddress <= s_writeAddressReg WHEN s_tickDelayLine(0) = '1' ELSE s_readAddressReg;
-
-   mem : PROCESS(clock , s_we, s_dataInReg, s_ramAddress) IS
-   BEGIN
-      IF (rising_edge(clock)) THEN
-         IF (s_we = '1') THEN
-            s_memContents(to_integer(unsigned(s_ramAddress))) <= s_dataInReg;
-         END IF;
-         s_ramDataOut <= s_memContents(to_integer(unsigned(s_ramAddress)));
+         
+         -- 2. Sinhrono čitanje (Oslobođeno od CPU tick ograničenja!)
+         -- Ovim RAM na svaki tvoj glavni oscilator procesira trenutnu adresu sa magistrale
+         s_ramDataOut <= s_memContents(to_integer(unsigned(address)));
       END IF;
    END PROCESS mem;
-
-   --------------------------------------------------------------------------------
-   -- The output register is defined here                                        --
-   --------------------------------------------------------------------------------
-   res : PROCESS(clock, s_oe, s_ramDataOut) IS
-   BEGIN
-      IF (rising_edge(clock)) THEN
-         IF (s_oe = '1') THEN
-           dataOut <= s_ramDataOut;
-         END IF;
-      END IF;
-   END PROCESS res;
 
 END platformIndependent;

@@ -18,3 +18,7 @@
 2050	2605	8024734782885786	Osman_Asembler.exe	512517e81952ab57
 6	2181	8024743152842331	CMakeFiles/Osman_Asembler.dir/Parser.cpp.obj	473040b2a29065a2
 2181	2717	8024743174601579	Osman_Asembler.exe	512517e81952ab57
+45	1207	8032687989477884	CMakeFiles/Osman_Asembler.dir/Lexer.cpp.obj	88bcf683bd7ec2f7
+40	1384	8032687989427777	CMakeFiles/Osman_Asembler.dir/main.cpp.obj	7d316fdd9bb8e071
+50	2003	8032687989527883	CMakeFiles/Osman_Asembler.dir/Parser.cpp.obj	473040b2a29065a2
+2003	2528	8032688009056844	Osman_Asembler.exe	512517e81952ab57

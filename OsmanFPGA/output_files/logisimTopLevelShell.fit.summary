@@ -1,16 +1,16 @@
-Fitter Status : Successful - Mon Jun 08 00:40:38 2026
+Fitter Status : Successful - Thu Jun 18 02:25:26 2026
 Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 Revision Name : logisimTopLevelShell
 Top-level Entity Name : logisimTopLevelShell
 Family : Cyclone V
 Device : 5CSEMA5F31C6
 Timing Models : Final
-Logic utilization (in ALMs) : 260 / 32,070 ( < 1 % )
-Total registers : 309
+Logic utilization (in ALMs) : 210 / 32,070 ( < 1 % )
+Total registers : 168
 Total pins : 42 / 457 ( 9 % )
 Total virtual pins : 0
-Total block memory bits : 6,144 / 4,065,280 ( < 1 % )
-Total RAM Blocks : 2 / 397 ( < 1 % )
+Total block memory bits : 2,048 / 4,065,280 ( < 1 % )
+Total RAM Blocks : 1 / 397 ( < 1 % )
 Total DSP Blocks : 0 / 87 ( 0 % )
 Total HSSI RX PCSs : 0
 Total HSSI PMA RX Deserializers : 0
