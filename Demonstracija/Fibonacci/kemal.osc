@@ -1,0 +1,44 @@
+number fibonacci(number n){
+    if(n <= 1){
+        return n;
+    }
+
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+
+number displejevi(number broj, number* segmenti, number* adrese) {
+    number trenutni_broj;
+    number i;
+    number kolicnik;      // Izvučeno na vrh funkcije
+    number cifra;         // Izvučeno na vrh funkcije
+    number kod_za_displej;// Izvučeno na vrh funkcije
+
+    trenutni_broj = broj;
+
+    // POPRAVKA: i < 3 kako bi petlja isla kroz sva 3 displeja (0, 1, 2)
+    for(i = 0; i < 3; i++) {
+        kolicnik = 0;
+
+        while(trenutni_broj >= 10) {
+            trenutni_broj = trenutni_broj - 10;
+            kolicnik = kolicnik + 1;
+        }
+
+        cifra = trenutni_broj;
+        kod_za_displej = segmenti[cifra];
+        output(adrese[i], kod_za_displej);
+
+        trenutni_broj = kolicnik;
+    }
+}
+
+number main(){
+    number segmenti[10] = {63, 6, 91, 79, 102, 109, 125, 7, 127, 111};
+    number ADRESE_DISPLEJA[3] = {0xFE, 0xFD, 0xFC};
+
+    number rez;
+    rez = fibonacci(11);
+
+    displejevi(rez, segmenti, ADRESE_DISPLEJA);
+}

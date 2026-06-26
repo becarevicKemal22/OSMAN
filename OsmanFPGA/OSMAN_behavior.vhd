@@ -218,7 +218,7 @@ ARCHITECTURE platformIndependent OF OSMAN IS
    SIGNAL s_logisimBus56 : std_logic_vector( 7 DOWNTO 0 );
    SIGNAL s_logisimBus59 : std_logic_vector( 2 DOWNTO 0 );
    SIGNAL s_logisimBus6  : std_logic_vector( 7 DOWNTO 0 );
-   SIGNAL s_logisimBus7  : std_logic_vector( 7 DOWNTO 0 );
+   SIGNAL s_logisimBus8  : std_logic_vector( 7 DOWNTO 0 );
    SIGNAL s_logisimBus9  : std_logic_vector( 7 DOWNTO 0 );
    SIGNAL s_logisimNet12 : std_logic;
    SIGNAL s_logisimNet13 : std_logic;
@@ -260,6 +260,7 @@ ARCHITECTURE platformIndependent OF OSMAN IS
    SIGNAL s_logisimNet67 : std_logic;
    SIGNAL s_logisimNet68 : std_logic;
    SIGNAL s_logisimNet69 : std_logic;
+   SIGNAL s_logisimNet7  : std_logic;
    SIGNAL s_logisimNet70 : std_logic;
    SIGNAL s_logisimNet71 : std_logic;
    SIGNAL s_logisimNet72 : std_logic;
@@ -270,7 +271,6 @@ ARCHITECTURE platformIndependent OF OSMAN IS
    SIGNAL s_logisimNet77 : std_logic;
    SIGNAL s_logisimNet78 : std_logic;
    SIGNAL s_logisimNet79 : std_logic;
-   SIGNAL s_logisimNet8  : std_logic;
    SIGNAL s_logisimNet83 : std_logic;
    SIGNAL s_logisimNet84 : std_logic;
    SIGNAL s_logisimNet85 : std_logic;
@@ -347,6 +347,16 @@ BEGIN
    -- Button: SW0
    s_logisimBus35(0) <= logisimInputBubbles(9);
 
+   -- 7-Segment Display: SedSeg1
+   logisimOutputBubbles(24) <= s_logisimBus14(0);
+   logisimOutputBubbles(25) <= s_logisimBus14(1);
+   logisimOutputBubbles(26) <= s_logisimBus14(2);
+   logisimOutputBubbles(27) <= s_logisimBus14(3);
+   logisimOutputBubbles(28) <= s_logisimBus14(4);
+   logisimOutputBubbles(29) <= s_logisimBus14(5);
+   logisimOutputBubbles(30) <= s_logisimBus14(6);
+   logisimOutputBubbles(31) <= s_logisimBus14(7);
+
    -- Button: SW1
    s_logisimBus35(1) <= logisimInputBubbles(10);
 
@@ -358,53 +368,181 @@ BEGIN
 
    -- ROM: InstrukcijskaMemorija
    WITH (s_logisimBus25) SELECT s_logisimBus34 <=
-      X"81F9" WHEN X"00",
-      X"5901" WHEN X"01",
-      X"F101" WHEN X"02",
-      X"AF00" WHEN X"03",
-      X"81F8" WHEN X"04",
-      X"9200" WHEN X"05",
-      X"F164" WHEN X"06",
-      X"B70B" WHEN X"07",
-      X"4A01" WHEN X"08",
-      X"5164" WHEN X"09",
-      X"9F06" WHEN X"0A",
-      X"95EE" WHEN X"0B",
-      X"0D40" WHEN X"0C",
-      X"D5A0" WHEN X"0D",
-      X"8DFC" WHEN X"0E",
-      X"9200" WHEN X"0F",
-      X"F10A" WHEN X"10",
-      X"B715" WHEN X"11",
-      X"4A01" WHEN X"12",
-      X"510A" WHEN X"13",
-      X"9F10" WHEN X"14",
-      X"95EE" WHEN X"15",
-      X"0D40" WHEN X"16",
-      X"D5A0" WHEN X"17",
-      X"8DFD" WHEN X"18",
-      X"9200" WHEN X"19",
-      X"F101" WHEN X"1A",
-      X"B71F" WHEN X"1B",
-      X"4A01" WHEN X"1C",
-      X"5101" WHEN X"1D",
-      X"9F1A" WHEN X"1E",
-      X"95EE" WHEN X"1F",
-      X"0D40" WHEN X"20",
-      X"D5A0" WHEN X"21",
-      X"8DFE" WHEN X"22",
-      X"9F00" WHEN X"23",
+      X"90F7" WHEN X"00",
+      X"910B" WHEN X"01",
+      X"5001" WHEN X"02",
+      X"D900" WHEN X"03",
+      X"7715" WHEN X"04",
+      X"4801" WHEN X"05",
+      X"F9C0" WHEN X"06",
+      X"8971" WHEN X"07",
+      X"9172" WHEN X"08",
+      X"5001" WHEN X"09",
+      X"D900" WHEN X"0A",
+      X"9175" WHEN X"0B",
+      X"5001" WHEN X"0C",
+      X"D900" WHEN X"0D",
+      X"8171" WHEN X"0E",
+      X"5001" WHEN X"0F",
+      X"D900" WHEN X"10",
+      X"7753" WHEN X"11",
+      X"4803" WHEN X"12",
+      X"F9C0" WHEN X"13",
+      X"9F14" WHEN X"14",
+      X"5001" WHEN X"15",
+      X"DF00" WHEN X"16",
+      X"5001" WHEN X"17",
+      X"DD00" WHEN X"18",
+      X"FD00" WHEN X"19",
+      X"D1A2" WHEN X"1A",
+      X"5001" WHEN X"1B",
+      X"D900" WHEN X"1C",
+      X"9101" WHEN X"1D",
+      X"FA20" WHEN X"1E",
+      X"D100" WHEN X"1F",
+      X"4801" WHEN X"20",
+      X"EA20" WHEN X"21",
+      X"BF25" WHEN X"22",
+      X"9100" WHEN X"23",
+      X"9F26" WHEN X"24",
+      X"9101" WHEN X"25",
+      X"F100" WHEN X"26",
+      X"A72B" WHEN X"27",
+      X"D1A2" WHEN X"28",
+      X"FE20" WHEN X"29",
+      X"9F4D" WHEN X"2A",
+      X"D1A2" WHEN X"2B",
+      X"5001" WHEN X"2C",
+      X"D900" WHEN X"2D",
+      X"9101" WHEN X"2E",
+      X"FA20" WHEN X"2F",
+      X"D100" WHEN X"30",
+      X"4801" WHEN X"31",
+      X"1140" WHEN X"32",
+      X"5001" WHEN X"33",
+      X"D900" WHEN X"34",
+      X"7715" WHEN X"35",
+      X"4801" WHEN X"36",
+      X"F9C0" WHEN X"37",
+      X"5001" WHEN X"38",
+      X"D900" WHEN X"39",
+      X"D1A2" WHEN X"3A",
+      X"5001" WHEN X"3B",
+      X"D900" WHEN X"3C",
+      X"9102" WHEN X"3D",
+      X"FA20" WHEN X"3E",
+      X"D100" WHEN X"3F",
+      X"4801" WHEN X"40",
+      X"1140" WHEN X"41",
+      X"5001" WHEN X"42",
+      X"D900" WHEN X"43",
+      X"7715" WHEN X"44",
+      X"4801" WHEN X"45",
+      X"F9C0" WHEN X"46",
+      X"FA20" WHEN X"47",
+      X"D100" WHEN X"48",
+      X"4801" WHEN X"49",
+      X"0940" WHEN X"4A",
+      X"FE20" WHEN X"4B",
+      X"9F4D" WHEN X"4C",
+      X"F8A0" WHEN X"4D",
+      X"D500" WHEN X"4E",
+      X"4801" WHEN X"4F",
+      X"D700" WHEN X"50",
+      X"4801" WHEN X"51",
+      X"7F00" WHEN X"52",
+      X"5001" WHEN X"53",
+      X"DF00" WHEN X"54",
+      X"5001" WHEN X"55",
+      X"DD00" WHEN X"56",
+      X"FD00" WHEN X"57",
+      X"5005" WHEN X"58",
+      X"D1A2" WHEN X"59",
+      X"D9FF" WHEN X"5A",
+      X"9100" WHEN X"5B",
+      X"D9FE" WHEN X"5C",
+      X"D1FE" WHEN X"5D",
+      X"5001" WHEN X"5E",
+      X"D900" WHEN X"5F",
+      X"9103" WHEN X"60",
+      X"FA20" WHEN X"61",
+      X"D100" WHEN X"62",
+      X"4801" WHEN X"63",
+      X"E940" WHEN X"64",
+      X"B768" WHEN X"65",
+      X"9100" WHEN X"66",
+      X"9F69" WHEN X"67",
+      X"9101" WHEN X"68",
+      X"F100" WHEN X"69",
+      X"A7A8" WHEN X"6A",
+      X"9100" WHEN X"6B",
+      X"D9FD" WHEN X"6C",
+      X"D1FF" WHEN X"6D",
+      X"5001" WHEN X"6E",
+      X"D900" WHEN X"6F",
+      X"910A" WHEN X"70",
+      X"FA20" WHEN X"71",
+      X"D100" WHEN X"72",
+      X"4801" WHEN X"73",
+      X"E940" WHEN X"74",
+      X"BF78" WHEN X"75",
+      X"9100" WHEN X"76",
+      X"9F79" WHEN X"77",
+      X"9101" WHEN X"78",
+      X"F100" WHEN X"79",
+      X"A78E" WHEN X"7A",
+      X"D1FF" WHEN X"7B",
+      X"5001" WHEN X"7C",
+      X"D900" WHEN X"7D",
+      X"910A" WHEN X"7E",
+      X"FA20" WHEN X"7F",
+      X"D100" WHEN X"80",
+      X"4801" WHEN X"81",
+      X"1140" WHEN X"82",
+      X"D9FF" WHEN X"83",
+      X"D1FD" WHEN X"84",
+      X"5001" WHEN X"85",
+      X"D900" WHEN X"86",
+      X"9101" WHEN X"87",
+      X"FA20" WHEN X"88",
+      X"D100" WHEN X"89",
+      X"4801" WHEN X"8A",
+      X"0940" WHEN X"8B",
+      X"D9FD" WHEN X"8C",
+      X"9F6D" WHEN X"8D",
+      X"D1FF" WHEN X"8E",
+      X"D9FC" WHEN X"8F",
+      X"D1FC" WHEN X"90",
+      X"FA20" WHEN X"91",
+      X"D3A3" WHEN X"92",
+      X"0B40" WHEN X"93",
+      X"D160" WHEN X"94",
+      X"D9FB" WHEN X"95",
+      X"D1FB" WHEN X"96",
+      X"5001" WHEN X"97",
+      X"D900" WHEN X"98",
+      X"D1FE" WHEN X"99",
+      X"FA20" WHEN X"9A",
+      X"D3A4" WHEN X"9B",
+      X"0B40" WHEN X"9C",
+      X"D160" WHEN X"9D",
+      X"FB20" WHEN X"9E",
+      X"D100" WHEN X"9F",
+      X"4801" WHEN X"A0",
+      X"D960" WHEN X"A1",
+      X"D1FD" WHEN X"A2",
+      X"D9FF" WHEN X"A3",
+      X"D1FE" WHEN X"A4",
+      X"4901" WHEN X"A5",
+      X"D9FE" WHEN X"A6",
+      X"9F5D" WHEN X"A7",
+      X"F8A0" WHEN X"A8",
+      X"D500" WHEN X"A9",
+      X"4801" WHEN X"AA",
+      X"D700" WHEN X"AB",
+      X"4801" WHEN X"AC",
+      X"7F00" WHEN X"AD",
       X"0000" WHEN OTHERS;
-
-   -- 7-Segment Display: SedSeg1
-   logisimOutputBubbles(24) <= s_logisimBus14(0);
-   logisimOutputBubbles(25) <= s_logisimBus14(1);
-   logisimOutputBubbles(26) <= s_logisimBus14(2);
-   logisimOutputBubbles(27) <= s_logisimBus14(3);
-   logisimOutputBubbles(28) <= s_logisimBus14(4);
-   logisimOutputBubbles(29) <= s_logisimBus14(5);
-   logisimOutputBubbles(30) <= s_logisimBus14(6);
-   logisimOutputBubbles(31) <= s_logisimBus14(7);
 
    --------------------------------------------------------------------------------
    -- Here all normal components are defined                                     --
@@ -420,7 +558,7 @@ BEGIN
    PLEXERS_2 : Multiplexer_bus_2
       GENERIC MAP ( nrOfBits => 8 )
       PORT MAP ( enable  => '1',
-                 muxIn_0 => s_logisimBus7(7 DOWNTO 0),
+                 muxIn_0 => s_logisimBus8(7 DOWNTO 0),
                  muxIn_1 => s_logisimBus34(7 DOWNTO 0),
                  muxOut  => s_logisimBus51(7 DOWNTO 0),
                  sel     => s_logisimNet62 );
@@ -606,7 +744,7 @@ BEGIN
    RD : RegistarskaDatoteka
       PORT MAP ( Clock             => s_logisimNet83,
                  PodaciReg1        => s_logisimBus5(7 DOWNTO 0),
-                 PodaciReg2        => s_logisimBus7(7 DOWNTO 0),
+                 PodaciReg2        => s_logisimBus8(7 DOWNTO 0),
                  PodaciUpis        => s_logisimBus16(7 DOWNTO 0),
                  Reg1Adresa        => s_logisimBus34(10 DOWNTO 8),
                  Reg2Adresa        => s_logisimBus34(7 DOWNTO 5),

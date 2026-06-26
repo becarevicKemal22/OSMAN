@@ -109,7 +109,7 @@ BEGIN
 
    BASE_1 : logisimTickGenerator
       GENERIC MAP ( nrOfBits    => 18,
-                    reloadValue => 195311 )
+                    reloadValue => 12500 )
       PORT MAP ( FPGAClock => s_synthesizedClock,
                  FPGATick  => s_fpgaTick );
 
