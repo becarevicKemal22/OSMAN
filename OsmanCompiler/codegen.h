@@ -31,7 +31,6 @@ class CodeGenerator {
 bool uMainu;
 std::unordered_map<std::string, OkvirInfo> okvir;
 std::string krajFunkcijeLabela;
-    static const int VELICINA_STEKA = 120;
     bool jePokazivacUOkviru(const std::string& ime) const;
 
     void emituj(const std::string& linija);

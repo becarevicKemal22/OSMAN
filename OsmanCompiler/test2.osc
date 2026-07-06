@@ -1,6 +1,14 @@
+number sab(number x, number y){
+    x = x + y;
+    return x;
+}
+
 number main() {
     number x;
-    x = input(0xF9);
-    output(254, x);
+    x = 10;
+    number y;
+    y = 10;
+    x = sab(x,y);
+    output(0xFF, x);
     return 0;
 }

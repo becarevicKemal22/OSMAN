@@ -22,9 +22,12 @@ std::string ucitajFajl(const std::string& nazivFajla) {
 }
 
 int main() {
-    try {
-        std::string kod = ucitajFajl("kemal.osc");
+     try {
+        std::string nazivFajla;
+        std::cout << "Unesite naziv fajla: ";
+        std::cin >> nazivFajla;
 
+        std::string kod = ucitajFajl(nazivFajla);
         Lexer lexer(kod);
         std::vector<Token> tokeni = lexer.tokeniziraj();
 

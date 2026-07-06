@@ -13,7 +13,7 @@
 1781794002 c:\users\hanah\moj-osman-projekat\osmancompiler\token.h
 	<string>
 
-1781790223 source:c:\users\hanah\moj-osman-projekat\osmancompiler\main.cpp
+1783344486 source:c:\users\hanah\moj-osman-projekat\osmancompiler\main.cpp
 	<iostream>
 	<fstream>
 	<sstream>
@@ -31,25 +31,25 @@
 	"token.h"
 	"ast.h"
 
-1781794091 c:\users\hanah\moj-osman-projekat\osmancompiler\ast.h
+1783343142 c:\users\hanah\moj-osman-projekat\osmancompiler\ast.h
 	<memory>
 	<string>
 	<vector>
 
-1781791092 c:\users\hanah\moj-osman-projekat\osmancompiler\codegen.h
+1783344150 c:\users\hanah\moj-osman-projekat\osmancompiler\codegen.h
 	<sstream>
 	<string>
 	<unordered_map>
 	<vector>
 	"ast.h"
 
-1781794197 source:c:\users\hanah\moj-osman-projekat\osmancompiler\parser.cpp
+1783343142 source:c:\users\hanah\moj-osman-projekat\osmancompiler\parser.cpp
 	"parser.h"
 
-1781736408 source:c:\users\hanah\moj-osman-projekat\osmancompiler\token.cpp
+1783343142 source:c:\users\hanah\moj-osman-projekat\osmancompiler\token.cpp
 	"token.h"
 
-1781794348 source:c:\users\hanah\moj-osman-projekat\osmancompiler\codegen.cpp
+1783344357 source:c:\users\hanah\moj-osman-projekat\osmancompiler\codegen.cpp
 	"codegen.h"
 	<fstream>
 	<stdexcept>

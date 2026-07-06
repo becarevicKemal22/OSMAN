@@ -24,13 +24,13 @@ std::string CodeGenerator::novaLabela(const std::string& prefiks) {
 }
 
 void CodeGenerator::gurni(const std::string& reg) {
-    emituj("SUBI SP, 1");
     emituj("ST " + reg + ", SP[0]");
+    emituj("ADDI SP, 1");
 }
 
 void CodeGenerator::skini(const std::string& reg) {
-    emituj("LD " + reg + ", SP[0]");
-    emituj("ADDI SP, 1");
+    emituj("SUBI SP, 1");
+emituj("LD " + reg + ", SP[0]");
 }
 
 void CodeGenerator::ucitajVarijablu(const std::string& ime, const std::string& reg) {
@@ -112,8 +112,8 @@ void CodeGenerator::prikupiLokalne(const BlockStmt& blok, int& brojLokalnih) {
     if (okvir.count(deklaracija->ime)) {
         throw std::runtime_error("Varijabla '" + deklaracija->ime + "' je vec deklarisana.");
     }
-    int offset = -(1 + brojLokalnih);
-    if (offset < -16) {
+    int offset = brojLokalnih;
+    if (offset > 15) {
         throw std::runtime_error("Previse lokalnih varijabli u funkciji (max 16).");
     }
     okvir[deklaracija->ime] = {offset, deklaracija->kind};
@@ -425,7 +425,7 @@ void CodeGenerator::generisiPoziv(const CallExpr* poziv, const std::string& regi
     emituj("CALL " + poziv->ime);
 
     if (n > 0) {
-        emituj("ADDI SP, " + std::to_string(n));
+        emituj("SUBI SP, " + std::to_string(n));
     }
 
     if (registar != "PV") {
@@ -582,8 +582,8 @@ void CodeGenerator::generisiProceduru(FunctionDecl* funkcija) {
 
    for (size_t i = 0; i < funkcija->parametri.size(); ++i) {
     const Parametar& p = funkcija->parametri[i];
-    int offset = 2 + static_cast<int>(i);
-    if (offset > 15) {
+    int offset = -(3 + static_cast<int>(i));
+if (offset < -16) {
         throw std::runtime_error("Previse parametara u funkciji '" + funkcija->ime + "' (max 14).");
     }
     if (okvir.count(p.ime)) {
@@ -598,35 +598,25 @@ void CodeGenerator::generisiProceduru(FunctionDecl* funkcija) {
     krajFunkcijeLabela = funkcija->ime + "_END";
 
     emituj(funkcija->ime + ":");
-    emituj("SUBI SP, 1");
-    emituj("ST PA, SP[0]");
-    emituj("SUBI SP, 1");
-    emituj("ST E, SP[0]");
-    emituj("MOV E, SP");
-    if (brojLokalnih > 0) {
-        emituj("SUBI SP, " + std::to_string(brojLokalnih));
-    }
+    gurni("PA");
+gurni("E");
+emituj("MOV E, SP");
+if (brojLokalnih > 0) emituj("ADDI SP, " + std::to_string(brojLokalnih));
 
     generisiBlok(*funkcija->tijelo);
 
     emituj(krajFunkcijeLabela + ":");
     emituj("MOV SP, E");
-    emituj("LD E, SP[0]");
-    emituj("ADDI SP, 1");
-    emituj("LD PA, SP[0]");
-    emituj("ADDI SP, 1");
-    emituj("RET");
+skini("E");
+skini("PA");
+emituj("RET");
 }
 
 std::string CodeGenerator::generisi() {
     FunctionDecl* mainFunkcija = nadjiMain();
-
     kod.str("");
     kod.clear();
-
     emituj(".CODE");
-    emituj("LA SP, STACK_TOP");
-
     generisiGlavnu(mainFunkcija);
 
     for (auto& funkcija : program.funkcije) {
@@ -638,29 +628,17 @@ std::string CodeGenerator::generisi() {
 
     std::ostringstream izlaz;
     izlaz << ".EQU OUT 0xFF\n\n";
-
     izlaz << ".DATA\n";
-
-    // stek na vrhu memorije (raste prema dolje)
-    izlaz << "STACK_TOP: .BYTE 0\n";
-    izlaz << "STACK_BUFFER: .BYTE ";
-    for (int i = 0; i < VELICINA_STEKA; ++i) {
-        if (i != 0) izlaz << ", ";
-        izlaz << "0";
-    }
-    izlaz << "\n";
 
     for (const std::string& var : varijableRedom) {
         VarInfo info = infoVarijable(var);
         izlaz << labelaVarijable(var) << ": .BYTE ";
-
         const VarDeclStmt* dekl = nullptr;
         for (const auto& naredba : mainFunkcija->tijelo->naredbe) {
             if (auto v = dynamic_cast<const VarDeclStmt*>(naredba.get())) {
                 if (v->ime == var) { dekl = v; break; }
             }
         }
-
         if (dekl && !dekl->inicijalizator.empty()) {
             for (int i = 0; i < info.velicina; i++) {
                 if (i != 0) izlaz << ", ";
@@ -686,7 +664,6 @@ std::string CodeGenerator::generisi() {
     izlaz << "\n" << codeSekcija;
     return izlaz.str();
 }
-
 void CodeGenerator::generisiUFajl(const std::string& nazivFajla) {
     std::ofstream izlaz(nazivFajla);
     if (!izlaz.is_open()) {
