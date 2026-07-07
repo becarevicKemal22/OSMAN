@@ -1,0 +1,45 @@
+number displejevi(number broj, number* segmenti, number* adrese) {
+    number trenutni_broj;
+    number i;
+    number kolicnik;
+    number cifra;
+    number kod_za_displej;
+
+    trenutni_broj = broj;
+    for(i = 0; i < 3; i++) {
+        kolicnik = 0;
+
+        while(trenutni_broj >= 10) {
+            trenutni_broj = trenutni_broj - 10;
+            kolicnik = kolicnik + 1;
+        }
+
+        cifra = trenutni_broj;
+        kod_za_displej = segmenti[cifra];
+        output(adrese[i], kod_za_displej);
+
+        trenutni_broj = kolicnik;
+    }
+}
+
+number main(){
+    number segmenti[10] = {63, 6, 91, 79, 102, 109, 125, 7, 127, 111};
+    number ADRESE_DISPLEJA[3] = {0xFE, 0xFD, 0xFC};
+
+    number taster;
+    number a;
+    number b;
+    taster = 0;
+    while(taster == 0){
+        taster = input(0xF9, 0);
+    }
+    a = input(0xF8);
+    taster = 0;
+    while(taster == 0){
+        taster = input(0xF9, 1);
+    }
+    b = input(0xF8);
+
+    displejevi(a+b, segmenti, ADRESE_DISPLEJA);
+
+}
