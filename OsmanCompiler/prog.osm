@@ -1,33 +1,34 @@
 .EQU OUT 0xFF
 
 .DATA
-VAR_x: .BYTE 0
-VAR_y: .BYTE 0
+VAR_segmenti: .BYTE 63, 6, 91, 79, 102, 109, 125, 7, 127, 111
+VAR_ADRESE_DISPLEJA: .BYTE 254, 253, 252
+VAR_rez: .BYTE 0
 
 .CODE
 MAIN:
-LI A, 10
-STI A, VAR_x
-LI A, 10
-STI A, VAR_y
-LDI A, VAR_y
+LI A, 11
 ST A, SP[0]
 ADDI SP, 1
-LDI A, VAR_x
-ST A, SP[0]
-ADDI SP, 1
-CALL sab
-SUBI SP, 2
+CALL fibonacci
+SUBI SP, 1
 MOV A, PV
-STI A, VAR_x
-LDI A, VAR_x
-STI A, 255
-LI A, 0
-MOV PV, A
-JMP END
+STI A, VAR_rez
+LA A, VAR_ADRESE_DISPLEJA
+ST A, SP[0]
+ADDI SP, 1
+LA A, VAR_segmenti
+ST A, SP[0]
+ADDI SP, 1
+LDI A, VAR_rez
+ST A, SP[0]
+ADDI SP, 1
+CALL displejevi
+SUBI SP, 3
+MOV A, PV
 END:
 JMP END
-sab:
+fibonacci:
 ST PA, SP[0]
 ADDI SP, 1
 ST E, SP[0]
@@ -36,16 +37,159 @@ MOV E, SP
 LD A, E[-3]
 ST A, SP[0]
 ADDI SP, 1
-LD A, E[-4]
+LI A, 1
+MOV B, A
+SUBI SP, 1
+LD A, SP[0]
+CMP B, A
+BGE CMP_TRUE_2
+LI A, 0
+JMP CMP_END_3
+CMP_TRUE_2:
+LI A, 1
+CMP_END_3:
+CMPI A, 0
+BEQ IF_END_1
+LD A, E[-3]
+MOV PV, A
+JMP fibonacci_END
+IF_END_1:
+LD A, E[-3]
+ST A, SP[0]
+ADDI SP, 1
+LI A, 1
+MOV B, A
+SUBI SP, 1
+LD A, SP[0]
+SUB A, B
+ST A, SP[0]
+ADDI SP, 1
+CALL fibonacci
+SUBI SP, 1
+MOV A, PV
+ST A, SP[0]
+ADDI SP, 1
+LD A, E[-3]
+ST A, SP[0]
+ADDI SP, 1
+LI A, 2
+MOV B, A
+SUBI SP, 1
+LD A, SP[0]
+SUB A, B
+ST A, SP[0]
+ADDI SP, 1
+CALL fibonacci
+SUBI SP, 1
+MOV A, PV
 MOV B, A
 SUBI SP, 1
 LD A, SP[0]
 ADD A, B
-ST A, E[-3]
-LD A, E[-3]
 MOV PV, A
-JMP sab_END
-sab_END:
+JMP fibonacci_END
+fibonacci_END:
+MOV SP, E
+SUBI SP, 1
+LD E, SP[0]
+SUBI SP, 1
+LD PA, SP[0]
+RET
+displejevi:
+ST PA, SP[0]
+ADDI SP, 1
+ST E, SP[0]
+ADDI SP, 1
+MOV E, SP
+ADDI SP, 5
+LD A, E[-3]
+ST A, E[0]
+LI A, 0
+ST A, E[1]
+FOR_START_4:
+LD A, E[1]
+ST A, SP[0]
+ADDI SP, 1
+LI A, 3
+MOV B, A
+SUBI SP, 1
+LD A, SP[0]
+CMP A, B
+BLT CMP_TRUE_6
+LI A, 0
+JMP CMP_END_7
+CMP_TRUE_6:
+LI A, 1
+CMP_END_7:
+CMPI A, 0
+BEQ FOR_END_5
+LI A, 0
+ST A, E[2]
+WHILE_START_8:
+LD A, E[0]
+ST A, SP[0]
+ADDI SP, 1
+LI A, 10
+MOV B, A
+SUBI SP, 1
+LD A, SP[0]
+CMP A, B
+BGE CMP_TRUE_10
+LI A, 0
+JMP CMP_END_11
+CMP_TRUE_10:
+LI A, 1
+CMP_END_11:
+CMPI A, 0
+BEQ WHILE_END_9
+LD A, E[0]
+ST A, SP[0]
+ADDI SP, 1
+LI A, 10
+MOV B, A
+SUBI SP, 1
+LD A, SP[0]
+SUB A, B
+ST A, E[0]
+LD A, E[2]
+ST A, SP[0]
+ADDI SP, 1
+LI A, 1
+MOV B, A
+SUBI SP, 1
+LD A, SP[0]
+ADD A, B
+ST A, E[2]
+JMP WHILE_START_8
+WHILE_END_9:
+LD A, E[0]
+ST A, E[3]
+LD A, E[3]
+MOV B, A
+LD C, E[-4]
+ADD C, B
+LD A, C[0]
+ST A, E[4]
+LD A, E[4]
+ST A, SP[0]
+ADDI SP, 1
+LD A, E[1]
+MOV B, A
+LD C, E[-5]
+ADD C, B
+LD A, C[0]
+MOV C, A
+SUBI SP, 1
+LD A, SP[0]
+ST A, C[0]
+LD A, E[2]
+ST A, E[0]
+LD A, E[1]
+ADDI A, 1
+ST A, E[1]
+JMP FOR_START_4
+FOR_END_5:
+displejevi_END:
 MOV SP, E
 SUBI SP, 1
 LD E, SP[0]

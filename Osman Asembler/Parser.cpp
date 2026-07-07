@@ -300,6 +300,7 @@ void setImm(uint16_t& instruction, uint8_t imm) {
 
 void setOffset(uint16_t& instruction, uint8_t reg) {
     instruction &= ~(0x001F);
+    reg &= 0x1F;
     instruction |= static_cast<uint16_t>(reg);
 }
 
