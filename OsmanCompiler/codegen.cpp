@@ -436,25 +436,27 @@ void CodeGenerator::generisiIzraz(const Expr* izraz, const std::string& registar
 }
 
 bool CodeGenerator::prvaInstrukcija_JeLDIliLDI(const BlockStmt& blok) {
-    if (blok.naredbe.empty()) return false;
-    const Stmt* prva = blok.naredbe[0].get();
-
-    if (auto dodjela = dynamic_cast<const AssignStmt*>(prva)) {
-        if (dynamic_cast<const ArrayAccessExpr*>(dodjela->izraz.get()) ||
-            dynamic_cast<const DereferenceExpr*>(dodjela->izraz.get()) ||
-            dynamic_cast<const VariableExpr*>(dodjela->izraz.get()) ||
-            dynamic_cast<const InputExpr*>(dodjela->izraz.get())) {
-            return true;
-        }
-    }
-
-    if (auto dekl = dynamic_cast<const VarDeclStmt*>(prva)) {
-        if (!dekl->inicijalizator.empty()) {
+    for (const auto& naredba : blok.naredbe) {
+        if (auto dekl = dynamic_cast<const VarDeclStmt*>(naredba.get())) {
+            if (dekl->inicijalizator.empty()) continue;
             if (dynamic_cast<const VariableExpr*>(dekl->inicijalizator[0].get()) ||
                 dynamic_cast<const ArrayAccessExpr*>(dekl->inicijalizator[0].get())) {
                 return true;
             }
+            return false;
         }
+
+        if (auto dodjela = dynamic_cast<const AssignStmt*>(naredba.get())) {
+            if (dynamic_cast<const ArrayAccessExpr*>(dodjela->izraz.get()) ||
+                dynamic_cast<const DereferenceExpr*>(dodjela->izraz.get()) ||
+                dynamic_cast<const VariableExpr*>(dodjela->izraz.get()) ||
+                dynamic_cast<const InputExpr*>(dodjela->izraz.get())) {
+                return true;
+            }
+            return false;
+        }
+
+        return false;
     }
 
     return false;
