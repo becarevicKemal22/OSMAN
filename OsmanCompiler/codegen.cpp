@@ -316,11 +316,33 @@ void CodeGenerator::generisiIzraz(const Expr* izraz, const std::string& registar
 
     if (auto unos = dynamic_cast<const InputExpr*>(izraz)) {
     if (auto fiksna = dynamic_cast<const NumberExpr*>(unos->adresa.get())) {
-        emituj("LDI " + registar + ", " + std::to_string(fiksna->vrijednost));
+        emituj("LDI A, " + std::to_string(fiksna->vrijednost));
     } else {
         generisiIzraz(unos->adresa.get(), "C");
-        emituj("LD " + registar + ", C[0]");
+        emituj("LD A, C[0]");
     }
+
+    if (unos->bit) {
+        if (auto konst = dynamic_cast<const NumberExpr*>(unos->bit.get())) {
+            int maska = 1 << konst->vrijednost;
+            std::string nula = novaLabela("BIT_IS_ZERO");
+            std::string kraj = novaLabela("BIT_END");
+            emituj("LI B, " + std::to_string(maska));
+            emituj("AND A, B");
+            emituj("CMPI A, 0");
+            emituj("BEQ " + nula);
+            emituj("LI A, 1");
+            emituj("JMP " + kraj);
+            emituj(nula + ":");
+            emituj("LI A, 0");
+            emituj(kraj + ":");
+        } else {
+            throw std::runtime_error("Input bit mora biti konstantna vrijednost.");
+        }
+    }
+
+    if (registar != "A") emituj("MOV " + registar + ", A");
+
     return;
 }
 
@@ -411,6 +433,31 @@ void CodeGenerator::generisiIzraz(const Expr* izraz, const std::string& registar
     }
 
     throw std::runtime_error("Nepoznat izraz u code generatoru.");
+}
+
+bool CodeGenerator::prvaInstrukcija_JeLDIliLDI(const BlockStmt& blok) {
+    if (blok.naredbe.empty()) return false;
+    const Stmt* prva = blok.naredbe[0].get();
+
+    if (auto dodjela = dynamic_cast<const AssignStmt*>(prva)) {
+        if (dynamic_cast<const ArrayAccessExpr*>(dodjela->izraz.get()) ||
+            dynamic_cast<const DereferenceExpr*>(dodjela->izraz.get()) ||
+            dynamic_cast<const VariableExpr*>(dodjela->izraz.get()) ||
+            dynamic_cast<const InputExpr*>(dodjela->izraz.get())) {
+            return true;
+        }
+    }
+
+    if (auto dekl = dynamic_cast<const VarDeclStmt*>(prva)) {
+        if (!dekl->inicijalizator.empty()) {
+            if (dynamic_cast<const VariableExpr*>(dekl->inicijalizator[0].get()) ||
+                dynamic_cast<const ArrayAccessExpr*>(dekl->inicijalizator[0].get())) {
+                return true;
+            }
+        }
+    }
+
+    return false;
 }
 
 void CodeGenerator::generisiPoziv(const CallExpr* poziv, const std::string& registar) {
@@ -571,6 +618,9 @@ void CodeGenerator::generisiGlavnu(FunctionDecl* funkcija) {
     prikupiVarijable(*funkcija->tijelo);
 
     emituj("MAIN:");
+if (prvaInstrukcija_JeLDIliLDI(*funkcija->tijelo)) {
+    emituj("NOP");
+}
     generisiBlok(*funkcija->tijelo);
     emituj("END:");
     emituj("JMP END");
@@ -601,8 +651,12 @@ if (offset < -16) {
     gurni("PA");
 gurni("E");
 emituj("MOV E, SP");
-if (brojLokalnih > 0) emituj("ADDI SP, " + std::to_string(brojLokalnih));
-
+if (brojLokalnih > 0) {
+    emituj("ADDI SP, " + std::to_string(brojLokalnih));
+}
+if (prvaInstrukcija_JeLDIliLDI(*funkcija->tijelo)) {
+    emituj("NOP");
+}
     generisiBlok(*funkcija->tijelo);
 
     emituj(krajFunkcijeLabela + ":");

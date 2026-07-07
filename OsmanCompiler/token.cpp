@@ -11,6 +11,7 @@ std::string tokenTypeToString(TokenType type) {
         case TokenType::KeywordWhile: return "while";
         case TokenType::KeywordFor: return "for";
         case TokenType::KeywordOutput: return "output";
+        case TokenType::KeywordInput: return "input";
 
         case TokenType::Identifier: return "identifikator";
         case TokenType::NumberLiteral: return "broj";

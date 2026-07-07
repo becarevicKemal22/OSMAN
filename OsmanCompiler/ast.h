@@ -29,6 +29,14 @@ struct NumberExpr : Expr {
     NumberExpr(int vrijednost) : vrijednost(vrijednost) {}
 };
 
+struct InputExpr : Expr {
+    std::unique_ptr<Expr> adresa;
+    std::unique_ptr<Expr> bit;
+
+    InputExpr(std::unique_ptr<Expr> adresa, std::unique_ptr<Expr> bit = nullptr)
+        : adresa(std::move(adresa)), bit(std::move(bit)) {}
+};
+
 struct VariableExpr : Expr {
     std::string ime;
 
@@ -80,13 +88,6 @@ struct CallExpr : Expr {
 
     CallExpr(const std::string& ime, std::vector<std::unique_ptr<Expr>> argumenti)
         : ime(ime), argumenti(std::move(argumenti)) {}
-};
-
-struct InputExpr : Expr {
-    std::unique_ptr<Expr> adresa;
-
-    InputExpr(std::unique_ptr<Expr> adresa)
-        : adresa(std::move(adresa)) {}
 };
 
 struct Stmt {

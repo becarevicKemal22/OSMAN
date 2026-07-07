@@ -23,7 +23,7 @@
 	"parser.h"
 	"codegen.h"
 
-1781794118 c:\users\hanah\moj-osman-projekat\osmancompiler\parser.h
+1783385530 c:\users\hanah\moj-osman-projekat\osmancompiler\parser.h
 	<memory>
 	<stdexcept>
 	<string>
@@ -31,22 +31,22 @@
 	"token.h"
 	"ast.h"
 
-1783343142 c:\users\hanah\moj-osman-projekat\osmancompiler\ast.h
+1783386002 c:\users\hanah\moj-osman-projekat\osmancompiler\ast.h
 	<memory>
 	<string>
 	<vector>
 
-1783344150 c:\users\hanah\moj-osman-projekat\osmancompiler\codegen.h
+1783385801 c:\users\hanah\moj-osman-projekat\osmancompiler\codegen.h
 	<sstream>
 	<string>
 	<unordered_map>
 	<vector>
 	"ast.h"
 
-1783343142 source:c:\users\hanah\moj-osman-projekat\osmancompiler\parser.cpp
+1783385651 source:c:\users\hanah\moj-osman-projekat\osmancompiler\parser.cpp
 	"parser.h"
 
-1783343142 source:c:\users\hanah\moj-osman-projekat\osmancompiler\token.cpp
+1783385427 source:c:\users\hanah\moj-osman-projekat\osmancompiler\token.cpp
 	"token.h"
 
 1783344357 source:c:\users\hanah\moj-osman-projekat\osmancompiler\codegen.cpp

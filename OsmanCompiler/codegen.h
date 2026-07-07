@@ -48,6 +48,7 @@ std::string krajFunkcijeLabela;
     VarInfo infoVarijable(const std::string& ime) const;
     void provjeriVarijablu(const std::string& ime) const;
     void prikupiVarijable(const BlockStmt& blok);
+    bool prvaInstrukcija_JeLDIliLDI(const BlockStmt& blok);
 
     void prikupiLokalne(const BlockStmt& blok, int& brojLokalnih);
 

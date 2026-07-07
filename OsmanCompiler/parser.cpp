@@ -124,6 +124,12 @@ std::unique_ptr<Stmt> Parser::parsirajNaredbu() {
         return parsirajFor();
     }
 
+    if (provjeri(TokenType::KeywordInput)) {
+    std::unique_ptr<Expr> izraz = parsirajIzraz();
+    ocekuj(TokenType::Semicolon, "ocekivano ';' nakon input naredbe");
+    return std::make_unique<ExprStmt>(std::move(izraz));
+}
+
     if (provjeri(TokenType::Increment) || provjeri(TokenType::Decrement) ||
         provjeri(TokenType::Identifier) || provjeri(TokenType::Star)) {
         if (provjeri(TokenType::Identifier) && provjeriSljedeci(TokenType::LeftParen)) {
@@ -458,12 +464,16 @@ std::unique_ptr<Expr> Parser::parsirajPrimarni() {
     return std::make_unique<NumberExpr>(std::stoi(prethodni().value, nullptr, 0));
 }
 
- if (poklopi(TokenType::KeywordInput)) {
-        ocekuj(TokenType::LeftParen, "ocekivano '(' nakon input");
-        std::unique_ptr<Expr> adresa = parsirajIzraz();
-        ocekuj(TokenType::RightParen, "ocekivano ')' nakon input adrese");
-        return std::make_unique<InputExpr>(std::move(adresa));
+if (poklopi(TokenType::KeywordInput)) {
+    ocekuj(TokenType::LeftParen, "ocekivano '(' nakon input");
+    std::unique_ptr<Expr> adresa = parsirajIzraz();
+    std::unique_ptr<Expr> bit = nullptr;
+    if (poklopi(TokenType::Comma)) {
+        bit = parsirajIzraz();
     }
+    ocekuj(TokenType::RightParen, "ocekivano ')' nakon input argumenata");
+    return std::make_unique<InputExpr>(std::move(adresa), std::move(bit));
+}
 
     if (poklopi(TokenType::Identifier)) {
         std::string ime = prethodni().value;
