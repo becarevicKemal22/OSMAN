@@ -443,7 +443,7 @@ bool CodeGenerator::prvaInstrukcija_JeLDIliLDI(const BlockStmt& blok) {
                 dynamic_cast<const ArrayAccessExpr*>(dekl->inicijalizator[0].get())) {
                 return true;
             }
-            return false;
+            continue;
         }
 
         if (auto dodjela = dynamic_cast<const AssignStmt*>(naredba.get())) {
