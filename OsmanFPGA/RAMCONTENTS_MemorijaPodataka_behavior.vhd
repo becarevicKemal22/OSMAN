@@ -13,7 +13,7 @@ ARCHITECTURE platformIndependent OF RAMCONTENTS_MemorijaPodataka IS
 --------------------------------------------------------------------------------
 -- Here all private types are defined                                         --
 --------------------------------------------------------------------------------
-   TYPE memoryArray IS ARRAY ( 256 DOWNTO 0 ) OF std_logic_vector( 7 DOWNTO 0);
+   TYPE memoryArray IS ARRAY ( 255 DOWNTO 0 ) OF std_logic_vector( 7 DOWNTO 0);
 
 --------------------------------------------------------------------------------
 -- All used signals are defined here                                          --

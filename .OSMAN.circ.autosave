@@ -69,9 +69,11 @@
     <a name="appearance" val="logisim_evolution"/>
     <a name="circuit" val="OSMAN"/>
     <a name="circuitnamedboxfixedsize" val="true"/>
-    <a name="downloadFrequency" val="32010.243277848913"/>
+    <a name="downloadBoard" val="TERASIC_DE1_SOC"/>
+    <a name="downloadFrequency" val="2000.0"/>
     <a name="simulationFrequency" val="1.0"/>
     <boardmap boardname="TERASIC_DE1_SOC">
+      <mc/>
       <mc key="/DIP_Switch" pmap="90_337_0,117_337_0,145_337_0,173_337_0,200_337_0,228_337_0,254_337_0,283_338_0"/>
       <mc key="/LED1" map="101,319"/>
       <mc key="/LED2" map="126,319"/>
@@ -85,6 +87,7 @@
       <mc key="/SW0" map="527,340"/>
       <mc key="/SW1" map="476,340"/>
       <mc key="/SW2" map="425,340"/>
+      <mc key="/SedSeg1/SedamSegDisplej" pmap="259_284_0,259_284_1,259_284_2,259_284_3,259_284_4,259_284_5,259_284_6,u"/>
       <mc key="/SedSeg2/SedamSegDisplej" pmap="227_283_0,227_283_1,227_283_2,227_283_3,227_283_4,227_283_5,227_283_6,u"/>
       <mc key="/SedSeg3/SedamSegDisplej" pmap="192_283_0,192_283_1,192_283_2,192_283_3,192_283_4,192_283_5,192_283_6,u"/>
     </boardmap>
@@ -419,8 +422,7 @@
     <comp lib="4" loc="(350,400)" name="ROM">
       <a name="appearance" val="logisim_evolution"/>
       <a name="contents">addr/data: 8 16
-917f 89fe 89fd 89fc 81f9 82f8 5af0 2940
-89ff 9f04
+917f 89fe 89fd 9f00
 </a>
       <a name="dataWidth" val="16"/>
       <a name="label" val="InstrukcijskaMemorija"/>

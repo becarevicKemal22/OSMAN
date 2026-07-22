@@ -7,7 +7,18 @@ VAR_rez: .BYTE 0
 
 .CODE
 MAIN:
-NOP
+LA A, VAR_ADRESE_DISPLEJA
+ST A, SP[0]
+ADDI SP, 1
+LA A, VAR_segmenti
+ST A, SP[0]
+ADDI SP, 1
+LI A, 0
+ST A, SP[0]
+ADDI SP, 1
+CALL displejevi
+SUBI SP, 3
+MOV A, PV
 LDI A, 248
 STI A, VAR_rez
 LDI A, VAR_rez

@@ -195,61 +195,61 @@ ARCHITECTURE platformIndependent OF OSMAN IS
 --------------------------------------------------------------------------------
    SIGNAL s_logisimBus0  : std_logic_vector( 7 DOWNTO 0 );
    SIGNAL s_logisimBus1  : std_logic_vector( 7 DOWNTO 0 );
-   SIGNAL s_logisimBus11 : std_logic_vector( 1 DOWNTO 0 );
+   SIGNAL s_logisimBus13 : std_logic_vector( 7 DOWNTO 0 );
    SIGNAL s_logisimBus14 : std_logic_vector( 7 DOWNTO 0 );
-   SIGNAL s_logisimBus16 : std_logic_vector( 7 DOWNTO 0 );
+   SIGNAL s_logisimBus16 : std_logic_vector( 1 DOWNTO 0 );
    SIGNAL s_logisimBus18 : std_logic_vector( 7 DOWNTO 0 );
    SIGNAL s_logisimBus2  : std_logic_vector( 7 DOWNTO 0 );
    SIGNAL s_logisimBus20 : std_logic_vector( 7 DOWNTO 0 );
    SIGNAL s_logisimBus21 : std_logic_vector( 7 DOWNTO 0 );
-   SIGNAL s_logisimBus22 : std_logic_vector( 1 DOWNTO 0 );
+   SIGNAL s_logisimBus22 : std_logic_vector( 7 DOWNTO 0 );
    SIGNAL s_logisimBus25 : std_logic_vector( 7 DOWNTO 0 );
-   SIGNAL s_logisimBus26 : std_logic_vector( 7 DOWNTO 0 );
+   SIGNAL s_logisimBus27 : std_logic_vector( 7 DOWNTO 0 );
+   SIGNAL s_logisimBus29 : std_logic_vector( 7 DOWNTO 0 );
+   SIGNAL s_logisimBus3  : std_logic_vector( 7 DOWNTO 0 );
    SIGNAL s_logisimBus30 : std_logic_vector( 7 DOWNTO 0 );
-   SIGNAL s_logisimBus34 : std_logic_vector( 15 DOWNTO 0 );
-   SIGNAL s_logisimBus35 : std_logic_vector( 7 DOWNTO 0 );
+   SIGNAL s_logisimBus32 : std_logic_vector( 7 DOWNTO 0 );
+   SIGNAL s_logisimBus36 : std_logic_vector( 1 DOWNTO 0 );
    SIGNAL s_logisimBus37 : std_logic_vector( 7 DOWNTO 0 );
-   SIGNAL s_logisimBus42 : std_logic_vector( 7 DOWNTO 0 );
-   SIGNAL s_logisimBus43 : std_logic_vector( 7 DOWNTO 0 );
-   SIGNAL s_logisimBus46 : std_logic_vector( 3 DOWNTO 0 );
+   SIGNAL s_logisimBus39 : std_logic_vector( 7 DOWNTO 0 );
+   SIGNAL s_logisimBus4  : std_logic_vector( 1 DOWNTO 0 );
+   SIGNAL s_logisimBus46 : std_logic_vector( 7 DOWNTO 0 );
+   SIGNAL s_logisimBus48 : std_logic_vector( 3 DOWNTO 0 );
    SIGNAL s_logisimBus5  : std_logic_vector( 7 DOWNTO 0 );
-   SIGNAL s_logisimBus51 : std_logic_vector( 7 DOWNTO 0 );
-   SIGNAL s_logisimBus55 : std_logic_vector( 1 DOWNTO 0 );
-   SIGNAL s_logisimBus56 : std_logic_vector( 7 DOWNTO 0 );
-   SIGNAL s_logisimBus59 : std_logic_vector( 2 DOWNTO 0 );
+   SIGNAL s_logisimBus50 : std_logic_vector( 2 DOWNTO 0 );
    SIGNAL s_logisimBus6  : std_logic_vector( 7 DOWNTO 0 );
-   SIGNAL s_logisimBus8  : std_logic_vector( 7 DOWNTO 0 );
-   SIGNAL s_logisimBus9  : std_logic_vector( 7 DOWNTO 0 );
+   SIGNAL s_logisimBus7  : std_logic_vector( 7 DOWNTO 0 );
+   SIGNAL s_logisimBus9  : std_logic_vector( 15 DOWNTO 0 );
+   SIGNAL s_logisimNet10 : std_logic;
+   SIGNAL s_logisimNet11 : std_logic;
    SIGNAL s_logisimNet12 : std_logic;
-   SIGNAL s_logisimNet13 : std_logic;
-   SIGNAL s_logisimNet15 : std_logic;
    SIGNAL s_logisimNet17 : std_logic;
    SIGNAL s_logisimNet19 : std_logic;
-   SIGNAL s_logisimNet23 : std_logic;
    SIGNAL s_logisimNet24 : std_logic;
-   SIGNAL s_logisimNet27 : std_logic;
+   SIGNAL s_logisimNet26 : std_logic;
    SIGNAL s_logisimNet28 : std_logic;
-   SIGNAL s_logisimNet29 : std_logic;
-   SIGNAL s_logisimNet3  : std_logic;
    SIGNAL s_logisimNet31 : std_logic;
-   SIGNAL s_logisimNet32 : std_logic;
    SIGNAL s_logisimNet33 : std_logic;
-   SIGNAL s_logisimNet36 : std_logic;
+   SIGNAL s_logisimNet34 : std_logic;
+   SIGNAL s_logisimNet35 : std_logic;
    SIGNAL s_logisimNet38 : std_logic;
-   SIGNAL s_logisimNet39 : std_logic;
-   SIGNAL s_logisimNet4  : std_logic;
    SIGNAL s_logisimNet40 : std_logic;
    SIGNAL s_logisimNet41 : std_logic;
+   SIGNAL s_logisimNet42 : std_logic;
+   SIGNAL s_logisimNet43 : std_logic;
    SIGNAL s_logisimNet44 : std_logic;
    SIGNAL s_logisimNet45 : std_logic;
    SIGNAL s_logisimNet47 : std_logic;
-   SIGNAL s_logisimNet48 : std_logic;
-   SIGNAL s_logisimNet50 : std_logic;
+   SIGNAL s_logisimNet49 : std_logic;
+   SIGNAL s_logisimNet51 : std_logic;
    SIGNAL s_logisimNet52 : std_logic;
    SIGNAL s_logisimNet53 : std_logic;
    SIGNAL s_logisimNet54 : std_logic;
+   SIGNAL s_logisimNet55 : std_logic;
+   SIGNAL s_logisimNet56 : std_logic;
    SIGNAL s_logisimNet57 : std_logic;
    SIGNAL s_logisimNet58 : std_logic;
+   SIGNAL s_logisimNet59 : std_logic;
    SIGNAL s_logisimNet60 : std_logic;
    SIGNAL s_logisimNet61 : std_logic;
    SIGNAL s_logisimNet62 : std_logic;
@@ -260,289 +260,107 @@ ARCHITECTURE platformIndependent OF OSMAN IS
    SIGNAL s_logisimNet67 : std_logic;
    SIGNAL s_logisimNet68 : std_logic;
    SIGNAL s_logisimNet69 : std_logic;
-   SIGNAL s_logisimNet7  : std_logic;
    SIGNAL s_logisimNet70 : std_logic;
    SIGNAL s_logisimNet71 : std_logic;
-   SIGNAL s_logisimNet72 : std_logic;
-   SIGNAL s_logisimNet73 : std_logic;
-   SIGNAL s_logisimNet74 : std_logic;
    SIGNAL s_logisimNet75 : std_logic;
    SIGNAL s_logisimNet76 : std_logic;
    SIGNAL s_logisimNet77 : std_logic;
-   SIGNAL s_logisimNet78 : std_logic;
-   SIGNAL s_logisimNet79 : std_logic;
-   SIGNAL s_logisimNet83 : std_logic;
-   SIGNAL s_logisimNet84 : std_logic;
-   SIGNAL s_logisimNet85 : std_logic;
+   SIGNAL s_logisimNet8  : std_logic;
 
 BEGIN
 
    --------------------------------------------------------------------------------
    -- All clock generator connections are defined here                           --
    --------------------------------------------------------------------------------
-   s_logisimNet4  <= logisimClockTree1(0);
-   s_logisimNet83 <= logisimClockTree0(0);
+   s_logisimNet11 <= logisimClockTree1(0);
+   s_logisimNet75 <= logisimClockTree0(0);
 
    --------------------------------------------------------------------------------
    -- Here all wiring is defined                                                 --
    --------------------------------------------------------------------------------
-   s_logisimBus35(4) <= s_logisimNet32;
-   s_logisimBus35(5) <= s_logisimNet32;
-   s_logisimBus35(6) <= s_logisimNet32;
-   s_logisimBus35(7) <= s_logisimNet32;
+   s_logisimBus1(4) <= s_logisimNet31;
+   s_logisimBus1(5) <= s_logisimNet31;
+   s_logisimBus1(6) <= s_logisimNet31;
+   s_logisimBus1(7) <= s_logisimNet31;
 
    --------------------------------------------------------------------------------
    -- Here all in-lined components are defined                                   --
    --------------------------------------------------------------------------------
 
    -- Constant
-    s_logisimNet33  <=  '1';
+    s_logisimNet40  <=  '1';
 
 
    -- Constant
-    s_logisimNet32  <=  '0';
+    s_logisimNet31  <=  '0';
 
 
    -- Constant
-    s_logisimBus26(7 DOWNTO 0)  <=  X"01";
+    s_logisimBus32(7 DOWNTO 0)  <=  X"01";
 
-
-   -- Button: RST
-   s_logisimNet48 <= logisimInputBubbles(0);
-
-   -- LED: LED1
-   logisimOutputBubbles(16) <= s_logisimBus43(7);
-
-   -- LED: LED2
-   logisimOutputBubbles(17) <= s_logisimBus43(6);
-
-   -- LED: LED3
-   logisimOutputBubbles(18) <= s_logisimBus43(5);
-
-   -- LED: LED4
-   logisimOutputBubbles(19) <= s_logisimBus43(4);
-
-   -- LED: LED5
-   logisimOutputBubbles(20) <= s_logisimBus43(3);
-
-   -- LED: LED6
-   logisimOutputBubbles(21) <= s_logisimBus43(2);
-
-   -- LED: LED7
-   logisimOutputBubbles(22) <= s_logisimBus43(1);
-
-   -- LED: LED8
-   logisimOutputBubbles(23) <= s_logisimBus43(0);
-
-   -- DIP Switch: DIP_Switch
-   s_logisimBus20(0) <= logisimInputBubbles(1);
-   s_logisimBus20(1) <= logisimInputBubbles(2);
-   s_logisimBus20(2) <= logisimInputBubbles(3);
-   s_logisimBus20(3) <= logisimInputBubbles(4);
-   s_logisimBus20(4) <= logisimInputBubbles(5);
-   s_logisimBus20(5) <= logisimInputBubbles(6);
-   s_logisimBus20(6) <= logisimInputBubbles(7);
-   s_logisimBus20(7) <= logisimInputBubbles(8);
-
-   -- Button: SW0
-   s_logisimBus35(0) <= logisimInputBubbles(9);
-
-   -- 7-Segment Display: SedSeg1
-   logisimOutputBubbles(24) <= s_logisimBus14(0);
-   logisimOutputBubbles(25) <= s_logisimBus14(1);
-   logisimOutputBubbles(26) <= s_logisimBus14(2);
-   logisimOutputBubbles(27) <= s_logisimBus14(3);
-   logisimOutputBubbles(28) <= s_logisimBus14(4);
-   logisimOutputBubbles(29) <= s_logisimBus14(5);
-   logisimOutputBubbles(30) <= s_logisimBus14(6);
-   logisimOutputBubbles(31) <= s_logisimBus14(7);
-
-   -- Button: SW1
-   s_logisimBus35(1) <= logisimInputBubbles(10);
-
-   -- Button: SW2
-   s_logisimBus35(2) <= logisimInputBubbles(11);
-
-   -- Button: SW3
-   s_logisimBus35(3) <= logisimInputBubbles(12);
 
    -- ROM: InstrukcijskaMemorija
-   WITH (s_logisimBus25) SELECT s_logisimBus34 <=
-      X"90F7" WHEN X"00",
-      X"910B" WHEN X"01",
-      X"5001" WHEN X"02",
-      X"D900" WHEN X"03",
-      X"7715" WHEN X"04",
-      X"4801" WHEN X"05",
-      X"F9C0" WHEN X"06",
-      X"8971" WHEN X"07",
-      X"9172" WHEN X"08",
-      X"5001" WHEN X"09",
-      X"D900" WHEN X"0A",
-      X"9175" WHEN X"0B",
-      X"5001" WHEN X"0C",
-      X"D900" WHEN X"0D",
-      X"8171" WHEN X"0E",
-      X"5001" WHEN X"0F",
-      X"D900" WHEN X"10",
-      X"7753" WHEN X"11",
-      X"4803" WHEN X"12",
-      X"F9C0" WHEN X"13",
-      X"9F14" WHEN X"14",
-      X"5001" WHEN X"15",
-      X"DF00" WHEN X"16",
-      X"5001" WHEN X"17",
-      X"DD00" WHEN X"18",
-      X"FD00" WHEN X"19",
-      X"D1A2" WHEN X"1A",
-      X"5001" WHEN X"1B",
-      X"D900" WHEN X"1C",
-      X"9101" WHEN X"1D",
-      X"FA20" WHEN X"1E",
-      X"D100" WHEN X"1F",
-      X"4801" WHEN X"20",
-      X"EA20" WHEN X"21",
-      X"BF25" WHEN X"22",
-      X"9100" WHEN X"23",
-      X"9F26" WHEN X"24",
-      X"9101" WHEN X"25",
-      X"F100" WHEN X"26",
-      X"A72B" WHEN X"27",
-      X"D1A2" WHEN X"28",
-      X"FE20" WHEN X"29",
-      X"9F4D" WHEN X"2A",
-      X"D1A2" WHEN X"2B",
-      X"5001" WHEN X"2C",
-      X"D900" WHEN X"2D",
-      X"9101" WHEN X"2E",
-      X"FA20" WHEN X"2F",
-      X"D100" WHEN X"30",
-      X"4801" WHEN X"31",
-      X"1140" WHEN X"32",
-      X"5001" WHEN X"33",
-      X"D900" WHEN X"34",
-      X"7715" WHEN X"35",
-      X"4801" WHEN X"36",
-      X"F9C0" WHEN X"37",
-      X"5001" WHEN X"38",
-      X"D900" WHEN X"39",
-      X"D1A2" WHEN X"3A",
-      X"5001" WHEN X"3B",
-      X"D900" WHEN X"3C",
-      X"9102" WHEN X"3D",
-      X"FA20" WHEN X"3E",
-      X"D100" WHEN X"3F",
-      X"4801" WHEN X"40",
-      X"1140" WHEN X"41",
-      X"5001" WHEN X"42",
-      X"D900" WHEN X"43",
-      X"7715" WHEN X"44",
-      X"4801" WHEN X"45",
-      X"F9C0" WHEN X"46",
-      X"FA20" WHEN X"47",
-      X"D100" WHEN X"48",
-      X"4801" WHEN X"49",
-      X"0940" WHEN X"4A",
-      X"FE20" WHEN X"4B",
-      X"9F4D" WHEN X"4C",
-      X"F8A0" WHEN X"4D",
-      X"D500" WHEN X"4E",
-      X"4801" WHEN X"4F",
-      X"D700" WHEN X"50",
-      X"4801" WHEN X"51",
-      X"7F00" WHEN X"52",
-      X"5001" WHEN X"53",
-      X"DF00" WHEN X"54",
-      X"5001" WHEN X"55",
-      X"DD00" WHEN X"56",
-      X"FD00" WHEN X"57",
-      X"5005" WHEN X"58",
-      X"D1A2" WHEN X"59",
-      X"D9FF" WHEN X"5A",
-      X"9100" WHEN X"5B",
-      X"D9FE" WHEN X"5C",
-      X"D1FE" WHEN X"5D",
-      X"5001" WHEN X"5E",
-      X"D900" WHEN X"5F",
-      X"9103" WHEN X"60",
-      X"FA20" WHEN X"61",
-      X"D100" WHEN X"62",
-      X"4801" WHEN X"63",
-      X"E940" WHEN X"64",
-      X"B768" WHEN X"65",
-      X"9100" WHEN X"66",
-      X"9F69" WHEN X"67",
-      X"9101" WHEN X"68",
-      X"F100" WHEN X"69",
-      X"A7A8" WHEN X"6A",
-      X"9100" WHEN X"6B",
-      X"D9FD" WHEN X"6C",
-      X"D1FF" WHEN X"6D",
-      X"5001" WHEN X"6E",
-      X"D900" WHEN X"6F",
-      X"910A" WHEN X"70",
-      X"FA20" WHEN X"71",
-      X"D100" WHEN X"72",
-      X"4801" WHEN X"73",
-      X"E940" WHEN X"74",
-      X"BF78" WHEN X"75",
-      X"9100" WHEN X"76",
-      X"9F79" WHEN X"77",
-      X"9101" WHEN X"78",
-      X"F100" WHEN X"79",
-      X"A78E" WHEN X"7A",
-      X"D1FF" WHEN X"7B",
-      X"5001" WHEN X"7C",
-      X"D900" WHEN X"7D",
-      X"910A" WHEN X"7E",
-      X"FA20" WHEN X"7F",
-      X"D100" WHEN X"80",
-      X"4801" WHEN X"81",
-      X"1140" WHEN X"82",
-      X"D9FF" WHEN X"83",
-      X"D1FD" WHEN X"84",
-      X"5001" WHEN X"85",
-      X"D900" WHEN X"86",
-      X"9101" WHEN X"87",
-      X"FA20" WHEN X"88",
-      X"D100" WHEN X"89",
-      X"4801" WHEN X"8A",
-      X"0940" WHEN X"8B",
-      X"D9FD" WHEN X"8C",
-      X"9F6D" WHEN X"8D",
-      X"D1FF" WHEN X"8E",
-      X"D9FC" WHEN X"8F",
-      X"D1FC" WHEN X"90",
-      X"FA20" WHEN X"91",
-      X"D3A3" WHEN X"92",
-      X"0B40" WHEN X"93",
-      X"D160" WHEN X"94",
-      X"D9FB" WHEN X"95",
-      X"D1FB" WHEN X"96",
-      X"5001" WHEN X"97",
-      X"D900" WHEN X"98",
-      X"D1FE" WHEN X"99",
-      X"FA20" WHEN X"9A",
-      X"D3A4" WHEN X"9B",
-      X"0B40" WHEN X"9C",
-      X"D160" WHEN X"9D",
-      X"FB20" WHEN X"9E",
-      X"D100" WHEN X"9F",
-      X"4801" WHEN X"A0",
-      X"D960" WHEN X"A1",
-      X"D1FD" WHEN X"A2",
-      X"D9FF" WHEN X"A3",
-      X"D1FE" WHEN X"A4",
-      X"4901" WHEN X"A5",
-      X"D9FE" WHEN X"A6",
-      X"9F5D" WHEN X"A7",
-      X"F8A0" WHEN X"A8",
-      X"D500" WHEN X"A9",
-      X"4801" WHEN X"AA",
-      X"D700" WHEN X"AB",
-      X"4801" WHEN X"AC",
-      X"7F00" WHEN X"AD",
+   WITH (s_logisimBus29) SELECT s_logisimBus9 <=
+      X"917F" WHEN X"00",
+      X"89FE" WHEN X"01",
+      X"89FD" WHEN X"02",
+      X"89FC" WHEN X"03",
+      X"81F9" WHEN X"04",
+      X"82F8" WHEN X"05",
+      X"5AF0" WHEN X"06",
+      X"2940" WHEN X"07",
+      X"89FF" WHEN X"08",
+      X"9F04" WHEN X"09",
       X"0000" WHEN OTHERS;
+
+   -- Button: RST
+   s_logisimNet19 <= logisimInputBubbles(0);
+
+   -- LED: LED1
+   logisimOutputBubbles(24) <= s_logisimBus37(7);
+
+   -- LED: LED2
+   logisimOutputBubbles(25) <= s_logisimBus37(6);
+
+   -- LED: LED3
+   logisimOutputBubbles(26) <= s_logisimBus37(5);
+
+   -- LED: LED4
+   logisimOutputBubbles(27) <= s_logisimBus37(4);
+
+   -- LED: LED5
+   logisimOutputBubbles(28) <= s_logisimBus37(3);
+
+   -- LED: LED6
+   logisimOutputBubbles(29) <= s_logisimBus37(2);
+
+   -- LED: LED7
+   logisimOutputBubbles(30) <= s_logisimBus37(1);
+
+   -- LED: LED8
+   logisimOutputBubbles(31) <= s_logisimBus37(0);
+
+   -- DIP Switch: DIP_Switch
+   s_logisimBus20(0) <= logisimInputBubbles(8);
+   s_logisimBus20(1) <= logisimInputBubbles(7);
+   s_logisimBus20(2) <= logisimInputBubbles(6);
+   s_logisimBus20(3) <= logisimInputBubbles(5);
+   s_logisimBus20(4) <= logisimInputBubbles(4);
+   s_logisimBus20(5) <= logisimInputBubbles(3);
+   s_logisimBus20(6) <= logisimInputBubbles(2);
+   s_logisimBus20(7) <= logisimInputBubbles(1);
+
+   -- Button: SW0
+   s_logisimBus1(0) <= logisimInputBubbles(9);
+
+   -- Button: SW1
+   s_logisimBus1(1) <= logisimInputBubbles(10);
+
+   -- Button: SW2
+   s_logisimBus1(2) <= logisimInputBubbles(11);
+
+   -- Button: SW3
+   s_logisimBus1(3) <= logisimInputBubbles(12);
 
    --------------------------------------------------------------------------------
    -- Here all normal components are defined                                     --
@@ -550,70 +368,70 @@ BEGIN
    PLEXERS_1 : Multiplexer_bus_2
       GENERIC MAP ( nrOfBits => 8 )
       PORT MAP ( enable  => '1',
-                 muxIn_0 => s_logisimBus5(7 DOWNTO 0),
-                 muxIn_1 => s_logisimBus6(7 DOWNTO 0),
-                 muxOut  => s_logisimBus56(7 DOWNTO 0),
-                 sel     => s_logisimNet61 );
+                 muxIn_0 => s_logisimBus2(7 DOWNTO 0),
+                 muxIn_1 => s_logisimBus7(7 DOWNTO 0),
+                 muxOut  => s_logisimBus46(7 DOWNTO 0),
+                 sel     => s_logisimNet53 );
 
    PLEXERS_2 : Multiplexer_bus_2
       GENERIC MAP ( nrOfBits => 8 )
       PORT MAP ( enable  => '1',
-                 muxIn_0 => s_logisimBus8(7 DOWNTO 0),
-                 muxIn_1 => s_logisimBus34(7 DOWNTO 0),
-                 muxOut  => s_logisimBus51(7 DOWNTO 0),
-                 sel     => s_logisimNet62 );
+                 muxIn_0 => s_logisimBus13(7 DOWNTO 0),
+                 muxIn_1 => s_logisimBus9(7 DOWNTO 0),
+                 muxOut  => s_logisimBus30(7 DOWNTO 0),
+                 sel     => s_logisimNet54 );
 
    PLEXERS_3 : Multiplexer_bus_2
       GENERIC MAP ( nrOfBits => 8 )
       PORT MAP ( enable  => '1',
-                 muxIn_0 => s_logisimBus1(7 DOWNTO 0),
-                 muxIn_1 => s_logisimBus34(7 DOWNTO 0),
-                 muxOut  => s_logisimBus37(7 DOWNTO 0),
-                 sel     => s_logisimNet63 );
+                 muxIn_0 => s_logisimBus5(7 DOWNTO 0),
+                 muxIn_1 => s_logisimBus9(7 DOWNTO 0),
+                 muxOut  => s_logisimBus0(7 DOWNTO 0),
+                 sel     => s_logisimNet55 );
 
    PLEXERS_4 : Multiplexer_bus_2
       GENERIC MAP ( nrOfBits => 8 )
       PORT MAP ( enable  => '1',
-                 muxIn_0 => s_logisimBus2(7 DOWNTO 0),
-                 muxIn_1 => s_logisimBus30(7 DOWNTO 0),
-                 muxOut  => s_logisimBus9(7 DOWNTO 0),
-                 sel     => s_logisimNet41 );
+                 muxIn_0 => s_logisimBus6(7 DOWNTO 0),
+                 muxIn_1 => s_logisimBus25(7 DOWNTO 0),
+                 muxOut  => s_logisimBus14(7 DOWNTO 0),
+                 sel     => s_logisimNet45 );
 
    PLEXERS_5 : Multiplexer_bus_4
       GENERIC MAP ( nrOfBits => 8 )
       PORT MAP ( enable  => '1',
-                 muxIn_0 => s_logisimBus1(7 DOWNTO 0),
-                 muxIn_1 => s_logisimBus9(7 DOWNTO 0),
-                 muxIn_2 => s_logisimBus42(7 DOWNTO 0),
+                 muxIn_0 => s_logisimBus5(7 DOWNTO 0),
+                 muxIn_1 => s_logisimBus14(7 DOWNTO 0),
+                 muxIn_2 => s_logisimBus39(7 DOWNTO 0),
                  muxIn_3 => X"00",
-                 muxOut  => s_logisimBus16(7 DOWNTO 0),
-                 sel     => s_logisimBus55(1 DOWNTO 0) );
+                 muxOut  => s_logisimBus21(7 DOWNTO 0),
+                 sel     => s_logisimBus36(1 DOWNTO 0) );
 
    PLEXERS_6 : Multiplexer_bus_4
       GENERIC MAP ( nrOfBits => 8 )
       PORT MAP ( enable  => '1',
-                 muxIn_0 => s_logisimBus42(7 DOWNTO 0),
-                 muxIn_1 => s_logisimBus34(7 DOWNTO 0),
-                 muxIn_2 => s_logisimBus5(7 DOWNTO 0),
-                 muxIn_3 => s_logisimBus5(7 DOWNTO 0),
-                 muxOut  => s_logisimBus18(7 DOWNTO 0),
-                 sel     => s_logisimBus11(1 DOWNTO 0) );
+                 muxIn_0 => s_logisimBus39(7 DOWNTO 0),
+                 muxIn_1 => s_logisimBus9(7 DOWNTO 0),
+                 muxIn_2 => s_logisimBus2(7 DOWNTO 0),
+                 muxIn_3 => s_logisimBus2(7 DOWNTO 0),
+                 muxOut  => s_logisimBus22(7 DOWNTO 0),
+                 sel     => s_logisimBus16(1 DOWNTO 0) );
 
    MemorijaPodataka : RAMCONTENTS_MemorijaPodataka
-      PORT MAP ( address => s_logisimBus37(7 DOWNTO 0),
+      PORT MAP ( address => s_logisimBus0(7 DOWNTO 0),
                  clock   => logisimClockTree1(4),
-                 dataIn  => s_logisimBus5(7 DOWNTO 0),
-                 dataOut => s_logisimBus30(7 DOWNTO 0),
+                 dataIn  => s_logisimBus2(7 DOWNTO 0),
+                 dataOut => s_logisimBus25(7 DOWNTO 0),
                  oe      => '1',
                  tick    => logisimClockTree1(3),
-                 we      => s_logisimNet54 );
+                 we      => s_logisimNet34 );
 
    MEMORY_8 : D_FLIPFLOP
       GENERIC MAP ( invertClockEnable => 0 )
       PORT MAP ( clock  => logisimClockTree0(4),
-                 d      => s_logisimNet48,
+                 d      => s_logisimNet19,
                  preset => '0',
-                 q      => s_logisimNet85,
+                 q      => s_logisimNet77,
                  qBar   => OPEN,
                  reset  => '0',
                  tick   => logisimClockTree0(2) );
@@ -624,132 +442,138 @@ BEGIN
    --------------------------------------------------------------------------------
 
    SR : StatusniRegistar
-      PORT MAP ( CF                => s_logisimNet53,
-                 CFi               => s_logisimNet28,
-                 Clock             => s_logisimNet83,
-                 NF                => s_logisimNet47,
-                 NFi               => s_logisimNet31,
-                 Reset             => s_logisimNet85,
-                 VF                => s_logisimNet38,
-                 VFi               => s_logisimNet13,
-                 WE                => s_logisimNet57,
-                 ZF                => s_logisimNet19,
-                 ZFi               => s_logisimNet44,
+      PORT MAP ( CF                => s_logisimNet33,
+                 CFi               => s_logisimNet12,
+                 Clock             => s_logisimNet75,
+                 NF                => s_logisimNet10,
+                 NFi               => s_logisimNet24,
+                 Reset             => s_logisimNet77,
+                 VF                => s_logisimNet43,
+                 VFi               => s_logisimNet17,
+                 WE                => s_logisimNet47,
+                 ZF                => s_logisimNet26,
+                 ZFi               => s_logisimNet41,
                  logisimClockTree0 => logisimClockTree0,
                  logisimClockTree1 => logisimClockTree1 );
 
    ALU : ALU8Bit
-      PORT MAP ( A                 => s_logisimBus56(7 DOWNTO 0),
-                 ALUOp             => s_logisimBus46(3 DOWNTO 0),
-                 B                 => s_logisimBus51(7 DOWNTO 0),
-                 CF                => s_logisimNet28,
-                 I                 => s_logisimBus1(7 DOWNTO 0),
-                 NF                => s_logisimNet31,
-                 VF                => s_logisimNet13,
-                 ZF                => s_logisimNet44,
+      PORT MAP ( A                 => s_logisimBus46(7 DOWNTO 0),
+                 ALUOp             => s_logisimBus48(3 DOWNTO 0),
+                 B                 => s_logisimBus30(7 DOWNTO 0),
+                 CF                => s_logisimNet12,
+                 I                 => s_logisimBus5(7 DOWNTO 0),
+                 NF                => s_logisimNet24,
+                 VF                => s_logisimNet17,
+                 ZF                => s_logisimNet41,
                  logisimClockTree0 => logisimClockTree0,
                  logisimClockTree1 => logisimClockTree1 );
 
    KJG : KontrolnaJedinicaGrananja
-      PORT MAP ( CF                => s_logisimNet53,
-                 GranTip           => s_logisimBus59(2 DOWNTO 0),
-                 I                 => s_logisimBus11(1 DOWNTO 0),
-                 NF                => s_logisimNet47,
-                 SkokReg           => s_logisimNet58,
-                 VF                => s_logisimNet38,
-                 ZF                => s_logisimNet19,
+      PORT MAP ( CF                => s_logisimNet33,
+                 GranTip           => s_logisimBus50(2 DOWNTO 0),
+                 I                 => s_logisimBus16(1 DOWNTO 0),
+                 NF                => s_logisimNet10,
+                 SkokReg           => s_logisimNet49,
+                 VF                => s_logisimNet43,
+                 ZF                => s_logisimNet26,
                  logisimClockTree0 => logisimClockTree0,
                  logisimClockTree1 => logisimClockTree1 );
 
    Dekoder_Adresa : DekoderAdresa
-      PORT MAP ( Addr              => s_logisimBus37(7 DOWNTO 0),
-                 CMem              => s_logisimNet52,
-                 OutputSrc         => s_logisimNet41,
-                 OutputWe          => s_logisimNet45,
-                 PMem              => s_logisimNet60,
-                 RAMOe             => s_logisimNet40,
-                 RAMWe             => s_logisimNet54,
-                 UIAddr            => s_logisimBus22(1 DOWNTO 0),
+      PORT MAP ( Addr              => s_logisimBus0(7 DOWNTO 0),
+                 CMem              => s_logisimNet51,
+                 OutputSrc         => s_logisimNet45,
+                 OutputWe          => s_logisimNet42,
+                 PMem              => s_logisimNet52,
+                 RAMOe             => s_logisimNet44,
+                 RAMWe             => s_logisimNet34,
+                 UIAddr            => s_logisimBus4(1 DOWNTO 0),
                  logisimClockTree0 => logisimClockTree0,
                  logisimClockTree1 => logisimClockTree1 );
 
    UI_Kontroler : UIKontroler
-      PORT MAP ( Adresa            => s_logisimBus22(1 DOWNTO 0),
-                 Clock             => s_logisimNet83,
-                 Izlaz1            => s_logisimBus21(7 DOWNTO 0),
-                 Izlaz2            => s_logisimBus0(7 DOWNTO 0),
-                 Izlaz3            => s_logisimBus14(7 DOWNTO 0),
-                 Izlaz4            => s_logisimBus43(7 DOWNTO 0),
-                 IzlazniPodaci     => s_logisimBus5(7 DOWNTO 0),
-                 OdabraniUlaz      => s_logisimBus2(7 DOWNTO 0),
-                 RST               => s_logisimNet85,
+      PORT MAP ( Adresa            => s_logisimBus4(1 DOWNTO 0),
+                 Clock             => s_logisimNet75,
+                 Izlaz1            => s_logisimBus27(7 DOWNTO 0),
+                 Izlaz2            => s_logisimBus3(7 DOWNTO 0),
+                 Izlaz3            => s_logisimBus18(7 DOWNTO 0),
+                 Izlaz4            => s_logisimBus37(7 DOWNTO 0),
+                 IzlazniPodaci     => s_logisimBus2(7 DOWNTO 0),
+                 OdabraniUlaz      => s_logisimBus6(7 DOWNTO 0),
+                 RST               => s_logisimNet77,
                  Ulaz1             => s_logisimBus20(7 DOWNTO 0),
-                 Ulaz2             => s_logisimBus35(7 DOWNTO 0),
+                 Ulaz2             => s_logisimBus1(7 DOWNTO 0),
                  Ulaz3             => X"00",
                  Ulaz4             => X"00",
-                 WE                => s_logisimNet45,
+                 WE                => s_logisimNet42,
                  logisimClockTree0 => logisimClockTree0,
                  logisimClockTree1 => logisimClockTree1 );
 
    SedSeg3 : SevenSegAdapter
-      PORT MAP ( Segmenti             => s_logisimBus21(7 DOWNTO 0),
+      PORT MAP ( Segmenti             => s_logisimBus27(7 DOWNTO 0),
                  logisimClockTree0    => logisimClockTree0,
                  logisimClockTree1    => logisimClockTree1,
                  logisimOutputBubbles => logisimOutputBubbles(7  DOWNTO  0) );
 
    SedSeg2 : SevenSegAdapter
-      PORT MAP ( Segmenti             => s_logisimBus0(7 DOWNTO 0),
+      PORT MAP ( Segmenti             => s_logisimBus3(7 DOWNTO 0),
                  logisimClockTree0    => logisimClockTree0,
                  logisimClockTree1    => logisimClockTree1,
                  logisimOutputBubbles => logisimOutputBubbles(15  DOWNTO  8) );
 
+   SedSeg1 : SevenSegAdapter
+      PORT MAP ( Segmenti             => s_logisimBus18(7 DOWNTO 0),
+                 logisimClockTree0    => logisimClockTree0,
+                 logisimClockTree1    => logisimClockTree1,
+                 logisimOutputBubbles => logisimOutputBubbles(23  DOWNTO  16) );
+
    PB : ProgramskiBrojac
-      PORT MAP ( Clock             => s_logisimNet83,
-                 DataIn            => s_logisimBus18(7 DOWNTO 0),
-                 DataOut           => s_logisimBus25(7 DOWNTO 0),
-                 Reset             => s_logisimNet85,
-                 WE                => s_logisimNet33,
+      PORT MAP ( Clock             => s_logisimNet75,
+                 DataIn            => s_logisimBus22(7 DOWNTO 0),
+                 DataOut           => s_logisimBus29(7 DOWNTO 0),
+                 Reset             => s_logisimNet77,
+                 WE                => s_logisimNet40,
                  logisimClockTree0 => logisimClockTree0,
                  logisimClockTree1 => logisimClockTree1 );
 
    PBSab : Sabirac
-      PORT MAP ( A                 => s_logisimBus26(7 DOWNTO 0),
-                 B                 => s_logisimBus25(7 DOWNTO 0),
-                 Izlaz             => s_logisimBus42(7 DOWNTO 0),
+      PORT MAP ( A                 => s_logisimBus32(7 DOWNTO 0),
+                 B                 => s_logisimBus29(7 DOWNTO 0),
+                 Izlaz             => s_logisimBus39(7 DOWNTO 0),
                  logisimClockTree0 => logisimClockTree0,
                  logisimClockTree1 => logisimClockTree1 );
 
    KJ : KontrolnaJedinica
-      PORT MAP ( ALUIzv1           => s_logisimNet61,
-                 ALUIzv2           => s_logisimNet62,
-                 ALUOp             => s_logisimBus46(3 DOWNTO 0),
-                 CMem              => s_logisimNet52,
-                 GranTip           => s_logisimBus59(2 DOWNTO 0),
-                 MemIzv            => s_logisimNet63,
-                 Opcode            => s_logisimBus34(15 DOWNTO 11),
-                 PMem              => s_logisimNet60,
-                 RegPod            => s_logisimBus55(1 DOWNTO 0),
-                 SkokReg           => s_logisimNet58,
-                 UpReg             => s_logisimNet84,
-                 UpStat            => s_logisimNet57,
+      PORT MAP ( ALUIzv1           => s_logisimNet53,
+                 ALUIzv2           => s_logisimNet54,
+                 ALUOp             => s_logisimBus48(3 DOWNTO 0),
+                 CMem              => s_logisimNet51,
+                 GranTip           => s_logisimBus50(2 DOWNTO 0),
+                 MemIzv            => s_logisimNet55,
+                 Opcode            => s_logisimBus9(15 DOWNTO 11),
+                 PMem              => s_logisimNet52,
+                 RegPod            => s_logisimBus36(1 DOWNTO 0),
+                 SkokReg           => s_logisimNet49,
+                 UpReg             => s_logisimNet76,
+                 UpStat            => s_logisimNet47,
                  logisimClockTree0 => logisimClockTree0,
                  logisimClockTree1 => logisimClockTree1 );
 
    Predznaceno_Prosirenje : PredznacenoProsirenje
-      PORT MAP ( Izlaz             => s_logisimBus6(7 DOWNTO 0),
-                 Ulaz              => s_logisimBus34(4 DOWNTO 0),
+      PORT MAP ( Izlaz             => s_logisimBus7(7 DOWNTO 0),
+                 Ulaz              => s_logisimBus9(4 DOWNTO 0),
                  logisimClockTree0 => logisimClockTree0,
                  logisimClockTree1 => logisimClockTree1 );
 
    RD : RegistarskaDatoteka
-      PORT MAP ( Clock             => s_logisimNet83,
-                 PodaciReg1        => s_logisimBus5(7 DOWNTO 0),
-                 PodaciReg2        => s_logisimBus8(7 DOWNTO 0),
-                 PodaciUpis        => s_logisimBus16(7 DOWNTO 0),
-                 Reg1Adresa        => s_logisimBus34(10 DOWNTO 8),
-                 Reg2Adresa        => s_logisimBus34(7 DOWNTO 5),
-                 Reset             => s_logisimNet85,
-                 UpReg             => s_logisimNet84,
+      PORT MAP ( Clock             => s_logisimNet75,
+                 PodaciReg1        => s_logisimBus2(7 DOWNTO 0),
+                 PodaciReg2        => s_logisimBus13(7 DOWNTO 0),
+                 PodaciUpis        => s_logisimBus21(7 DOWNTO 0),
+                 Reg1Adresa        => s_logisimBus9(10 DOWNTO 8),
+                 Reg2Adresa        => s_logisimBus9(7 DOWNTO 5),
+                 Reset             => s_logisimNet77,
+                 UpReg             => s_logisimNet76,
                  logisimClockTree0 => logisimClockTree0,
                  logisimClockTree1 => logisimClockTree1 );
 

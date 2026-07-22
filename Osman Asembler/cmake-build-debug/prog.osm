@@ -1,201 +1,22 @@
-.EQU OUT 0xFF
+; Provjerava rad ulaznih i izlaznih uredjaja.
+; Na 7seg displejima treba da se nalazi broj 888.
+; Donje 4 LED diode su za stanje tastera, a gornje za stanje gornja 4 DIP switcha
 
-.DATA
-VAR_segmenti: .BYTE 63, 6, 91, 79, 102, 109, 125, 7, 127, 111
-VAR_ADRESE_DISPLEJA: .BYTE 254, 253, 252
-VAR_taster: .BYTE 0
-VAR_a: .BYTE 0
-VAR_b: .BYTE 0
+.equ DISP1 0xFE
+.equ DISP2 0xFD
+.equ DISP3 0xFC
+.equ TASTERI 0xF9
+.equ LED 0xFF
+.equ DIP 0xF8
 
-.CODE
-MAIN:
-LI A, 0
-STI A, VAR_taster
-WHILE_START_0:
-LDI A, VAR_taster
-ST A, SP[0]
-ADDI SP, 1
-LI A, 0
-MOV B, A
-SUBI SP, 1
-LD A, SP[0]
-CMP A, B
-BEQ CMP_TRUE_2
-LI A, 0
-JMP CMP_END_3
-CMP_TRUE_2:
-LI A, 1
-CMP_END_3:
-CMPI A, 0
-BEQ WHILE_END_1
-LDI A, 249
-LI B, 1
-AND A, B
-CMPI A, 0
-BEQ BIT_IS_ZERO_4
-LI A, 1
-JMP BIT_END_5
-BIT_IS_ZERO_4:
-LI A, 0
-BIT_END_5:
-STI A, VAR_taster
-JMP WHILE_START_0
-WHILE_END_1:
-LDI A, 248
-STI A, VAR_a
-LI A, 0
-STI A, VAR_taster
-WHILE_START_6:
-LDI A, VAR_taster
-ST A, SP[0]
-ADDI SP, 1
-LI A, 0
-MOV B, A
-SUBI SP, 1
-LD A, SP[0]
-CMP A, B
-BEQ CMP_TRUE_8
-LI A, 0
-JMP CMP_END_9
-CMP_TRUE_8:
-LI A, 1
-CMP_END_9:
-CMPI A, 0
-BEQ WHILE_END_7
-LDI A, 249
-LI B, 2
-AND A, B
-CMPI A, 0
-BEQ BIT_IS_ZERO_10
-LI A, 1
-JMP BIT_END_11
-BIT_IS_ZERO_10:
-LI A, 0
-BIT_END_11:
-STI A, VAR_taster
-JMP WHILE_START_6
-WHILE_END_7:
-LDI A, 248
-STI A, VAR_b
-LA A, VAR_ADRESE_DISPLEJA
-ST A, SP[0]
-ADDI SP, 1
-LA A, VAR_segmenti
-ST A, SP[0]
-ADDI SP, 1
-LDI A, VAR_a
-ST A, SP[0]
-ADDI SP, 1
-LDI A, VAR_b
-MOV B, A
-SUBI SP, 1
-LD A, SP[0]
-ADD A, B
-ST A, SP[0]
-ADDI SP, 1
-CALL displejevi
-SUBI SP, 3
-MOV A, PV
-END:
-JMP END
-displejevi:
-ST PA, SP[0]
-ADDI SP, 1
-ST E, SP[0]
-ADDI SP, 1
-MOV E, SP
-ADDI SP, 5
-LD A, E[-3]
-ST A, E[0]
-LI A, 0
-ST A, E[1]
-FOR_START_12:
-LD A, E[1]
-ST A, SP[0]
-ADDI SP, 1
-LI A, 3
-MOV B, A
-SUBI SP, 1
-LD A, SP[0]
-CMP A, B
-BLT CMP_TRUE_14
-LI A, 0
-JMP CMP_END_15
-CMP_TRUE_14:
-LI A, 1
-CMP_END_15:
-CMPI A, 0
-BEQ FOR_END_13
-LI A, 0
-ST A, E[2]
-WHILE_START_16:
-LD A, E[0]
-ST A, SP[0]
-ADDI SP, 1
-LI A, 10
-MOV B, A
-SUBI SP, 1
-LD A, SP[0]
-CMP A, B
-BGE CMP_TRUE_18
-LI A, 0
-JMP CMP_END_19
-CMP_TRUE_18:
-LI A, 1
-CMP_END_19:
-CMPI A, 0
-BEQ WHILE_END_17
-LD A, E[0]
-ST A, SP[0]
-ADDI SP, 1
-LI A, 10
-MOV B, A
-SUBI SP, 1
-LD A, SP[0]
-SUB A, B
-ST A, E[0]
-LD A, E[2]
-ST A, SP[0]
-ADDI SP, 1
-LI A, 1
-MOV B, A
-SUBI SP, 1
-LD A, SP[0]
-ADD A, B
-ST A, E[2]
-JMP WHILE_START_16
-WHILE_END_17:
-LD A, E[0]
-ST A, E[3]
-LD A, E[3]
-MOV B, A
-LD C, E[-4]
-ADD C, B
-LD A, C[0]
-ST A, E[4]
-LD A, E[4]
-ST A, SP[0]
-ADDI SP, 1
-LD A, E[1]
-MOV B, A
-LD C, E[-5]
-ADD C, B
-LD A, C[0]
-MOV C, A
-SUBI SP, 1
-LD A, SP[0]
-ST A, C[0]
-LD A, E[2]
-ST A, E[0]
-LD A, E[1]
-ADDI A, 1
-ST A, E[1]
-JMP FOR_START_12
-FOR_END_13:
-displejevi_END:
-MOV SP, E
-SUBI SP, 1
-LD E, SP[0]
-SUBI SP, 1
-LD PA, SP[0]
-RET
+LI A, 127
+STI A, DISP1
+STI A, DISP2
+STI A, DISP3
+petlja:
+LDI A, TASTERI
+LDI B, DIP
+ANDI B, 0xF0
+OR A, B
+STI A, 0xFF
+JMP petlja

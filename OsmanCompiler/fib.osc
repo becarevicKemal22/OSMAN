@@ -34,6 +34,7 @@ number displejevi(number broj, number* segmenti, number* adrese) {
 number main(){
     number segmenti[10] = {63, 6, 91, 79, 102, 109, 125, 7, 127, 111};
     number ADRESE_DISPLEJA[3] = {0xFE, 0xFD, 0xFC};
+    displejevi(0, segmenti, ADRESE_DISPLEJA);
     number rez;
     rez = input(0xF8);
     rez = fibonacci(rez);

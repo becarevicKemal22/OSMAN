@@ -3,83 +3,83 @@ Timing Analyzer Summary
 ------------------------------------------------------------
 
 Type  : Slow 1100mV 85C Model Setup 'fpgaGlobalClock'
-Slack : -10.098
-TNS   : -1303.313
+Slack : -8.326
+TNS   : -998.147
 
 Type  : Slow 1100mV 85C Model Hold 'fpgaGlobalClock'
-Slack : 0.297
+Slack : 0.300
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Recovery 'fpgaGlobalClock'
-Slack : -1.301
-TNS   : -137.457
+Slack : -1.147
+TNS   : -121.272
 
 Type  : Slow 1100mV 85C Model Removal 'fpgaGlobalClock'
-Slack : 1.022
+Slack : 0.974
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Minimum Pulse Width 'fpgaGlobalClock'
 Slack : -2.636
-TNS   : -200.445
+TNS   : -192.767
 
 Type  : Slow 1100mV 0C Model Setup 'fpgaGlobalClock'
-Slack : -10.131
-TNS   : -1291.074
+Slack : -8.271
+TNS   : -996.870
 
 Type  : Slow 1100mV 0C Model Hold 'fpgaGlobalClock'
-Slack : 0.279
+Slack : 0.282
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Recovery 'fpgaGlobalClock'
-Slack : -1.226
-TNS   : -131.433
+Slack : -1.130
+TNS   : -116.378
 
 Type  : Slow 1100mV 0C Model Removal 'fpgaGlobalClock'
-Slack : 0.976
+Slack : 0.922
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Minimum Pulse Width 'fpgaGlobalClock'
 Slack : -2.636
-TNS   : -189.063
+TNS   : -182.758
 
 Type  : Fast 1100mV 85C Model Setup 'fpgaGlobalClock'
-Slack : -5.234
-TNS   : -646.182
+Slack : -4.304
+TNS   : -477.794
 
 Type  : Fast 1100mV 85C Model Hold 'fpgaGlobalClock'
-Slack : 0.180
+Slack : 0.181
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Recovery 'fpgaGlobalClock'
-Slack : -0.286
-TNS   : -6.645
+Slack : -0.212
+TNS   : -3.361
 
 Type  : Fast 1100mV 85C Model Removal 'fpgaGlobalClock'
-Slack : 0.420
+Slack : 0.356
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Minimum Pulse Width 'fpgaGlobalClock'
 Slack : -2.636
-TNS   : -169.716
+TNS   : -164.333
 
 Type  : Fast 1100mV 0C Model Setup 'fpgaGlobalClock'
-Slack : -4.605
-TNS   : -564.127
+Slack : -3.756
+TNS   : -412.684
 
 Type  : Fast 1100mV 0C Model Hold 'fpgaGlobalClock'
-Slack : 0.163
+Slack : 0.160
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Recovery 'fpgaGlobalClock'
-Slack : -0.154
-TNS   : -1.852
+Slack : -0.093
+TNS   : -0.354
 
 Type  : Fast 1100mV 0C Model Removal 'fpgaGlobalClock'
-Slack : 0.317
+Slack : 0.262
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Minimum Pulse Width 'fpgaGlobalClock'
 Slack : -2.636
-TNS   : -187.922
+TNS   : -181.337
 
 ------------------------------------------------------------

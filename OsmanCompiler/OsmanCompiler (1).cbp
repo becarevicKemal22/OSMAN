@@ -36,41 +36,22 @@
 		<Unit filename="ast.h" />
 		<Unit filename="codegen.cpp" />
 		<Unit filename="codegen.h" />
+		<Unit filename="fib.osc" />
 		<Unit filename="lexer.cpp" />
 		<Unit filename="lexer.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="parser.cpp" />
 		<Unit filename="parser.h" />
+		<Unit filename="sabiranje.osc" />
+		<Unit filename="test1.osc" />
+		<Unit filename="test2.osc" />
+		<Unit filename="testAndOr.osc" />
+		<Unit filename="testOuptput.osc" />
+		<Unit filename="testdiv.osc" />
+		<Unit filename="testmnozenje.osc" />
+		<Unit filename="testnizovi.osc" />
 		<Unit filename="token.cpp" />
 		<Unit filename="token.h" />
-		<Unit filename="test1.osc">
-			<Option compile="0" />
-			<Option link="0" />
-		</Unit>
-		<Unit filename="test2.osc">
-			<Option compile="0" />
-			<Option link="0" />
-		</Unit>
-		<Unit filename="testdiv.osc">
-			<Option compile="0" />
-			<Option link="0" />
-		</Unit>
-		<Unit filename="testmnozenje.osc">
-			<Option compile="0" />
-			<Option link="0" />
-		</Unit>
-		<Unit filename="testnizovi.osc">
-			<Option compile="0" />
-			<Option link="0" />
-		</Unit>
-		<Unit filename="testAndOr.osc">
-			<Option compile="0" />
-			<Option link="0" />
-		</Unit>
-		<Unit filename="testOuptput.osc">
-			<Option compile="0" />
-			<Option link="0" />
-		</Unit>
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>

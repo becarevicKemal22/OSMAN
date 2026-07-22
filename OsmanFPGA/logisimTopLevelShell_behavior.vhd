@@ -57,21 +57,21 @@ BEGIN
    --------------------------------------------------------------------------------
    -- All signal adaptations are performed here                                  --
    --------------------------------------------------------------------------------
-   LED1_0                              <= s_logisimOutputBubbles(16);
-   LED2_0                              <= s_logisimOutputBubbles(17);
-   LED3_0                              <= s_logisimOutputBubbles(18);
-   LED4_0                              <= s_logisimOutputBubbles(19);
-   LED5_0                              <= s_logisimOutputBubbles(20);
-   LED6_0                              <= s_logisimOutputBubbles(21);
-   LED7_0                              <= s_logisimOutputBubbles(22);
-   LED8_0                              <= s_logisimOutputBubbles(23);
-   n_SedSeg1_Segment_A                 <=  NOT s_logisimOutputBubbles(24);
-   n_SedSeg1_Segment_B                 <=  NOT s_logisimOutputBubbles(25);
-   n_SedSeg1_Segment_C                 <=  NOT s_logisimOutputBubbles(26);
-   n_SedSeg1_Segment_D                 <=  NOT s_logisimOutputBubbles(27);
-   n_SedSeg1_Segment_E                 <=  NOT s_logisimOutputBubbles(28);
-   n_SedSeg1_Segment_F                 <=  NOT s_logisimOutputBubbles(29);
-   n_SedSeg1_Segment_G                 <=  NOT s_logisimOutputBubbles(30);
+   LED1_0                              <= s_logisimOutputBubbles(24);
+   LED2_0                              <= s_logisimOutputBubbles(25);
+   LED3_0                              <= s_logisimOutputBubbles(26);
+   LED4_0                              <= s_logisimOutputBubbles(27);
+   LED5_0                              <= s_logisimOutputBubbles(28);
+   LED6_0                              <= s_logisimOutputBubbles(29);
+   LED7_0                              <= s_logisimOutputBubbles(30);
+   LED8_0                              <= s_logisimOutputBubbles(31);
+   n_SedSeg1_SedamSegDisplej_Segment_A <=  NOT s_logisimOutputBubbles(16);
+   n_SedSeg1_SedamSegDisplej_Segment_B <=  NOT s_logisimOutputBubbles(17);
+   n_SedSeg1_SedamSegDisplej_Segment_C <=  NOT s_logisimOutputBubbles(18);
+   n_SedSeg1_SedamSegDisplej_Segment_D <=  NOT s_logisimOutputBubbles(19);
+   n_SedSeg1_SedamSegDisplej_Segment_E <=  NOT s_logisimOutputBubbles(20);
+   n_SedSeg1_SedamSegDisplej_Segment_F <=  NOT s_logisimOutputBubbles(21);
+   n_SedSeg1_SedamSegDisplej_Segment_G <=  NOT s_logisimOutputBubbles(22);
    n_SedSeg2_SedamSegDisplej_Segment_A <=  NOT s_logisimOutputBubbles(8);
    n_SedSeg2_SedamSegDisplej_Segment_B <=  NOT s_logisimOutputBubbles(9);
    n_SedSeg2_SedamSegDisplej_Segment_C <=  NOT s_logisimOutputBubbles(10);
@@ -108,8 +108,8 @@ BEGIN
                  SynthesizedClock => s_synthesizedClock );
 
    BASE_1 : logisimTickGenerator
-      GENERIC MAP ( nrOfBits    => 18,
-                    reloadValue => 12500 )
+      GENERIC MAP ( nrOfBits    => 15,
+                    reloadValue => 25000 )
       PORT MAP ( FPGAClock => s_synthesizedClock,
                  FPGATick  => s_fpgaTick );
 

@@ -1,5 +1,5 @@
 Analysis & Synthesis report for logisimTopLevelShell
-Fri Jun 26 23:18:36 2026
+Thu Jul 23 01:26:55 2026
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -19,7 +19,7 @@ Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
  11. Inverted Register Statistics
  12. Registers Packed Into Inferred Megafunctions
  13. Multiplexer Restructuring Statistics (Restructuring Performed)
- 14. Source assignments for OSMAN:CIRCUIT_0|RAMCONTENTS_MemorijaPodataka:MemorijaPodataka|altsyncram:s_memContents_rtl_0|altsyncram_sro1:auto_generated
+ 14. Source assignments for OSMAN:CIRCUIT_0|RAMCONTENTS_MemorijaPodataka:MemorijaPodataka|altsyncram:s_memContents_rtl_0|altsyncram_oro1:auto_generated
  15. Parameter Settings for User Entity Instance: logisimTickGenerator:BASE_1
  16. Parameter Settings for User Entity Instance: LogisimClockComponent:CLK
  17. Parameter Settings for User Entity Instance: LogisimClockComponent:MemCLK
@@ -395,13 +395,13 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Fri Jun 26 23:18:36 2026       ;
+; Analysis & Synthesis Status     ; Successful - Thu Jul 23 01:26:55 2026       ;
 ; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                   ; logisimTopLevelShell                        ;
 ; Top-level Entity Name           ; logisimTopLevelShell                        ;
 ; Family                          ; Cyclone V                                   ;
 ; Logic utilization (in ALMs)     ; N/A                                         ;
-; Total registers                 ; 145                                         ;
+; Total registers                 ; 138                                         ;
 ; Total pins                      ; 42                                          ;
 ; Total virtual pins              ; 0                                           ;
 ; Total block memory bits         ; 2,048                                       ;
@@ -515,14 +515,7 @@ refer to the applicable agreement for further details.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   0.0%      ;
-;     Processor 3            ;   0.0%      ;
-;     Processor 4            ;   0.0%      ;
-;     Processor 5            ;   0.0%      ;
-;     Processor 6            ;   0.0%      ;
-;     Processor 7            ;   0.0%      ;
-;     Processor 8            ;   0.0%      ;
-;     Processors 9-12        ;   0.0%      ;
+;     Processors 2-12        ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -611,7 +604,7 @@ refer to the applicable agreement for further details.
 ; altrom.inc                                ; yes             ; Megafunction                     ; e:/quartusprimelite/quartus/libraries/megafunctions/altrom.inc                ;         ;
 ; altram.inc                                ; yes             ; Megafunction                     ; e:/quartusprimelite/quartus/libraries/megafunctions/altram.inc                ;         ;
 ; altdpram.inc                              ; yes             ; Megafunction                     ; e:/quartusprimelite/quartus/libraries/megafunctions/altdpram.inc              ;         ;
-; db/altsyncram_sro1.tdf                    ; yes             ; Auto-Generated Megafunction      ; C:/.Cloud Documents/Osman/OsmanFPGA/db/altsyncram_sro1.tdf                    ;         ;
+; db/altsyncram_oro1.tdf                    ; yes             ; Auto-Generated Megafunction      ; C:/.Cloud Documents/Osman/OsmanFPGA/db/altsyncram_oro1.tdf                    ;         ;
 +-------------------------------------------+-----------------+----------------------------------+-------------------------------------------------------------------------------+---------+
 
 
@@ -620,16 +613,16 @@ refer to the applicable agreement for further details.
 +---------------------------------------------+-----------------------+
 ; Resource                                    ; Usage                 ;
 +---------------------------------------------+-----------------------+
-; Estimate of Logic utilization (ALMs needed) ; 257                   ;
+; Estimate of Logic utilization (ALMs needed) ; 164                   ;
 ;                                             ;                       ;
-; Combinational ALUT usage for logic          ; 344                   ;
-;     -- 7 input functions                    ; 5                     ;
-;     -- 6 input functions                    ; 155                   ;
-;     -- 5 input functions                    ; 79                    ;
-;     -- 4 input functions                    ; 33                    ;
-;     -- <=3 input functions                  ; 72                    ;
+; Combinational ALUT usage for logic          ; 232                   ;
+;     -- 7 input functions                    ; 1                     ;
+;     -- 6 input functions                    ; 85                    ;
+;     -- 5 input functions                    ; 33                    ;
+;     -- 4 input functions                    ; 23                    ;
+;     -- <=3 input functions                  ; 90                    ;
 ;                                             ;                       ;
-; Dedicated logic registers                   ; 145                   ;
+; Dedicated logic registers                   ; 138                   ;
 ;                                             ;                       ;
 ; I/O pins                                    ; 42                    ;
 ; Total MLAB memory bits                      ; 0                     ;
@@ -638,9 +631,9 @@ refer to the applicable agreement for further details.
 ; Total DSP Blocks                            ; 0                     ;
 ;                                             ;                       ;
 ; Maximum fan-out node                        ; fpgaGlobalClock~input ;
-; Maximum fan-out                             ; 153                   ;
-; Total fan-out                               ; 2353                  ;
-; Average fan-out                             ; 4.05                  ;
+; Maximum fan-out                             ; 146                   ;
+; Total fan-out                               ; 1662                  ;
+; Average fan-out                             ; 3.60                  ;
 +---------------------------------------------+-----------------------+
 
 
@@ -649,88 +642,72 @@ refer to the applicable agreement for further details.
 +--------------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------+--------------+
 ; Compilation Hierarchy Node                             ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                               ; Entity Name                  ; Library Name ;
 +--------------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------+--------------+
-; |logisimTopLevelShell                                  ; 344 (0)             ; 145 (0)                   ; 2048              ; 0          ; 42   ; 0            ; |logisimTopLevelShell                                                                                                                             ; logisimTopLevelShell         ; work         ;
+; |logisimTopLevelShell                                  ; 232 (0)             ; 138 (0)                   ; 2048              ; 0          ; 42   ; 0            ; |logisimTopLevelShell                                                                                                                             ; logisimTopLevelShell         ; work         ;
 ;    |LogisimClockComponent:CLK|                         ; 5 (5)               ; 6 (6)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|LogisimClockComponent:CLK                                                                                                   ; LogisimClockComponent        ; work         ;
 ;    |LogisimClockComponent:MemCLK|                      ; 1 (1)               ; 3 (3)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|LogisimClockComponent:MemCLK                                                                                                ; LogisimClockComponent        ; work         ;
-;    |OSMAN:CIRCUIT_0|                                   ; 316 (86)            ; 117 (0)                   ; 2048              ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0                                                                                                             ; OSMAN                        ; work         ;
-;       |ALU8Bit:ALU|                                    ; 68 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU                                                                                                 ; ALU8Bit                      ; work         ;
-;          |ALU1Bit:ALU1Bit_1|                           ; 5 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_1                                                                               ; ALU1Bit                      ; work         ;
-;             |FullAdder:FullAdder_1|                    ; 2 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_1|FullAdder:FullAdder_1                                                         ; FullAdder                    ; work         ;
-;                |OR_GATE:GATES_5|                       ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_1|FullAdder:FullAdder_1|OR_GATE:GATES_5                                         ; OR_GATE                      ; work         ;
-;                |XOR_GATE_ONEHOT:GATES_1|               ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_1|FullAdder:FullAdder_1|XOR_GATE_ONEHOT:GATES_1                                 ; XOR_GATE_ONEHOT              ; work         ;
-;             |Multiplexer_8:PLEXERS_5|                  ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_1|Multiplexer_8:PLEXERS_5                                                       ; Multiplexer_8                ; work         ;
-;          |ALU1Bit:ALU1Bit_2|                           ; 6 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_2                                                                               ; ALU1Bit                      ; work         ;
+;    |OSMAN:CIRCUIT_0|                                   ; 200 (24)            ; 113 (0)                   ; 2048              ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0                                                                                                             ; OSMAN                        ; work         ;
+;       |ALU8Bit:ALU|                                    ; 45 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU                                                                                                 ; ALU8Bit                      ; work         ;
+;          |ALU1Bit:ALU1Bit_1|                           ; 2 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_1                                                                               ; ALU1Bit                      ; work         ;
+;             |FullAdder:FullAdder_1|                    ; 1 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_1|FullAdder:FullAdder_1                                                         ; FullAdder                    ; work         ;
+;                |XOR_GATE_ONEHOT:GATES_2|               ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_1|FullAdder:FullAdder_1|XOR_GATE_ONEHOT:GATES_2                                 ; XOR_GATE_ONEHOT              ; work         ;
+;             |Multiplexer_8:PLEXERS_5|                  ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_1|Multiplexer_8:PLEXERS_5                                                       ; Multiplexer_8                ; work         ;
+;          |ALU1Bit:ALU1Bit_2|                           ; 4 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_2                                                                               ; ALU1Bit                      ; work         ;
 ;             |FullAdder:FullAdder_1|                    ; 2 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_2|FullAdder:FullAdder_1                                                         ; FullAdder                    ; work         ;
 ;                |OR_GATE:GATES_5|                       ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_2|FullAdder:FullAdder_1|OR_GATE:GATES_5                                         ; OR_GATE                      ; work         ;
 ;                |XOR_GATE_ONEHOT:GATES_1|               ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_2|FullAdder:FullAdder_1|XOR_GATE_ONEHOT:GATES_1                                 ; XOR_GATE_ONEHOT              ; work         ;
-;             |Multiplexer_8:PLEXERS_5|                  ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_2|Multiplexer_8:PLEXERS_5                                                       ; Multiplexer_8                ; work         ;
+;             |Multiplexer_8:PLEXERS_5|                  ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_2|Multiplexer_8:PLEXERS_5                                                       ; Multiplexer_8                ; work         ;
 ;             |XOR_GATE_ONEHOT:GATES_1|                  ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_2|XOR_GATE_ONEHOT:GATES_1                                                       ; XOR_GATE_ONEHOT              ; work         ;
-;          |ALU1Bit:ALU1Bit_3|                           ; 6 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_3                                                                               ; ALU1Bit                      ; work         ;
-;             |FullAdder:FullAdder_1|                    ; 2 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_3|FullAdder:FullAdder_1                                                         ; FullAdder                    ; work         ;
+;          |ALU1Bit:ALU1Bit_3|                           ; 3 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_3                                                                               ; ALU1Bit                      ; work         ;
+;             |FullAdder:FullAdder_1|                    ; 1 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_3|FullAdder:FullAdder_1                                                         ; FullAdder                    ; work         ;
 ;                |OR_GATE:GATES_5|                       ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_3|FullAdder:FullAdder_1|OR_GATE:GATES_5                                         ; OR_GATE                      ; work         ;
-;                |XOR_GATE_ONEHOT:GATES_1|               ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_3|FullAdder:FullAdder_1|XOR_GATE_ONEHOT:GATES_1                                 ; XOR_GATE_ONEHOT              ; work         ;
-;             |Multiplexer_8:PLEXERS_5|                  ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_3|Multiplexer_8:PLEXERS_5                                                       ; Multiplexer_8                ; work         ;
+;             |Multiplexer_8:PLEXERS_5|                  ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_3|Multiplexer_8:PLEXERS_5                                                       ; Multiplexer_8                ; work         ;
 ;             |XOR_GATE_ONEHOT:GATES_1|                  ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_3|XOR_GATE_ONEHOT:GATES_1                                                       ; XOR_GATE_ONEHOT              ; work         ;
-;          |ALU1Bit:ALU1Bit_4|                           ; 7 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_4                                                                               ; ALU1Bit                      ; work         ;
+;          |ALU1Bit:ALU1Bit_4|                           ; 4 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_4                                                                               ; ALU1Bit                      ; work         ;
 ;             |FullAdder:FullAdder_1|                    ; 3 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_4|FullAdder:FullAdder_1                                                         ; FullAdder                    ; work         ;
 ;                |AND_GATE:GATES_4|                      ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_4|FullAdder:FullAdder_1|AND_GATE:GATES_4                                        ; AND_GATE                     ; work         ;
 ;                |XOR_GATE_ONEHOT:GATES_1|               ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_4|FullAdder:FullAdder_1|XOR_GATE_ONEHOT:GATES_1                                 ; XOR_GATE_ONEHOT              ; work         ;
 ;                |XOR_GATE_ONEHOT:GATES_2|               ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_4|FullAdder:FullAdder_1|XOR_GATE_ONEHOT:GATES_2                                 ; XOR_GATE_ONEHOT              ; work         ;
-;             |Multiplexer_8:PLEXERS_5|                  ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_4|Multiplexer_8:PLEXERS_5                                                       ; Multiplexer_8                ; work         ;
 ;             |XOR_GATE_ONEHOT:GATES_1|                  ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_4|XOR_GATE_ONEHOT:GATES_1                                                       ; XOR_GATE_ONEHOT              ; work         ;
-;          |ALU1Bit:ALU1Bit_5|                           ; 8 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_5                                                                               ; ALU1Bit                      ; work         ;
-;             |FullAdder:FullAdder_1|                    ; 4 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_5|FullAdder:FullAdder_1                                                         ; FullAdder                    ; work         ;
-;                |AND_GATE:GATES_4|                      ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_5|FullAdder:FullAdder_1|AND_GATE:GATES_4                                        ; AND_GATE                     ; work         ;
+;          |ALU1Bit:ALU1Bit_5|                           ; 4 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_5                                                                               ; ALU1Bit                      ; work         ;
+;             |FullAdder:FullAdder_1|                    ; 2 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_5|FullAdder:FullAdder_1                                                         ; FullAdder                    ; work         ;
 ;                |OR_GATE:GATES_5|                       ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_5|FullAdder:FullAdder_1|OR_GATE:GATES_5                                         ; OR_GATE                      ; work         ;
-;                |XOR_GATE_ONEHOT:GATES_1|               ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_5|FullAdder:FullAdder_1|XOR_GATE_ONEHOT:GATES_1                                 ; XOR_GATE_ONEHOT              ; work         ;
 ;                |XOR_GATE_ONEHOT:GATES_2|               ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_5|FullAdder:FullAdder_1|XOR_GATE_ONEHOT:GATES_2                                 ; XOR_GATE_ONEHOT              ; work         ;
-;             |Multiplexer_8:PLEXERS_5|                  ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_5|Multiplexer_8:PLEXERS_5                                                       ; Multiplexer_8                ; work         ;
+;             |Multiplexer_8:PLEXERS_5|                  ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_5|Multiplexer_8:PLEXERS_5                                                       ; Multiplexer_8                ; work         ;
 ;             |XOR_GATE_ONEHOT:GATES_1|                  ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_5|XOR_GATE_ONEHOT:GATES_1                                                       ; XOR_GATE_ONEHOT              ; work         ;
-;          |ALU1Bit:ALU1Bit_6|                           ; 6 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_6                                                                               ; ALU1Bit                      ; work         ;
-;             |FullAdder:FullAdder_1|                    ; 2 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_6|FullAdder:FullAdder_1                                                         ; FullAdder                    ; work         ;
-;                |OR_GATE:GATES_5|                       ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_6|FullAdder:FullAdder_1|OR_GATE:GATES_5                                         ; OR_GATE                      ; work         ;
-;                |XOR_GATE_ONEHOT:GATES_1|               ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_6|FullAdder:FullAdder_1|XOR_GATE_ONEHOT:GATES_1                                 ; XOR_GATE_ONEHOT              ; work         ;
-;             |Multiplexer_8:PLEXERS_5|                  ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_6|Multiplexer_8:PLEXERS_5                                                       ; Multiplexer_8                ; work         ;
+;          |ALU1Bit:ALU1Bit_6|                           ; 2 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_6                                                                               ; ALU1Bit                      ; work         ;
+;             |Multiplexer_8:PLEXERS_5|                  ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_6|Multiplexer_8:PLEXERS_5                                                       ; Multiplexer_8                ; work         ;
 ;             |XOR_GATE_ONEHOT:GATES_1|                  ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_6|XOR_GATE_ONEHOT:GATES_1                                                       ; XOR_GATE_ONEHOT              ; work         ;
-;          |ALU1Bit:ALU1Bit_7|                           ; 6 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_7                                                                               ; ALU1Bit                      ; work         ;
+;          |ALU1Bit:ALU1Bit_7|                           ; 3 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_7                                                                               ; ALU1Bit                      ; work         ;
 ;             |FullAdder:FullAdder_1|                    ; 1 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_7|FullAdder:FullAdder_1                                                         ; FullAdder                    ; work         ;
 ;                |OR_GATE:GATES_5|                       ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_7|FullAdder:FullAdder_1|OR_GATE:GATES_5                                         ; OR_GATE                      ; work         ;
-;             |Multiplexer_8:PLEXERS_5|                  ; 4 (4)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_7|Multiplexer_8:PLEXERS_5                                                       ; Multiplexer_8                ; work         ;
+;             |Multiplexer_8:PLEXERS_5|                  ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_7|Multiplexer_8:PLEXERS_5                                                       ; Multiplexer_8                ; work         ;
 ;             |XOR_GATE_ONEHOT:GATES_1|                  ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_7|XOR_GATE_ONEHOT:GATES_1                                                       ; XOR_GATE_ONEHOT              ; work         ;
-;          |ALU1Bit:ALU1Bit_8|                           ; 5 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_8                                                                               ; ALU1Bit                      ; work         ;
-;             |FullAdder:FullAdder_1|                    ; 1 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_8|FullAdder:FullAdder_1                                                         ; FullAdder                    ; work         ;
-;                |OR_GATE:GATES_5|                       ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_8|FullAdder:FullAdder_1|OR_GATE:GATES_5                                         ; OR_GATE                      ; work         ;
-;             |Multiplexer_8:PLEXERS_5|                  ; 4 (4)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_8|Multiplexer_8:PLEXERS_5                                                       ; Multiplexer_8                ; work         ;
-;          |AND_GATE_3_INPUTS:GATES_3|                   ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|AND_GATE_3_INPUTS:GATES_3                                                                       ; AND_GATE_3_INPUTS            ; work         ;
-;          |Multiplexer_bus_4:PLEXERS_4|                 ; 14 (14)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|Multiplexer_bus_4:PLEXERS_4                                                                     ; Multiplexer_bus_4            ; work         ;
-;          |NOR_GATE_8_INPUTS:GATES_1|                   ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|NOR_GATE_8_INPUTS:GATES_1                                                                       ; NOR_GATE_8_INPUTS            ; work         ;
-;          |XOR_GATE_ONEHOT:GATES_2|                     ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|XOR_GATE_ONEHOT:GATES_2                                                                         ; XOR_GATE_ONEHOT              ; work         ;
+;          |ALU1Bit:ALU1Bit_8|                           ; 1 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_8                                                                               ; ALU1Bit                      ; work         ;
+;             |Multiplexer_8:PLEXERS_5|                  ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_8|Multiplexer_8:PLEXERS_5                                                       ; Multiplexer_8                ; work         ;
+;          |AND_GATE_3_INPUTS:GATES_3|                   ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|AND_GATE_3_INPUTS:GATES_3                                                                       ; AND_GATE_3_INPUTS            ; work         ;
+;          |Multiplexer_bus_4:PLEXERS_4|                 ; 21 (21)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|Multiplexer_bus_4:PLEXERS_4                                                                     ; Multiplexer_bus_4            ; work         ;
 ;       |D_FLIPFLOP:MEMORY_8|                            ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|D_FLIPFLOP:MEMORY_8                                                                                         ; D_FLIPFLOP                   ; work         ;
-;       |DekoderAdresa:Dekoder_Adresa|                   ; 2 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|DekoderAdresa:Dekoder_Adresa                                                                                ; DekoderAdresa                ; work         ;
-;          |Comparator:ARITH_5|                          ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|DekoderAdresa:Dekoder_Adresa|Comparator:ARITH_5                                                             ; Comparator                   ; work         ;
-;       |KontrolnaJedinica:KJ|                           ; 16 (16)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|KontrolnaJedinica:KJ                                                                                        ; KontrolnaJedinica            ; work         ;
-;       |KontrolnaJedinicaGrananja:KJG|                  ; 1 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|KontrolnaJedinicaGrananja:KJG                                                                               ; KontrolnaJedinicaGrananja    ; work         ;
-;          |Multiplexer_8:PLEXERS_2|                     ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|KontrolnaJedinicaGrananja:KJG|Multiplexer_8:PLEXERS_2                                                       ; Multiplexer_8                ; work         ;
-;       |Multiplexer_bus_2:PLEXERS_1|                    ; 8 (8)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|Multiplexer_bus_2:PLEXERS_1                                                                                 ; Multiplexer_bus_2            ; work         ;
-;       |Multiplexer_bus_2:PLEXERS_2|                    ; 28 (28)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|Multiplexer_bus_2:PLEXERS_2                                                                                 ; Multiplexer_bus_2            ; work         ;
-;       |Multiplexer_bus_2:PLEXERS_3|                    ; 11 (11)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|Multiplexer_bus_2:PLEXERS_3                                                                                 ; Multiplexer_bus_2            ; work         ;
-;       |Multiplexer_bus_4:PLEXERS_5|                    ; 30 (30)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|Multiplexer_bus_4:PLEXERS_5                                                                                 ; Multiplexer_bus_4            ; work         ;
-;       |Multiplexer_bus_4:PLEXERS_6|                    ; 8 (8)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|Multiplexer_bus_4:PLEXERS_6                                                                                 ; Multiplexer_bus_4            ; work         ;
-;       |ProgramskiBrojac:PB|                            ; 0 (0)               ; 8 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ProgramskiBrojac:PB                                                                                         ; ProgramskiBrojac             ; work         ;
+;       |KontrolnaJedinica:KJ|                           ; 10 (10)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|KontrolnaJedinica:KJ                                                                                        ; KontrolnaJedinica            ; work         ;
+;       |Multiplexer_bus_2:PLEXERS_1|                    ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|Multiplexer_bus_2:PLEXERS_1                                                                                 ; Multiplexer_bus_2            ; work         ;
+;       |Multiplexer_bus_2:PLEXERS_2|                    ; 26 (26)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|Multiplexer_bus_2:PLEXERS_2                                                                                 ; Multiplexer_bus_2            ; work         ;
+;       |Multiplexer_bus_2:PLEXERS_3|                    ; 8 (8)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|Multiplexer_bus_2:PLEXERS_3                                                                                 ; Multiplexer_bus_2            ; work         ;
+;       |Multiplexer_bus_4:PLEXERS_5|                    ; 19 (19)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|Multiplexer_bus_4:PLEXERS_5                                                                                 ; Multiplexer_bus_4            ; work         ;
+;       |Multiplexer_bus_4:PLEXERS_6|                    ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|Multiplexer_bus_4:PLEXERS_6                                                                                 ; Multiplexer_bus_4            ; work         ;
+;       |ProgramskiBrojac:PB|                            ; 1 (0)               ; 8 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ProgramskiBrojac:PB                                                                                         ; ProgramskiBrojac             ; work         ;
 ;          |D_FLIPFLOP:MEMORY_10|                        ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ProgramskiBrojac:PB|D_FLIPFLOP:MEMORY_10                                                                    ; D_FLIPFLOP                   ; work         ;
 ;          |D_FLIPFLOP:MEMORY_11|                        ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ProgramskiBrojac:PB|D_FLIPFLOP:MEMORY_11                                                                    ; D_FLIPFLOP                   ; work         ;
 ;          |D_FLIPFLOP:MEMORY_12|                        ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ProgramskiBrojac:PB|D_FLIPFLOP:MEMORY_12                                                                    ; D_FLIPFLOP                   ; work         ;
 ;          |D_FLIPFLOP:MEMORY_13|                        ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ProgramskiBrojac:PB|D_FLIPFLOP:MEMORY_13                                                                    ; D_FLIPFLOP                   ; work         ;
 ;          |D_FLIPFLOP:MEMORY_14|                        ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ProgramskiBrojac:PB|D_FLIPFLOP:MEMORY_14                                                                    ; D_FLIPFLOP                   ; work         ;
 ;          |D_FLIPFLOP:MEMORY_15|                        ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ProgramskiBrojac:PB|D_FLIPFLOP:MEMORY_15                                                                    ; D_FLIPFLOP                   ; work         ;
-;          |D_FLIPFLOP:MEMORY_16|                        ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ProgramskiBrojac:PB|D_FLIPFLOP:MEMORY_16                                                                    ; D_FLIPFLOP                   ; work         ;
+;          |D_FLIPFLOP:MEMORY_16|                        ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ProgramskiBrojac:PB|D_FLIPFLOP:MEMORY_16                                                                    ; D_FLIPFLOP                   ; work         ;
 ;          |D_FLIPFLOP:MEMORY_9|                         ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ProgramskiBrojac:PB|D_FLIPFLOP:MEMORY_9                                                                     ; D_FLIPFLOP                   ; work         ;
-;       |RAMCONTENTS_MemorijaPodataka:MemorijaPodataka|  ; 2 (2)               ; 0 (0)                     ; 2048              ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|RAMCONTENTS_MemorijaPodataka:MemorijaPodataka                                                               ; RAMCONTENTS_MemorijaPodataka ; work         ;
+;       |RAMCONTENTS_MemorijaPodataka:MemorijaPodataka|  ; 1 (1)               ; 0 (0)                     ; 2048              ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|RAMCONTENTS_MemorijaPodataka:MemorijaPodataka                                                               ; RAMCONTENTS_MemorijaPodataka ; work         ;
 ;          |altsyncram:s_memContents_rtl_0|              ; 0 (0)               ; 0 (0)                     ; 2048              ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|RAMCONTENTS_MemorijaPodataka:MemorijaPodataka|altsyncram:s_memContents_rtl_0                                ; altsyncram                   ; work         ;
-;             |altsyncram_sro1:auto_generated|           ; 0 (0)               ; 0 (0)                     ; 2048              ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|RAMCONTENTS_MemorijaPodataka:MemorijaPodataka|altsyncram:s_memContents_rtl_0|altsyncram_sro1:auto_generated ; altsyncram_sro1              ; work         ;
-;       |RegistarskaDatoteka:RD|                         ; 40 (0)              ; 64 (0)                    ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|RegistarskaDatoteka:RD                                                                                      ; RegistarskaDatoteka          ; work         ;
-;          |Decoder_8:PLEXERS_1|                         ; 15 (15)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|RegistarskaDatoteka:RD|Decoder_8:PLEXERS_1                                                                  ; Decoder_8                    ; work         ;
-;          |Multiplexer_bus_8:PLEXERS_2|                 ; 25 (25)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|RegistarskaDatoteka:RD|Multiplexer_bus_8:PLEXERS_2                                                          ; Multiplexer_bus_8            ; work         ;
+;             |altsyncram_oro1:auto_generated|           ; 0 (0)               ; 0 (0)                     ; 2048              ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|RAMCONTENTS_MemorijaPodataka:MemorijaPodataka|altsyncram:s_memContents_rtl_0|altsyncram_oro1:auto_generated ; altsyncram_oro1              ; work         ;
+;       |RegistarskaDatoteka:RD|                         ; 35 (0)              ; 64 (0)                    ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|RegistarskaDatoteka:RD                                                                                      ; RegistarskaDatoteka          ; work         ;
+;          |Decoder_8:PLEXERS_1|                         ; 11 (11)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|RegistarskaDatoteka:RD|Decoder_8:PLEXERS_1                                                                  ; Decoder_8                    ; work         ;
+;          |Multiplexer_bus_8:PLEXERS_2|                 ; 24 (24)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|RegistarskaDatoteka:RD|Multiplexer_bus_8:PLEXERS_2                                                          ; Multiplexer_bus_8            ; work         ;
 ;          |Registar8Bit:Registar8Bit_1|                 ; 0 (0)               ; 8 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|RegistarskaDatoteka:RD|Registar8Bit:Registar8Bit_1                                                          ; Registar8Bit                 ; work         ;
 ;             |D_FLIPFLOP:MEMORY_10|                     ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|RegistarskaDatoteka:RD|Registar8Bit:Registar8Bit_1|D_FLIPFLOP:MEMORY_10                                     ; D_FLIPFLOP                   ; work         ;
 ;             |D_FLIPFLOP:MEMORY_11|                     ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|RegistarskaDatoteka:RD|Registar8Bit:Registar8Bit_1|D_FLIPFLOP:MEMORY_11                                     ; D_FLIPFLOP                   ; work         ;
@@ -803,22 +780,21 @@ refer to the applicable agreement for further details.
 ;             |D_FLIPFLOP:MEMORY_15|                     ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|RegistarskaDatoteka:RD|Registar8Bit:Registar8Bit_8|D_FLIPFLOP:MEMORY_15                                     ; D_FLIPFLOP                   ; work         ;
 ;             |D_FLIPFLOP:MEMORY_16|                     ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|RegistarskaDatoteka:RD|Registar8Bit:Registar8Bit_8|D_FLIPFLOP:MEMORY_16                                     ; D_FLIPFLOP                   ; work         ;
 ;             |D_FLIPFLOP:MEMORY_9|                      ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|RegistarskaDatoteka:RD|Registar8Bit:Registar8Bit_8|D_FLIPFLOP:MEMORY_9                                      ; D_FLIPFLOP                   ; work         ;
-;       |Sabirac:PBSab|                                  ; 6 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|Sabirac:PBSab                                                                                               ; Sabirac                      ; work         ;
+;       |Sabirac:PBSab|                                  ; 8 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|Sabirac:PBSab                                                                                               ; Sabirac                      ; work         ;
 ;          |FullAdder:FullAdder_1|                       ; 1 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|Sabirac:PBSab|FullAdder:FullAdder_1                                                                         ; FullAdder                    ; work         ;
 ;             |XOR_GATE_ONEHOT:GATES_2|                  ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|Sabirac:PBSab|FullAdder:FullAdder_1|XOR_GATE_ONEHOT:GATES_2                                                 ; XOR_GATE_ONEHOT              ; work         ;
 ;          |FullAdder:FullAdder_2|                       ; 1 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|Sabirac:PBSab|FullAdder:FullAdder_2                                                                         ; FullAdder                    ; work         ;
 ;             |XOR_GATE_ONEHOT:GATES_2|                  ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|Sabirac:PBSab|FullAdder:FullAdder_2|XOR_GATE_ONEHOT:GATES_2                                                 ; XOR_GATE_ONEHOT              ; work         ;
-;          |FullAdder:FullAdder_4|                       ; 2 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|Sabirac:PBSab|FullAdder:FullAdder_4                                                                         ; FullAdder                    ; work         ;
-;             |XOR_GATE_ONEHOT:GATES_2|                  ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|Sabirac:PBSab|FullAdder:FullAdder_4|XOR_GATE_ONEHOT:GATES_2                                                 ; XOR_GATE_ONEHOT              ; work         ;
-;          |FullAdder:FullAdder_5|                       ; 1 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|Sabirac:PBSab|FullAdder:FullAdder_5                                                                         ; FullAdder                    ; work         ;
-;             |XOR_GATE_ONEHOT:GATES_2|                  ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|Sabirac:PBSab|FullAdder:FullAdder_5|XOR_GATE_ONEHOT:GATES_2                                                 ; XOR_GATE_ONEHOT              ; work         ;
+;          |FullAdder:FullAdder_3|                       ; 1 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|Sabirac:PBSab|FullAdder:FullAdder_3                                                                         ; FullAdder                    ; work         ;
+;             |XOR_GATE_ONEHOT:GATES_2|                  ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|Sabirac:PBSab|FullAdder:FullAdder_3|XOR_GATE_ONEHOT:GATES_2                                                 ; XOR_GATE_ONEHOT              ; work         ;
+;          |FullAdder:FullAdder_4|                       ; 1 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|Sabirac:PBSab|FullAdder:FullAdder_4                                                                         ; FullAdder                    ; work         ;
+;             |XOR_GATE_ONEHOT:GATES_2|                  ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|Sabirac:PBSab|FullAdder:FullAdder_4|XOR_GATE_ONEHOT:GATES_2                                                 ; XOR_GATE_ONEHOT              ; work         ;
+;          |FullAdder:FullAdder_5|                       ; 2 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|Sabirac:PBSab|FullAdder:FullAdder_5                                                                         ; FullAdder                    ; work         ;
+;             |XOR_GATE_ONEHOT:GATES_2|                  ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|Sabirac:PBSab|FullAdder:FullAdder_5|XOR_GATE_ONEHOT:GATES_2                                                 ; XOR_GATE_ONEHOT              ; work         ;
 ;          |FullAdder:FullAdder_6|                       ; 1 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|Sabirac:PBSab|FullAdder:FullAdder_6                                                                         ; FullAdder                    ; work         ;
 ;             |XOR_GATE_ONEHOT:GATES_2|                  ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|Sabirac:PBSab|FullAdder:FullAdder_6|XOR_GATE_ONEHOT:GATES_2                                                 ; XOR_GATE_ONEHOT              ; work         ;
-;       |StatusniRegistar:SR|                            ; 1 (0)               ; 4 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|StatusniRegistar:SR                                                                                         ; StatusniRegistar             ; work         ;
-;          |D_FLIPFLOP:MEMORY_5|                         ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|StatusniRegistar:SR|D_FLIPFLOP:MEMORY_5                                                                     ; D_FLIPFLOP                   ; work         ;
-;          |D_FLIPFLOP:MEMORY_6|                         ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|StatusniRegistar:SR|D_FLIPFLOP:MEMORY_6                                                                     ; D_FLIPFLOP                   ; work         ;
-;          |D_FLIPFLOP:MEMORY_7|                         ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|StatusniRegistar:SR|D_FLIPFLOP:MEMORY_7                                                                     ; D_FLIPFLOP                   ; work         ;
-;          |D_FLIPFLOP:MEMORY_8|                         ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|StatusniRegistar:SR|D_FLIPFLOP:MEMORY_8                                                                     ; D_FLIPFLOP                   ; work         ;
+;          |FullAdder:FullAdder_7|                       ; 1 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|Sabirac:PBSab|FullAdder:FullAdder_7                                                                         ; FullAdder                    ; work         ;
+;             |XOR_GATE_ONEHOT:GATES_2|                  ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|Sabirac:PBSab|FullAdder:FullAdder_7|XOR_GATE_ONEHOT:GATES_2                                                 ; XOR_GATE_ONEHOT              ; work         ;
 ;       |UIKontroler:UI_Kontroler|                       ; 9 (0)               ; 40 (0)                    ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|UIKontroler:UI_Kontroler                                                                                    ; UIKontroler                  ; work         ;
 ;          |Decoder_4:PLEXERS_1|                         ; 5 (5)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|UIKontroler:UI_Kontroler|Decoder_4:PLEXERS_1                                                                ; Decoder_4                    ; work         ;
 ;          |Registar8Bit:UIIzlazniReg1|                  ; 1 (0)               ; 7 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|UIKontroler:UI_Kontroler|Registar8Bit:UIIzlazniReg1                                                         ; Registar8Bit                 ; work         ;
@@ -867,7 +843,7 @@ refer to the applicable agreement for further details.
 ;             |D_FLIPFLOP:MEMORY_6|                      ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|UIKontroler:UI_Kontroler|StabilizatorUlaza8Bit:UIUlazniStabilizator2|D_FLIPFLOP:MEMORY_6                    ; D_FLIPFLOP                   ; work         ;
 ;             |D_FLIPFLOP:MEMORY_7|                      ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|UIKontroler:UI_Kontroler|StabilizatorUlaza8Bit:UIUlazniStabilizator2|D_FLIPFLOP:MEMORY_7                    ; D_FLIPFLOP                   ; work         ;
 ;             |D_FLIPFLOP:MEMORY_8|                      ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|UIKontroler:UI_Kontroler|StabilizatorUlaza8Bit:UIUlazniStabilizator2|D_FLIPFLOP:MEMORY_8                    ; D_FLIPFLOP                   ; work         ;
-;    |logisimTickGenerator:BASE_1|                       ; 22 (22)             ; 19 (19)                   ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|logisimTickGenerator:BASE_1                                                                                                 ; logisimTickGenerator         ; work         ;
+;    |logisimTickGenerator:BASE_1|                       ; 26 (26)             ; 16 (16)                   ; 0                 ; 0          ; 0    ; 0            ; |logisimTopLevelShell|logisimTickGenerator:BASE_1                                                                                                 ; logisimTickGenerator         ; work         ;
 +--------------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -877,7 +853,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+---------+
 ; Name                                                                                                                                   ; Type ; Mode             ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size ; MIF     ;
 +----------------------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+---------+
-; OSMAN:CIRCUIT_0|RAMCONTENTS_MemorijaPodataka:MemorijaPodataka|altsyncram:s_memContents_rtl_0|altsyncram_sro1:auto_generated|ALTSYNCRAM ; AUTO ; Simple Dual Port ; 257          ; 8            ; 257          ; 8            ; 2056 ; ram.mif ;
+; OSMAN:CIRCUIT_0|RAMCONTENTS_MemorijaPodataka:MemorijaPodataka|altsyncram:s_memContents_rtl_0|altsyncram_oro1:auto_generated|ALTSYNCRAM ; AUTO ; Simple Dual Port ; 256          ; 8            ; 256          ; 8            ; 2048 ; ram.mif ;
 +----------------------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+---------+
 
 
@@ -910,7 +886,11 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; LogisimClockComponent:MemCLK|s_derivedClock[0]                                                                          ; Merged with LogisimClockComponent:CLK|s_derivedClock[0] ;
 ; LogisimClockComponent:MemCLK|s_counterValue[1]                                                                          ; Merged with LogisimClockComponent:CLK|s_counterValue[1] ;
 ; LogisimClockComponent:MemCLK|s_counterValue[0]                                                                          ; Merged with LogisimClockComponent:CLK|s_counterValue[0] ;
-; Total Number of Removed Registers = 24                                                                                  ;                                                         ;
+; OSMAN:CIRCUIT_0|StatusniRegistar:SR|D_FLIPFLOP:MEMORY_7|s_currentState                                                  ; Stuck at GND due to stuck port clock_enable             ;
+; OSMAN:CIRCUIT_0|StatusniRegistar:SR|D_FLIPFLOP:MEMORY_5|s_currentState                                                  ; Stuck at GND due to stuck port clock_enable             ;
+; OSMAN:CIRCUIT_0|StatusniRegistar:SR|D_FLIPFLOP:MEMORY_8|s_currentState                                                  ; Stuck at GND due to stuck port clock_enable             ;
+; OSMAN:CIRCUIT_0|StatusniRegistar:SR|D_FLIPFLOP:MEMORY_6|s_currentState                                                  ; Stuck at GND due to stuck port clock_enable             ;
+; Total Number of Removed Registers = 28                                                                                  ;                                                         ;
 +-------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------+
 
 
@@ -919,12 +899,12 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 145   ;
-; Number of registers using Synchronous Clear  ; 11    ;
+; Total registers                              ; 138   ;
+; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 116   ;
+; Number of registers using Asynchronous Clear ; 112   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 120   ;
+; Number of registers using Clock Enable       ; 116   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -934,7 +914,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------------+---------+
 ; Inverted Register                                  ; Fan out ;
 +----------------------------------------------------+---------+
-; OSMAN:CIRCUIT_0|D_FLIPFLOP:MEMORY_8|s_currentState ; 116     ;
+; OSMAN:CIRCUIT_0|D_FLIPFLOP:MEMORY_8|s_currentState ; 112     ;
 ; Total number of inverted registers = 1             ;         ;
 +----------------------------------------------------+---------+
 
@@ -953,9 +933,9 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                    ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------------------------------+
-; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ProgramskiBrojac:PB|D_FLIPFLOP:MEMORY_9|s_currentState  ;
-; 4:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|Multiplexer_bus_4:PLEXERS_4|Mux2            ;
-; 8:1                ; 8 bits    ; 40 LEs        ; 40 LEs               ; 0 LEs                  ; No         ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|RegistarskaDatoteka:RD|Multiplexer_bus_8:PLEXERS_2|Mux1 ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ProgramskiBrojac:PB|D_FLIPFLOP:MEMORY_13|s_currentState ;
+; 4:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|ALU8Bit:ALU|Multiplexer_bus_4:PLEXERS_4|Mux6            ;
+; 8:1                ; 8 bits    ; 40 LEs        ; 40 LEs               ; 0 LEs                  ; No         ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|RegistarskaDatoteka:RD|Multiplexer_bus_8:PLEXERS_2|Mux0 ;
 ; 9:1                ; 8 bits    ; 48 LEs        ; 48 LEs               ; 0 LEs                  ; No         ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|Multiplexer_bus_2:PLEXERS_2|muxOut                      ;
 ; 6:1                ; 5 bits    ; 20 LEs        ; 20 LEs               ; 0 LEs                  ; No         ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|Multiplexer_bus_4:PLEXERS_5|Mux1                        ;
 ; 8:1                ; 3 bits    ; 15 LEs        ; 12 LEs               ; 3 LEs                  ; No         ; |logisimTopLevelShell|OSMAN:CIRCUIT_0|Multiplexer_bus_4:PLEXERS_5|Mux5                        ;
@@ -963,7 +943,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 
 
 +----------------------------------------------------------------------------------------------------------------------------------------------------+
-; Source assignments for OSMAN:CIRCUIT_0|RAMCONTENTS_MemorijaPodataka:MemorijaPodataka|altsyncram:s_memContents_rtl_0|altsyncram_sro1:auto_generated ;
+; Source assignments for OSMAN:CIRCUIT_0|RAMCONTENTS_MemorijaPodataka:MemorijaPodataka|altsyncram:s_memContents_rtl_0|altsyncram_oro1:auto_generated ;
 +---------------------------------+--------------------+------+--------------------------------------------------------------------------------------+
 ; Assignment                      ; Value              ; From ; To                                                                                   ;
 +---------------------------------+--------------------+------+--------------------------------------------------------------------------------------+
@@ -976,8 +956,8 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------+-------+-------------------------------------------------+
 ; Parameter Name ; Value ; Type                                            ;
 +----------------+-------+-------------------------------------------------+
-; nrofbits       ; 18    ; Signed Integer                                  ;
-; reloadvalue    ; 12500 ; Signed Integer                                  ;
+; nrofbits       ; 15    ; Signed Integer                                  ;
+; reloadvalue    ; 25000 ; Signed Integer                                  ;
 +----------------+-------+-------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
@@ -3742,8 +3722,8 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; WIDTH_BYTEENA                      ; 1                    ; Untyped                                                                           ;
 ; OPERATION_MODE                     ; DUAL_PORT            ; Untyped                                                                           ;
 ; WIDTH_A                            ; 8                    ; Untyped                                                                           ;
-; WIDTHAD_A                          ; 9                    ; Untyped                                                                           ;
-; NUMWORDS_A                         ; 257                  ; Untyped                                                                           ;
+; WIDTHAD_A                          ; 8                    ; Untyped                                                                           ;
+; NUMWORDS_A                         ; 256                  ; Untyped                                                                           ;
 ; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped                                                                           ;
 ; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                                                                           ;
 ; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                                                                           ;
@@ -3751,8 +3731,8 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; INDATA_ACLR_A                      ; NONE                 ; Untyped                                                                           ;
 ; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                                                                           ;
 ; WIDTH_B                            ; 8                    ; Untyped                                                                           ;
-; WIDTHAD_B                          ; 9                    ; Untyped                                                                           ;
-; NUMWORDS_B                         ; 257                  ; Untyped                                                                           ;
+; WIDTHAD_B                          ; 8                    ; Untyped                                                                           ;
+; NUMWORDS_B                         ; 256                  ; Untyped                                                                           ;
 ; INDATA_REG_B                       ; CLOCK1               ; Untyped                                                                           ;
 ; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                                                                           ;
 ; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                                                                           ;
@@ -3785,7 +3765,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                                                                           ;
 ; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                                                                           ;
 ; DEVICE_FAMILY                      ; Cyclone V            ; Untyped                                                                           ;
-; CBXI_PARAMETER                     ; altsyncram_sro1      ; Untyped                                                                           ;
+; CBXI_PARAMETER                     ; altsyncram_oro1      ; Untyped                                                                           ;
 +------------------------------------+----------------------+-----------------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
@@ -3799,10 +3779,10 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Entity Instance                           ; OSMAN:CIRCUIT_0|RAMCONTENTS_MemorijaPodataka:MemorijaPodataka|altsyncram:s_memContents_rtl_0 ;
 ;     -- OPERATION_MODE                     ; DUAL_PORT                                                                                    ;
 ;     -- WIDTH_A                            ; 8                                                                                            ;
-;     -- NUMWORDS_A                         ; 257                                                                                          ;
+;     -- NUMWORDS_A                         ; 256                                                                                          ;
 ;     -- OUTDATA_REG_A                      ; UNREGISTERED                                                                                 ;
 ;     -- WIDTH_B                            ; 8                                                                                            ;
-;     -- NUMWORDS_B                         ; 257                                                                                          ;
+;     -- NUMWORDS_B                         ; 256                                                                                          ;
 ;     -- ADDRESS_REG_B                      ; CLOCK0                                                                                       ;
 ;     -- OUTDATA_REG_B                      ; UNREGISTERED                                                                                 ;
 ;     -- RAM_BLOCK_TYPE                     ; AUTO                                                                                         ;
@@ -4478,7 +4458,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Port                     ; Type   ; Severity ; Details                                                                             ;
 +--------------------------+--------+----------+-------------------------------------------------------------------------------------+
 ; logisiminputbubbles[12]  ; Input  ; Info     ; Stuck at GND                                                                        ;
-; logisimoutputbubbles[31] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; logisimoutputbubbles[23] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
 ; logisimoutputbubbles[15] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
 ; logisimoutputbubbles[7]  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
 +--------------------------+--------+----------+-------------------------------------------------------------------------------------+
@@ -4489,28 +4469,27 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 145                         ;
+; arriav_ff             ; 138                         ;
 ;     ENA               ; 4                           ;
-;     ENA CLR           ; 116                         ;
-;     SCLR              ; 11                          ;
-;     plain             ; 14                          ;
-; arriav_lcell_comb     ; 365                         ;
-;     arith             ; 18                          ;
-;         1 data inputs ; 18                          ;
-;     extend            ; 5                           ;
-;         7 data inputs ; 5                           ;
-;     normal            ; 342                         ;
-;         1 data inputs ; 25                          ;
-;         2 data inputs ; 24                          ;
-;         3 data inputs ; 26                          ;
-;         4 data inputs ; 33                          ;
-;         5 data inputs ; 79                          ;
-;         6 data inputs ; 155                         ;
+;     ENA CLR           ; 112                         ;
+;     plain             ; 22                          ;
+; arriav_lcell_comb     ; 253                         ;
+;     arith             ; 15                          ;
+;         1 data inputs ; 15                          ;
+;     extend            ; 1                           ;
+;         7 data inputs ; 1                           ;
+;     normal            ; 237                         ;
+;         1 data inputs ; 26                          ;
+;         2 data inputs ; 19                          ;
+;         3 data inputs ; 51                          ;
+;         4 data inputs ; 23                          ;
+;         5 data inputs ; 33                          ;
+;         6 data inputs ; 85                          ;
 ; boundary_port         ; 42                          ;
 ; stratixv_ram_block    ; 8                           ;
 ;                       ;                             ;
-; Max LUT depth         ; 12.00                       ;
-; Average LUT depth     ; 7.30                        ;
+; Max LUT depth         ; 10.00                       ;
+; Average LUT depth     ; 5.75                        ;
 +-----------------------+-----------------------------+
 
 
@@ -4519,7 +4498,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:03     ;
+; Top            ; 00:00:01     ;
 +----------------+--------------+
 
 
@@ -4529,7 +4508,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Fri Jun 26 23:18:21 2026
+    Info: Processing started: Thu Jul 23 01:26:42 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off OSMAN -c logisimTopLevelShell
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 12 of the 12 processors detected
@@ -4683,17 +4662,17 @@ Info (12128): Elaborating entity "LogisimClockComponent" for hierarchy "LogisimC
 Warning (10445): VHDL Subtype or Type Declaration warning at LogisimClockComponent_behavior.vhd(62): subtype or type has null range File: C:/.Cloud Documents/Osman/OsmanFPGA/LogisimClockComponent_behavior.vhd Line: 62
 Info (12128): Elaborating entity "LogisimClockComponent" for hierarchy "LogisimClockComponent:MemCLK" File: C:/.Cloud Documents/Osman/OsmanFPGA/logisimTopLevelShell_behavior.vhd Line: 124
 Info (12128): Elaborating entity "OSMAN" for hierarchy "OSMAN:CIRCUIT_0" File: C:/.Cloud Documents/Osman/OsmanFPGA/logisimTopLevelShell_behavior.vhd Line: 136
-Warning (10036): Verilog HDL or VHDL warning at OSMAN_behavior.vhd(240): object "s_logisimNet4" assigned a value but never read File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 240
-Warning (10036): Verilog HDL or VHDL warning at OSMAN_behavior.vhd(241): object "s_logisimNet40" assigned a value but never read File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 241
-Info (12128): Elaborating entity "Multiplexer_bus_2" for hierarchy "OSMAN:CIRCUIT_0|Multiplexer_bus_2:PLEXERS_1" File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 550
-Info (12128): Elaborating entity "Multiplexer_bus_4" for hierarchy "OSMAN:CIRCUIT_0|Multiplexer_bus_4:PLEXERS_5" File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 582
-Info (12128): Elaborating entity "RAMCONTENTS_MemorijaPodataka" for hierarchy "OSMAN:CIRCUIT_0|RAMCONTENTS_MemorijaPodataka:MemorijaPodataka" File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 602
-Info (12128): Elaborating entity "D_FLIPFLOP" for hierarchy "OSMAN:CIRCUIT_0|D_FLIPFLOP:MEMORY_8" File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 611
-Info (12128): Elaborating entity "StatusniRegistar" for hierarchy "OSMAN:CIRCUIT_0|StatusniRegistar:SR" File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 626
+Warning (10036): Verilog HDL or VHDL warning at OSMAN_behavior.vhd(224): object "s_logisimNet11" assigned a value but never read File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 224
+Warning (10036): Verilog HDL or VHDL warning at OSMAN_behavior.vhd(240): object "s_logisimNet44" assigned a value but never read File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 240
+Info (12128): Elaborating entity "Multiplexer_bus_2" for hierarchy "OSMAN:CIRCUIT_0|Multiplexer_bus_2:PLEXERS_1" File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 368
+Info (12128): Elaborating entity "Multiplexer_bus_4" for hierarchy "OSMAN:CIRCUIT_0|Multiplexer_bus_4:PLEXERS_5" File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 400
+Info (12128): Elaborating entity "RAMCONTENTS_MemorijaPodataka" for hierarchy "OSMAN:CIRCUIT_0|RAMCONTENTS_MemorijaPodataka:MemorijaPodataka" File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 420
+Info (12128): Elaborating entity "D_FLIPFLOP" for hierarchy "OSMAN:CIRCUIT_0|D_FLIPFLOP:MEMORY_8" File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 429
+Info (12128): Elaborating entity "StatusniRegistar" for hierarchy "OSMAN:CIRCUIT_0|StatusniRegistar:SR" File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 444
 Warning (10036): Verilog HDL or VHDL warning at StatusniRegistar_behavior.vhd(50): object "s_logisimNet5" assigned a value but never read File: C:/.Cloud Documents/Osman/OsmanFPGA/StatusniRegistar_behavior.vhd Line: 50
 Info (12128): Elaborating entity "Multiplexer_2" for hierarchy "OSMAN:CIRCUIT_0|StatusniRegistar:SR|Multiplexer_2:PLEXERS_1" File: C:/.Cloud Documents/Osman/OsmanFPGA/StatusniRegistar_behavior.vhd Line: 87
 Info (12128): Elaborating entity "D_FLIPFLOP" for hierarchy "OSMAN:CIRCUIT_0|StatusniRegistar:SR|D_FLIPFLOP:MEMORY_5" File: C:/.Cloud Documents/Osman/OsmanFPGA/StatusniRegistar_behavior.vhd Line: 115
-Info (12128): Elaborating entity "ALU8Bit" for hierarchy "OSMAN:CIRCUIT_0|ALU8Bit:ALU" File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 641
+Info (12128): Elaborating entity "ALU8Bit" for hierarchy "OSMAN:CIRCUIT_0|ALU8Bit:ALU" File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 459
 Info (12128): Elaborating entity "NOR_GATE_8_INPUTS" for hierarchy "OSMAN:CIRCUIT_0|ALU8Bit:ALU|NOR_GATE_8_INPUTS:GATES_1" File: C:/.Cloud Documents/Osman/OsmanFPGA/ALU8Bit_behavior.vhd Line: 202
 Info (12128): Elaborating entity "XOR_GATE_ONEHOT" for hierarchy "OSMAN:CIRCUIT_0|ALU8Bit:ALU|XOR_GATE_ONEHOT:GATES_2" File: C:/.Cloud Documents/Osman/OsmanFPGA/ALU8Bit_behavior.vhd Line: 214
 Info (12128): Elaborating entity "AND_GATE_3_INPUTS" for hierarchy "OSMAN:CIRCUIT_0|ALU8Bit:ALU|AND_GATE_3_INPUTS:GATES_3" File: C:/.Cloud Documents/Osman/OsmanFPGA/ALU8Bit_behavior.vhd Line: 220
@@ -4702,33 +4681,33 @@ Info (12128): Elaborating entity "AND_GATE" for hierarchy "OSMAN:CIRCUIT_0|ALU8B
 Info (12128): Elaborating entity "OR_GATE" for hierarchy "OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_1|OR_GATE:GATES_3" File: C:/.Cloud Documents/Osman/OsmanFPGA/ALU1Bit_behavior.vhd Line: 118
 Info (12128): Elaborating entity "Multiplexer_8" for hierarchy "OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_1|Multiplexer_8:PLEXERS_5" File: C:/.Cloud Documents/Osman/OsmanFPGA/ALU1Bit_behavior.vhd Line: 130
 Info (12128): Elaborating entity "FullAdder" for hierarchy "OSMAN:CIRCUIT_0|ALU8Bit:ALU|ALU1Bit:ALU1Bit_1|FullAdder:FullAdder_1" File: C:/.Cloud Documents/Osman/OsmanFPGA/ALU1Bit_behavior.vhd Line: 148
-Info (12128): Elaborating entity "KontrolnaJedinicaGrananja" for hierarchy "OSMAN:CIRCUIT_0|KontrolnaJedinicaGrananja:KJG" File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 653
-Info (12128): Elaborating entity "DekoderAdresa" for hierarchy "OSMAN:CIRCUIT_0|DekoderAdresa:Dekoder_Adresa" File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 664
+Info (12128): Elaborating entity "KontrolnaJedinicaGrananja" for hierarchy "OSMAN:CIRCUIT_0|KontrolnaJedinicaGrananja:KJG" File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 471
+Info (12128): Elaborating entity "DekoderAdresa" for hierarchy "OSMAN:CIRCUIT_0|DekoderAdresa:Dekoder_Adresa" File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 482
 Info (12128): Elaborating entity "Comparator" for hierarchy "OSMAN:CIRCUIT_0|DekoderAdresa:Dekoder_Adresa|Comparator:ARITH_5" File: C:/.Cloud Documents/Osman/OsmanFPGA/DekoderAdresa_behavior.vhd Line: 105
-Info (12128): Elaborating entity "UIKontroler" for hierarchy "OSMAN:CIRCUIT_0|UIKontroler:UI_Kontroler" File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 676
+Info (12128): Elaborating entity "UIKontroler" for hierarchy "OSMAN:CIRCUIT_0|UIKontroler:UI_Kontroler" File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 494
 Info (12128): Elaborating entity "Decoder_4" for hierarchy "OSMAN:CIRCUIT_0|UIKontroler:UI_Kontroler|Decoder_4:PLEXERS_1" File: C:/.Cloud Documents/Osman/OsmanFPGA/UIKontroler_behavior.vhd Line: 109
 Info (12128): Elaborating entity "Registar8Bit" for hierarchy "OSMAN:CIRCUIT_0|UIKontroler:UI_Kontroler|Registar8Bit:UIIzlazniReg1" File: C:/.Cloud Documents/Osman/OsmanFPGA/UIKontroler_behavior.vhd Line: 132
 Warning (10036): Verilog HDL or VHDL warning at Registar8Bit_behavior.vhd(63): object "s_logisimNet4" assigned a value but never read File: C:/.Cloud Documents/Osman/OsmanFPGA/Registar8Bit_behavior.vhd Line: 63
 Info (12128): Elaborating entity "StabilizatorUlaza8Bit" for hierarchy "OSMAN:CIRCUIT_0|UIKontroler:UI_Kontroler|StabilizatorUlaza8Bit:UIUlazniStabilizator1" File: C:/.Cloud Documents/Osman/OsmanFPGA/UIKontroler_behavior.vhd Line: 168
 Warning (10036): Verilog HDL or VHDL warning at StabilizatorUlaza8Bit_behavior.vhd(43): object "s_logisimNet2" assigned a value but never read File: C:/.Cloud Documents/Osman/OsmanFPGA/StabilizatorUlaza8Bit_behavior.vhd Line: 43
-Info (12128): Elaborating entity "SevenSegAdapter" for hierarchy "OSMAN:CIRCUIT_0|SevenSegAdapter:SedSeg3" File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 694
-Info (12128): Elaborating entity "ProgramskiBrojac" for hierarchy "OSMAN:CIRCUIT_0|ProgramskiBrojac:PB" File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 706
+Info (12128): Elaborating entity "SevenSegAdapter" for hierarchy "OSMAN:CIRCUIT_0|SevenSegAdapter:SedSeg3" File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 512
+Info (12128): Elaborating entity "ProgramskiBrojac" for hierarchy "OSMAN:CIRCUIT_0|ProgramskiBrojac:PB" File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 530
 Warning (10036): Verilog HDL or VHDL warning at ProgramskiBrojac_behavior.vhd(63): object "s_logisimNet4" assigned a value but never read File: C:/.Cloud Documents/Osman/OsmanFPGA/ProgramskiBrojac_behavior.vhd Line: 63
-Info (12128): Elaborating entity "Sabirac" for hierarchy "OSMAN:CIRCUIT_0|Sabirac:PBSab" File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 715
-Info (12128): Elaborating entity "KontrolnaJedinica" for hierarchy "OSMAN:CIRCUIT_0|KontrolnaJedinica:KJ" File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 722
-Info (12128): Elaborating entity "PredznacenoProsirenje" for hierarchy "OSMAN:CIRCUIT_0|PredznacenoProsirenje:Predznaceno_Prosirenje" File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 738
-Info (12128): Elaborating entity "RegistarskaDatoteka" for hierarchy "OSMAN:CIRCUIT_0|RegistarskaDatoteka:RD" File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 744
+Info (12128): Elaborating entity "Sabirac" for hierarchy "OSMAN:CIRCUIT_0|Sabirac:PBSab" File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 539
+Info (12128): Elaborating entity "KontrolnaJedinica" for hierarchy "OSMAN:CIRCUIT_0|KontrolnaJedinica:KJ" File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 546
+Info (12128): Elaborating entity "PredznacenoProsirenje" for hierarchy "OSMAN:CIRCUIT_0|PredznacenoProsirenje:Predznaceno_Prosirenje" File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 562
+Info (12128): Elaborating entity "RegistarskaDatoteka" for hierarchy "OSMAN:CIRCUIT_0|RegistarskaDatoteka:RD" File: C:/.Cloud Documents/Osman/OsmanFPGA/OSMAN_behavior.vhd Line: 568
 Info (12128): Elaborating entity "Decoder_8" for hierarchy "OSMAN:CIRCUIT_0|RegistarskaDatoteka:RD|Decoder_8:PLEXERS_1" File: C:/.Cloud Documents/Osman/OsmanFPGA/RegistarskaDatoteka_behavior.vhd Line: 104
 Info (12128): Elaborating entity "Multiplexer_bus_8" for hierarchy "OSMAN:CIRCUIT_0|RegistarskaDatoteka:RD|Multiplexer_bus_8:PLEXERS_2" File: C:/.Cloud Documents/Osman/OsmanFPGA/RegistarskaDatoteka_behavior.vhd Line: 116
 Info (19000): Inferred 1 megafunctions from design logic
     Info (276029): Inferred altsyncram megafunction from the following design logic: "OSMAN:CIRCUIT_0|RAMCONTENTS_MemorijaPodataka:MemorijaPodataka|s_memContents_rtl_0" 
         Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
         Info (286033): Parameter WIDTH_A set to 8
-        Info (286033): Parameter WIDTHAD_A set to 9
-        Info (286033): Parameter NUMWORDS_A set to 257
+        Info (286033): Parameter WIDTHAD_A set to 8
+        Info (286033): Parameter NUMWORDS_A set to 256
         Info (286033): Parameter WIDTH_B set to 8
-        Info (286033): Parameter WIDTHAD_B set to 9
-        Info (286033): Parameter NUMWORDS_B set to 257
+        Info (286033): Parameter WIDTHAD_B set to 8
+        Info (286033): Parameter NUMWORDS_B set to 256
         Info (286033): Parameter ADDRESS_ACLR_A set to NONE
         Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
         Info (286033): Parameter ADDRESS_ACLR_B set to NONE
@@ -4742,11 +4721,11 @@ Info (12130): Elaborated megafunction instantiation "OSMAN:CIRCUIT_0|RAMCONTENTS
 Info (12133): Instantiated megafunction "OSMAN:CIRCUIT_0|RAMCONTENTS_MemorijaPodataka:MemorijaPodataka|altsyncram:s_memContents_rtl_0" with the following parameter:
     Info (12134): Parameter "OPERATION_MODE" = "DUAL_PORT"
     Info (12134): Parameter "WIDTH_A" = "8"
-    Info (12134): Parameter "WIDTHAD_A" = "9"
-    Info (12134): Parameter "NUMWORDS_A" = "257"
+    Info (12134): Parameter "WIDTHAD_A" = "8"
+    Info (12134): Parameter "NUMWORDS_A" = "256"
     Info (12134): Parameter "WIDTH_B" = "8"
-    Info (12134): Parameter "WIDTHAD_B" = "9"
-    Info (12134): Parameter "NUMWORDS_B" = "257"
+    Info (12134): Parameter "WIDTHAD_B" = "8"
+    Info (12134): Parameter "NUMWORDS_B" = "256"
     Info (12134): Parameter "ADDRESS_ACLR_A" = "NONE"
     Info (12134): Parameter "OUTDATA_REG_B" = "UNREGISTERED"
     Info (12134): Parameter "ADDRESS_ACLR_B" = "NONE"
@@ -4756,21 +4735,20 @@ Info (12133): Instantiated megafunction "OSMAN:CIRCUIT_0|RAMCONTENTS_MemorijaPod
     Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
     Info (12134): Parameter "INIT_FILE" = "ram.mif"
     Info (12134): Parameter "READ_DURING_WRITE_MODE_MIXED_PORTS" = "OLD_DATA"
-Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_sro1.tdf
-    Info (12023): Found entity 1: altsyncram_sro1 File: C:/.Cloud Documents/Osman/OsmanFPGA/db/altsyncram_sro1.tdf Line: 27
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_oro1.tdf
+    Info (12023): Found entity 1: altsyncram_oro1 File: C:/.Cloud Documents/Osman/OsmanFPGA/db/altsyncram_oro1.tdf Line: 27
 Info (286030): Timing-Driven Synthesis is running
-Info (17036): Removed 1 MSB VCC or GND address nodes from RAM block "OSMAN:CIRCUIT_0|RAMCONTENTS_MemorijaPodataka:MemorijaPodataka|altsyncram:s_memContents_rtl_0|altsyncram_sro1:auto_generated|ALTSYNCRAM" File: C:/.Cloud Documents/Osman/OsmanFPGA/db/altsyncram_sro1.tdf Line: 247
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 501 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 388 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 13 input pins
     Info (21059): Implemented 29 output pins
-    Info (21061): Implemented 451 logic cells
+    Info (21061): Implemented 338 logic cells
     Info (21064): Implemented 8 RAM segments
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 8 warnings
-    Info: Peak virtual memory: 4924 megabytes
-    Info: Processing ended: Fri Jun 26 23:18:36 2026
-    Info: Elapsed time: 00:00:15
+    Info: Peak virtual memory: 4930 megabytes
+    Info: Processing ended: Thu Jul 23 01:26:55 2026
+    Info: Elapsed time: 00:00:13
     Info: Total CPU time (on all processors): 00:00:10
 
 
