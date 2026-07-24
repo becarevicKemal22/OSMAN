@@ -108,8 +108,8 @@ BEGIN
                  SynthesizedClock => s_synthesizedClock );
 
    BASE_1 : logisimTickGenerator
-      GENERIC MAP ( nrOfBits    => 15,
-                    reloadValue => 25000 )
+      GENERIC MAP ( nrOfBits    => 7,
+                    reloadValue => 98 )
       PORT MAP ( FPGAClock => s_synthesizedClock,
                  FPGATick  => s_fpgaTick );
 

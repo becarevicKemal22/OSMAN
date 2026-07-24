@@ -1,9 +1,9 @@
-number faktorijel(number n){
+number fibonacci(number n){
     if(n <= 1){
-        return 1;
+        return n;
     }
 
-    return n * faktorijel(n - 1);
+    return fibonacci(n - 1) + fibonacci(n - 2);
 }
 
 
@@ -37,6 +37,6 @@ number main(){
     displejevi(0, segmenti, ADRESE_DISPLEJA);
     number rez;
     rez = input(0xF8);
-    rez = faktorijel(rez);
+    rez = fibonacci(rez);
     displejevi(rez, segmenti, ADRESE_DISPLEJA);
 }

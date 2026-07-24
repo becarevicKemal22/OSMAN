@@ -70,7 +70,7 @@
     <a name="circuit" val="OSMAN"/>
     <a name="circuitnamedboxfixedsize" val="true"/>
     <a name="downloadBoard" val="TERASIC_DE1_SOC"/>
-    <a name="downloadFrequency" val="2000.0"/>
+    <a name="downloadFrequency" val="255102.04081632654"/>
     <a name="simulationFrequency" val="1.0"/>
     <boardmap boardname="TERASIC_DE1_SOC">
       <mc/>
@@ -422,7 +422,28 @@
     <comp lib="4" loc="(350,400)" name="ROM">
       <a name="appearance" val="logisim_evolution"/>
       <a name="contents">addr/data: 8 16
-917f 89fe 89fd 9f00
+0 81f8 89ea 91eb d900 4801 91ee d900
+4801 9159 d900 4801 774e 5003 f9c0 9f0f
+df00 4801 dd00 4801 fd00 d1bd d900 4801
+9101 fa20 5001 d100 ea20 bf20 9100 9f21
+9101 f100 a726 d1bd fe20 9f48 d1bd d900
+4801 9101 fa20 5001 d100 1140 d900 4801
+7710 5001 f9c0 d900 4801 d1bd d900 4801
+9102 fa20 5001 d100 1140 d900 4801 7710
+5001 f9c0 fa20 5001 d100 940 fe20 9f48
+f8a0 5001 d500 5001 d700 7f00 df00 4801
+dd00 4801 fd00 4805 0 d1bd d9a0 9100
+d9a1 d1a1 d900 4801 9103 fa20 5001 d100
+e940 b764 9100 9f65 9101 f100 a7a4 9100
+d9a2 d1a0 d900 4801 910a fa20 5001 d100
+e940 bf74 9100 9f75 9101 f100 a78a d1a0
+d900 4801 910a fa20 5001 d100 1140 d9a0
+d1a2 d900 4801 9101 fa20 5001 d100 940
+d9a2 9f69 d1a0 d9a3 d1a3 fa20 d3bc b40
+d160 d9a4 d1a4 d900 4801 d1a1 fa20 d3bb
+b40 d160 fb20 5001 d100 d960 d1a2 d9a0
+d1a1 4901 d9a1 9f59 f8a0 5001 d500 5001
+d700 7f00
 </a>
       <a name="dataWidth" val="16"/>
       <a name="label" val="InstrukcijskaMemorija"/>
